@@ -9,11 +9,11 @@
   "indicador": "Nuclear",
   "url": "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date=2026-09-14T00%3A00&end_date=2026-11-13T23%3A59&time_trunc=day",
   "codigo": "",
-  "descargado": "2026-11-13T10:28:12+00:00",
+  "descargado": "2026-11-13T10:44:59+00:00",
   "licencia": "Datos de Red Eléctrica (REData), uso con cita de la fuente"
  },
  "decimales": 0,
  "polaridad": 0,
  "territorio": "España",
- "actualizado": "2026-11-13T10:28:12+00:00"
+ "actualizado": "2026-11-13T10:44:59+00:00"
 }

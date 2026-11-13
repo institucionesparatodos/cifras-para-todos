@@ -1,3127 +1,483 @@
 {
- "tipo": "novedad",
+ "tipo": "reserva",
  "carruseles": [
   {
    "principal": {
-    "id": "ine.ecp.provincias.outlier.Andalucía.2025-01-01",
-    "detector": "outlier_territorial",
-    "formato": "¿SABÍAS QUE…?",
+    "id": "ine.ecp.poblacion.máximo.2026-10-01",
+    "detector": "máximo_histórico",
+    "formato": "RÉCORD",
     "intensidad": 1.0,
-    "fuente_id": "ine.ecp.provincias",
-    "titular_base": "Andalucía se sale de lo habitual: 8.676.713 personas frente a 25.037.928 personas en el conjunto de España.",
+    "fuente_id": "ine.ecp.poblacion",
+    "titular_base": "Población residente en España: 49.935.642 personas en cuarto trimestre de 2026, el valor más alto desde que hay registros (1T 1971).",
     "afirmaciones": [
      {
-      "id": "t0",
+      "id": "a1",
       "tipo": "DATO OFICIAL",
-      "texto_valor": "25.037.928 personas",
-      "valor": 25037928.0,
+      "texto_valor": "49.935.642 personas",
+      "valor": 49935642.0,
       "unidad": "personas",
-      "descripcion": "Población residente · total nacional",
-      "periodo": "1T 2025",
+      "descripcion": "Población residente en España (España)",
+      "periodo": "4T 2026",
       "origenes": [
        {
         "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
+        "dataset": "ECP · tabla 59583",
+        "indicador": "Total Nacional. Todas las edades. Total. Población. Número",
+        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/59583?nult=36",
+        "codigo": "ECP320",
+        "descargado": "2026-11-13T10:41:06+00:00",
         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 25037928.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Total Nacional"
+        "valor_original": 49935642.0,
+        "periodo_original": "2026-10-01",
+        "territorio": "España"
        }
       ],
       "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t1",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "8.676.713 personas",
-      "valor": 8676713.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Andalucía",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 8676713.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Andalucía"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t2",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "8.124.126 personas",
-      "valor": 8124126.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Cataluña",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 8124126.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Cataluña"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t3",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "7.113.886 personas",
-      "valor": 7113886.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Madrid, Comunidad de",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 7113886.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Madrid, Comunidad de"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t4",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "5.425.182 personas",
-      "valor": 5425182.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Comunitat Valenciana",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 5425182.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Comunitat Valenciana"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t5",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "2.714.741 personas",
-      "valor": 2714741.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Galicia",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 2714741.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Galicia"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t6",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "2.401.221 personas",
-      "valor": 2401221.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Castilla y León",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 2401221.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Castilla y León"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t7",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "2.258.866 personas",
-      "valor": 2258866.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Canarias",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 2258866.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Canarias"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t8",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "2.242.343 personas",
-      "valor": 2242343.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · País Vasco",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 2242343.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "País Vasco"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t9",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "2.126.378 personas",
-      "valor": 2126378.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Castilla - La Mancha",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 2126378.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Castilla - La Mancha"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t10",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "1.586.989 personas",
-      "valor": 1586989.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Murcia, Región de",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 1586989.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Murcia, Región de"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t11",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "1.364.621 personas",
-      "valor": 1364621.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Aragón",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 1364621.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Aragón"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t12",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "1.249.844 personas",
-      "valor": 1249844.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Illes Balears",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 1249844.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Balears, Illes"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t13",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "1.053.345 personas",
-      "valor": 1053345.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Extremadura",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 1053345.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Extremadura"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t14",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "1.015.128 personas",
-      "valor": 1015128.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Asturias, Principado de",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 1015128.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Asturias, Principado de"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t15",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "683.854 personas",
-      "valor": 683854.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Navarra, Comunidad Foral de",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 683854.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Navarra, Comunidad Foral de"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t16",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "593.623 personas",
-      "valor": 593623.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Cantabria",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 593623.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Cantabria"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t17",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "326.803 personas",
-      "valor": 326803.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · La Rioja",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 326803.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Rioja, La"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t18",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "87.067 personas",
-      "valor": 87067.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Melilla",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 87067.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Melilla"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t19",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "83.567 personas",
-      "valor": 83567.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Ceuta",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 83567.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Ceuta"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "r1",
-      "tipo": "COMPARACIÓN",
-      "texto_valor": "103,8 veces",
-      "valor": 103.8294183110558,
-      "unidad": "veces",
-      "descripcion": "Andalucía frente a Ceuta",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 8676713.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Andalucía"
-       },
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 83567.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Ceuta"
-       }
-      ],
-      "calculo": "8.676.713 / 83.567",
-      "aproximado": false
-     },
-     {
-      "id": "r2",
-      "tipo": "COMPARACIÓN",
-      "texto_valor": "8.593.146 personas",
-      "valor": 8593146.0,
-      "unidad": "personas",
-      "descripcion": "Distancia entre Andalucía y Ceuta",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 8676713.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Andalucía"
-       },
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 83567.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Ceuta"
-       }
-      ],
-      "calculo": "8.676.713 − 83.567",
       "aproximado": false
      }
     ],
     "visual": {
-     "tipo": "ranking",
-     "destacar": "Andalucía",
-     "nivel": "provincia",
-     "valores": {
-      "Andalucía": 8676713.0,
-      "Aragón": 1364621.0,
-      "Asturias, Principado de": 1015128.0,
-      "Balears, Illes": 1249844.0,
-      "Canarias": 2258866.0,
-      "Cantabria": 593623.0,
-      "Castilla y León": 2401221.0,
-      "Castilla - La Mancha": 2126378.0,
-      "Cataluña": 8124126.0,
-      "Comunitat Valenciana": 5425182.0,
-      "Extremadura": 1053345.0,
-      "Galicia": 2714741.0,
-      "Madrid, Comunidad de": 7113886.0,
-      "Murcia, Región de": 1586989.0,
-      "Navarra, Comunidad Foral de": 683854.0,
-      "País Vasco": 2242343.0,
-      "Rioja, La": 326803.0,
-      "Ceuta": 83567.0,
-      "Melilla": 87067.0
+     "tipo": "lineas",
+     "serie": {
+      "periodos": [
+       "1993-01-01",
+       "1993-07-01",
+       "1994-01-01",
+       "1994-07-01",
+       "1995-01-01",
+       "1995-07-01",
+       "1996-01-01",
+       "1996-07-01",
+       "1997-01-01",
+       "1997-07-01",
+       "1998-01-01",
+       "1998-07-01",
+       "1999-01-01",
+       "1999-07-01",
+       "2000-01-01",
+       "2000-07-01",
+       "2001-01-01",
+       "2001-07-01",
+       "2002-01-01",
+       "2002-07-01",
+       "2003-01-01",
+       "2003-07-01",
+       "2004-01-01",
+       "2004-07-01",
+       "2005-01-01",
+       "2005-07-01",
+       "2006-01-01",
+       "2006-07-01",
+       "2007-01-01",
+       "2007-07-01",
+       "2008-01-01",
+       "2008-07-01",
+       "2009-01-01",
+       "2009-07-01",
+       "2010-01-01",
+       "2010-07-01",
+       "2011-01-01",
+       "2011-07-01",
+       "2012-01-01",
+       "2012-07-01",
+       "2013-01-01",
+       "2013-07-01",
+       "2014-01-01",
+       "2014-07-01",
+       "2015-01-01",
+       "2015-07-01",
+       "2016-01-01",
+       "2016-07-01",
+       "2017-01-01",
+       "2017-07-01",
+       "2018-01-01",
+       "2018-07-01",
+       "2019-01-01",
+       "2019-07-01",
+       "2020-01-01",
+       "2020-07-01",
+       "2021-01-01",
+       "2021-04-01",
+       "2021-07-01",
+       "2021-10-01",
+       "2022-01-01",
+       "2022-04-01",
+       "2022-07-01",
+       "2022-10-01",
+       "2023-01-01",
+       "2023-04-01",
+       "2023-07-01",
+       "2023-10-01",
+       "2024-01-01",
+       "2024-04-01",
+       "2024-07-01",
+       "2024-10-01",
+       "2025-01-01",
+       "2025-04-01",
+       "2025-07-01",
+       "2025-10-01",
+       "2026-01-01",
+       "2026-04-01",
+       "2026-07-01",
+       "2026-10-01"
+      ],
+      "valores": [
+       39264034.0,
+       39356082.0,
+       39458489.0,
+       39547353.0,
+       39639726.0,
+       39718895.0,
+       39808374.0,
+       39884246.0,
+       39971329.0,
+       40049974.0,
+       40143449.0,
+       40214066.0,
+       40303568.0,
+       40369667.0,
+       40470182.0,
+       40554387.0,
+       40665545.0,
+       40766049.0,
+       41035271.0,
+       41423520.0,
+       41827836.0,
+       42196231.0,
+       42547454.0,
+       42859172.0,
+       43296335.0,
+       43662613.0,
+       44009969.0,
+       44360521.0,
+       44784659.0,
+       45236004.0,
+       45668938.0,
+       45983169.0,
+       46239271.0,
+       46367550.0,
+       46486621.0,
+       46562483.0,
+       46667175.0,
+       46736257.0,
+       46818216.0,
+       46749303.0,
+       46712650.0,
+       46581124.0,
+       46495744.0,
+       46433050.0,
+       46425722.0,
+       46384379.0,
+       46418884.0,
+       46427100.0,
+       46497393.0,
+       46510461.0,
+       46645070.0,
+       46715383.0,
+       46918951.0,
+       47087778.0,
+       47318050.0,
+       47344852.0,
+       47400798.0,
+       47356065.0,
+       47346836.0,
+       47424595.0,
+       47486727.0,
+       47609145.0,
+       47781354.0,
+       47940295.0,
+       48085361.0,
+       48205962.0,
+       48320520.0,
+       48486865.0,
+       48619695.0,
+       48701130.0,
+       48821936.0,
+       48999880.0,
+       49128297.0,
+       49227868.0,
+       49356442.0,
+       49500091.0,
+       49596499.0,
+       49698699.0,
+       49805419.0,
+       49935642.0
+      ],
+      "unidad": "personas",
+      "decimales": 0,
+      "frecuencia": "T"
      },
-     "total": 25037928.0,
-     "unidad": "personas",
-     "decimales": 0
+     "destacar": "2026-10-01"
     },
     "contexto": {
-     "z_robusto": 5.29
+     "alcance": "histórico",
+     "desde": "1971-01-01"
     },
     "tema": "población",
-    "puntuacion": 0.5
+    "puntuacion": 0.6
    },
    "secundarios": [
     {
-     "id": "ine.ecp.provincias.mapa.2025-01-01",
-     "detector": "reparto_territorial",
-     "formato": "MAPA",
+     "id": "ine.ecp.poblacion.racha.2026-10-01",
+     "detector": "tendencia_sostenida",
+     "formato": "DATO",
      "intensidad": 1.0,
-     "fuente_id": "ine.ecp.provincias",
-     "titular_base": "Población residente por provincias: de 83.567 personas en Ceuta a 8.676.713 personas en Andalucía.",
+     "fuente_id": "ine.ecp.poblacion",
+     "titular_base": "Población residente en España lleva 21 periodos seguidos subiendo.",
      "afirmaciones": [
       {
-       "id": "t0",
+       "id": "a1",
        "tipo": "DATO OFICIAL",
-       "texto_valor": "25.037.928 personas",
-       "valor": 25037928.0,
+       "texto_valor": "49.935.642 personas",
+       "valor": 49935642.0,
        "unidad": "personas",
-       "descripcion": "Población residente · total nacional",
-       "periodo": "1T 2025",
+       "descripcion": "Población residente en España (España)",
+       "periodo": "4T 2026",
        "origenes": [
         {
          "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
+         "dataset": "ECP · tabla 59583",
+         "indicador": "Total Nacional. Todas las edades. Total. Población. Número",
+         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/59583?nult=36",
+         "codigo": "ECP320",
+         "descargado": "2026-11-13T10:41:06+00:00",
          "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 25037928.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Total Nacional"
+         "valor_original": 49935642.0,
+         "periodo_original": "2026-10-01",
+         "territorio": "España"
         }
        ],
        "calculo": "",
        "aproximado": false
       },
       {
-       "id": "t1",
+       "id": "a2",
        "tipo": "DATO OFICIAL",
-       "texto_valor": "8.676.713 personas",
-       "valor": 8676713.0,
+       "texto_valor": "47.346.836 personas",
+       "valor": 47346836.0,
        "unidad": "personas",
-       "descripcion": "Población residente · Andalucía",
-       "periodo": "1T 2025",
+       "descripcion": "Población residente en España (España)",
+       "periodo": "3T 2021",
        "origenes": [
         {
          "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
+         "dataset": "ECP · tabla 59583",
+         "indicador": "Total Nacional. Todas las edades. Total. Población. Número",
+         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/59583?nult=36",
+         "codigo": "ECP320",
+         "descargado": "2026-11-13T10:41:06+00:00",
          "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 8676713.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Andalucía"
+         "valor_original": 47346836.0,
+         "periodo_original": "2021-07-01",
+         "territorio": "España"
         }
        ],
        "calculo": "",
        "aproximado": false
       },
       {
-       "id": "t2",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "8.124.126 personas",
-       "valor": 8124126.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Cataluña",
-       "periodo": "1T 2025",
+       "id": "a3",
+       "tipo": "CÁLCULO DERIVADO",
+       "texto_valor": "21 periodos",
+       "valor": 21,
+       "unidad": "periodos",
+       "descripcion": "Periodos consecutivos en la misma dirección",
+       "periodo": "4T 2026",
        "origenes": [
         {
          "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
+         "dataset": "ECP · tabla 59583",
+         "indicador": "Total Nacional. Todas las edades. Total. Población. Número",
+         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/59583?nult=36",
+         "codigo": "ECP320",
+         "descargado": "2026-11-13T10:41:06+00:00",
          "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 8124126.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Cataluña"
+         "valor_original": 49935642.0,
+         "periodo_original": "2026-10-01",
+         "territorio": ""
         }
        ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t3",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "7.113.886 personas",
-       "valor": 7113886.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Madrid, Comunidad de",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 7113886.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Madrid, Comunidad de"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t4",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "5.425.182 personas",
-       "valor": 5425182.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Comunitat Valenciana",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 5425182.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Comunitat Valenciana"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t5",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "2.714.741 personas",
-       "valor": 2714741.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Galicia",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 2714741.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Galicia"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t6",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "2.401.221 personas",
-       "valor": 2401221.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Castilla y León",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 2401221.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Castilla y León"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t7",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "2.258.866 personas",
-       "valor": 2258866.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Canarias",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 2258866.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Canarias"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t8",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "2.242.343 personas",
-       "valor": 2242343.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · País Vasco",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 2242343.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "País Vasco"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t9",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "2.126.378 personas",
-       "valor": 2126378.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Castilla - La Mancha",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 2126378.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Castilla - La Mancha"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t10",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "1.586.989 personas",
-       "valor": 1586989.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Murcia, Región de",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 1586989.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Murcia, Región de"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t11",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "1.364.621 personas",
-       "valor": 1364621.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Aragón",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 1364621.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Aragón"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t12",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "1.249.844 personas",
-       "valor": 1249844.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Illes Balears",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 1249844.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Balears, Illes"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t13",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "1.053.345 personas",
-       "valor": 1053345.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Extremadura",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 1053345.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Extremadura"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t14",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "1.015.128 personas",
-       "valor": 1015128.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Asturias, Principado de",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 1015128.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Asturias, Principado de"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t15",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "683.854 personas",
-       "valor": 683854.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Navarra, Comunidad Foral de",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 683854.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Navarra, Comunidad Foral de"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t16",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "593.623 personas",
-       "valor": 593623.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Cantabria",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 593623.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Cantabria"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t17",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "326.803 personas",
-       "valor": 326803.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · La Rioja",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 326803.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Rioja, La"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t18",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "87.067 personas",
-       "valor": 87067.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Melilla",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 87067.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Melilla"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t19",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "83.567 personas",
-       "valor": 83567.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Ceuta",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 83567.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Ceuta"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "r1",
-       "tipo": "COMPARACIÓN",
-       "texto_valor": "103,8 veces",
-       "valor": 103.8294183110558,
-       "unidad": "veces",
-       "descripcion": "Andalucía frente a Ceuta",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 8676713.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Andalucía"
-        },
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 83567.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Ceuta"
-        }
-       ],
-       "calculo": "8.676.713 / 83.567",
-       "aproximado": false
-      },
-      {
-       "id": "r2",
-       "tipo": "COMPARACIÓN",
-       "texto_valor": "8.593.146 personas",
-       "valor": 8593146.0,
-       "unidad": "personas",
-       "descripcion": "Distancia entre Andalucía y Ceuta",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 8676713.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Andalucía"
-        },
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 83567.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Ceuta"
-        }
-       ],
-       "calculo": "8.676.713 − 83.567",
+       "calculo": "recuento de variaciones consecutivas del mismo signo",
        "aproximado": false
       }
      ],
      "visual": {
-      "tipo": "mapa",
-      "nivel": "provincia",
-      "valores": {
-       "Andalucía": 8676713.0,
-       "Aragón": 1364621.0,
-       "Asturias, Principado de": 1015128.0,
-       "Balears, Illes": 1249844.0,
-       "Canarias": 2258866.0,
-       "Cantabria": 593623.0,
-       "Castilla y León": 2401221.0,
-       "Castilla - La Mancha": 2126378.0,
-       "Cataluña": 8124126.0,
-       "Comunitat Valenciana": 5425182.0,
-       "Extremadura": 1053345.0,
-       "Galicia": 2714741.0,
-       "Madrid, Comunidad de": 7113886.0,
-       "Murcia, Región de": 1586989.0,
-       "Navarra, Comunidad Foral de": 683854.0,
-       "País Vasco": 2242343.0,
-       "Rioja, La": 326803.0,
-       "Ceuta": 83567.0,
-       "Melilla": 87067.0
-      },
-      "total": 25037928.0,
-      "unidad": "personas",
-      "decimales": 0
-     },
-     "contexto": {
-      "dispersion": 5.41
-     },
-     "tema": "población",
-     "puntuacion": 0.467
-    },
-    {
-     "id": "ine.ecp.provincias.topbottom.2025-01-01",
-     "detector": "top_bottom",
-     "formato": "TOP / BOTTOM",
-     "intensidad": 1.0,
-     "fuente_id": "ine.ecp.provincias",
-     "titular_base": "Las 5 provincias con más y con menos población residente.",
-     "afirmaciones": [
-      {
-       "id": "t0",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "25.037.928 personas",
-       "valor": 25037928.0,
+      "tipo": "lineas",
+      "serie": {
+       "periodos": [
+        "2022-01-01",
+        "2022-04-01",
+        "2022-07-01",
+        "2022-10-01",
+        "2023-01-01",
+        "2023-04-01",
+        "2023-07-01",
+        "2023-10-01",
+        "2024-01-01",
+        "2024-04-01",
+        "2024-07-01",
+        "2024-10-01",
+        "2025-01-01",
+        "2025-04-01",
+        "2025-07-01",
+        "2025-10-01",
+        "2026-01-01",
+        "2026-04-01",
+        "2026-07-01",
+        "2026-10-01"
+       ],
+       "valores": [
+        47486727.0,
+        47609145.0,
+        47781354.0,
+        47940295.0,
+        48085361.0,
+        48205962.0,
+        48320520.0,
+        48486865.0,
+        48619695.0,
+        48701130.0,
+        48821936.0,
+        48999880.0,
+        49128297.0,
+        49227868.0,
+        49356442.0,
+        49500091.0,
+        49596499.0,
+        49698699.0,
+        49805419.0,
+        49935642.0
+       ],
        "unidad": "personas",
-       "descripcion": "Población residente · total nacional",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 25037928.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Total Nacional"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
+       "decimales": 0,
+       "frecuencia": "T"
       },
-      {
-       "id": "t1",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "8.676.713 personas",
-       "valor": 8676713.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Andalucía",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 8676713.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Andalucía"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t2",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "8.124.126 personas",
-       "valor": 8124126.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Cataluña",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 8124126.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Cataluña"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t3",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "7.113.886 personas",
-       "valor": 7113886.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Madrid, Comunidad de",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 7113886.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Madrid, Comunidad de"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t4",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "5.425.182 personas",
-       "valor": 5425182.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Comunitat Valenciana",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 5425182.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Comunitat Valenciana"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t5",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "2.714.741 personas",
-       "valor": 2714741.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Galicia",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 2714741.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Galicia"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t6",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "2.401.221 personas",
-       "valor": 2401221.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Castilla y León",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 2401221.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Castilla y León"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t7",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "2.258.866 personas",
-       "valor": 2258866.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Canarias",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 2258866.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Canarias"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t8",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "2.242.343 personas",
-       "valor": 2242343.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · País Vasco",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 2242343.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "País Vasco"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t9",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "2.126.378 personas",
-       "valor": 2126378.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Castilla - La Mancha",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 2126378.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Castilla - La Mancha"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t10",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "1.586.989 personas",
-       "valor": 1586989.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Murcia, Región de",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 1586989.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Murcia, Región de"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t11",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "1.364.621 personas",
-       "valor": 1364621.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Aragón",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 1364621.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Aragón"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t12",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "1.249.844 personas",
-       "valor": 1249844.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Illes Balears",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 1249844.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Balears, Illes"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t13",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "1.053.345 personas",
-       "valor": 1053345.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Extremadura",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 1053345.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Extremadura"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t14",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "1.015.128 personas",
-       "valor": 1015128.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Asturias, Principado de",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 1015128.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Asturias, Principado de"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t15",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "683.854 personas",
-       "valor": 683854.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Navarra, Comunidad Foral de",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 683854.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Navarra, Comunidad Foral de"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t16",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "593.623 personas",
-       "valor": 593623.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Cantabria",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 593623.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Cantabria"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t17",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "326.803 personas",
-       "valor": 326803.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · La Rioja",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 326803.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Rioja, La"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t18",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "87.067 personas",
-       "valor": 87067.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Melilla",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 87067.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Melilla"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "t19",
-       "tipo": "DATO OFICIAL",
-       "texto_valor": "83.567 personas",
-       "valor": 83567.0,
-       "unidad": "personas",
-       "descripcion": "Población residente · Ceuta",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 83567.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Ceuta"
-        }
-       ],
-       "calculo": "",
-       "aproximado": false
-      },
-      {
-       "id": "r1",
-       "tipo": "COMPARACIÓN",
-       "texto_valor": "103,8 veces",
-       "valor": 103.8294183110558,
-       "unidad": "veces",
-       "descripcion": "Andalucía frente a Ceuta",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 8676713.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Andalucía"
-        },
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 83567.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Ceuta"
-        }
-       ],
-       "calculo": "8.676.713 / 83.567",
-       "aproximado": false
-      },
-      {
-       "id": "r2",
-       "tipo": "COMPARACIÓN",
-       "texto_valor": "8.593.146 personas",
-       "valor": 8593146.0,
-       "unidad": "personas",
-       "descripcion": "Distancia entre Andalucía y Ceuta",
-       "periodo": "1T 2025",
-       "origenes": [
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 8676713.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Andalucía"
-        },
-        {
-         "fuente": "INE",
-         "dataset": "ECP · tabla 56940",
-         "indicador": "Población residente",
-         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-         "codigo": "",
-         "descargado": "2026-11-13T10:27:17+00:00",
-         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-         "valor_original": 83567.0,
-         "periodo_original": "2025-01-01",
-         "territorio": "Ceuta"
-        }
-       ],
-       "calculo": "8.676.713 − 83.567",
-       "aproximado": false
-      }
-     ],
-     "visual": {
-      "tipo": "top_bottom",
-      "n": 5,
-      "nivel": "provincia",
-      "valores": {
-       "Andalucía": 8676713.0,
-       "Aragón": 1364621.0,
-       "Asturias, Principado de": 1015128.0,
-       "Balears, Illes": 1249844.0,
-       "Canarias": 2258866.0,
-       "Cantabria": 593623.0,
-       "Castilla y León": 2401221.0,
-       "Castilla - La Mancha": 2126378.0,
-       "Cataluña": 8124126.0,
-       "Comunitat Valenciana": 5425182.0,
-       "Extremadura": 1053345.0,
-       "Galicia": 2714741.0,
-       "Madrid, Comunidad de": 7113886.0,
-       "Murcia, Región de": 1586989.0,
-       "Navarra, Comunidad Foral de": 683854.0,
-       "País Vasco": 2242343.0,
-       "Rioja, La": 326803.0,
-       "Ceuta": 83567.0,
-       "Melilla": 87067.0
-      },
-      "total": 25037928.0,
-      "unidad": "personas",
-      "decimales": 0
+      "destacar_desde": "2021-07-01"
      },
      "contexto": {},
      "tema": "población",
-     "puntuacion": 0.4
+     "puntuacion": 0.33
+    },
+    {
+     "id": "ine.ecp.poblacion.hace20.2026-10-01",
+     "detector": "comparacion_temporal",
+     "formato": "COMPARACIÓN TEMPORAL",
+     "intensidad": 0.27556244338782576,
+     "fuente_id": "ine.ecp.poblacion",
+     "titular_base": "Población residente en España: 3T 1992 frente a 4T 2026.",
+     "afirmaciones": [
+      {
+       "id": "a1",
+       "tipo": "DATO OFICIAL",
+       "texto_valor": "49.935.642 personas",
+       "valor": 49935642.0,
+       "unidad": "personas",
+       "descripcion": "Población residente en España (España)",
+       "periodo": "4T 2026",
+       "origenes": [
+        {
+         "fuente": "INE",
+         "dataset": "ECP · tabla 59583",
+         "indicador": "Total Nacional. Todas las edades. Total. Población. Número",
+         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/59583?nult=36",
+         "codigo": "ECP320",
+         "descargado": "2026-11-13T10:41:06+00:00",
+         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
+         "valor_original": 49935642.0,
+         "periodo_original": "2026-10-01",
+         "territorio": "España"
+        }
+       ],
+       "calculo": "",
+       "aproximado": false
+      },
+      {
+       "id": "a2",
+       "tipo": "DATO OFICIAL",
+       "texto_valor": "39.147.940 personas",
+       "valor": 39147940.0,
+       "unidad": "personas",
+       "descripcion": "Población residente en España (España)",
+       "periodo": "3T 1992",
+       "origenes": [
+        {
+         "fuente": "INE",
+         "dataset": "ECP · tabla 59583",
+         "indicador": "Total Nacional. Todas las edades. Total. Población. Número",
+         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/59583?nult=36",
+         "codigo": "ECP320",
+         "descargado": "2026-11-13T10:41:06+00:00",
+         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
+         "valor_original": 39147940.0,
+         "periodo_original": "1992-07-01",
+         "territorio": "España"
+        }
+       ],
+       "calculo": "",
+       "aproximado": false
+      },
+      {
+       "id": "a3",
+       "tipo": "CÁLCULO DERIVADO",
+       "texto_valor": "28 %",
+       "valor": 27.556244338782577,
+       "unidad": "%",
+       "descripcion": "Variación en 20 años",
+       "periodo": "4T 2026",
+       "origenes": [
+        {
+         "fuente": "INE",
+         "dataset": "ECP · tabla 59583",
+         "indicador": "Total Nacional. Todas las edades. Total. Población. Número",
+         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/59583?nult=36",
+         "codigo": "ECP320",
+         "descargado": "2026-11-13T10:41:06+00:00",
+         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
+         "valor_original": 49935642.0,
+         "periodo_original": "2026-10-01",
+         "territorio": ""
+        },
+        {
+         "fuente": "INE",
+         "dataset": "ECP · tabla 59583",
+         "indicador": "Total Nacional. Todas las edades. Total. Población. Número",
+         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/59583?nult=36",
+         "codigo": "ECP320",
+         "descargado": "2026-11-13T10:41:06+00:00",
+         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
+         "valor_original": 39147940.0,
+         "periodo_original": "1992-07-01",
+         "territorio": ""
+        }
+       ],
+       "calculo": "(49.935.642 − 39.147.940) / 39.147.940 × 100",
+       "aproximado": false
+      }
+     ],
+     "visual": {
+      "tipo": "comparacion",
+      "antes": {
+       "periodo": "1992-07-01",
+       "valor": 39147940.0
+      },
+      "ahora": {
+       "periodo": "2026-10-01",
+       "valor": 49935642.0
+      },
+      "unidad": "personas"
+     },
+     "contexto": {},
+     "tema": "población",
+     "puntuacion": 0.083
     }
    ],
-   "formato": "¿SABÍAS QUE…?",
-   "puntuacion": 0.5
-  },
-  {
-   "principal": {
-    "id": "ine.ecp.provincias.outlier.Cataluña.2025-01-01",
-    "detector": "outlier_territorial",
-    "formato": "¿SABÍAS QUE…?",
-    "intensidad": 1.0,
-    "fuente_id": "ine.ecp.provincias",
-    "titular_base": "Cataluña se sale de lo habitual: 8.124.126 personas frente a 25.037.928 personas en el conjunto de España.",
-    "afirmaciones": [
-     {
-      "id": "t0",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "25.037.928 personas",
-      "valor": 25037928.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · total nacional",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 25037928.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Total Nacional"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t1",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "8.676.713 personas",
-      "valor": 8676713.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Andalucía",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 8676713.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Andalucía"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t2",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "8.124.126 personas",
-      "valor": 8124126.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Cataluña",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 8124126.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Cataluña"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t3",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "7.113.886 personas",
-      "valor": 7113886.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Madrid, Comunidad de",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 7113886.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Madrid, Comunidad de"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t4",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "5.425.182 personas",
-      "valor": 5425182.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Comunitat Valenciana",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 5425182.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Comunitat Valenciana"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t5",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "2.714.741 personas",
-      "valor": 2714741.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Galicia",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 2714741.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Galicia"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t6",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "2.401.221 personas",
-      "valor": 2401221.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Castilla y León",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 2401221.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Castilla y León"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t7",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "2.258.866 personas",
-      "valor": 2258866.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Canarias",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 2258866.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Canarias"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t8",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "2.242.343 personas",
-      "valor": 2242343.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · País Vasco",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 2242343.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "País Vasco"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t9",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "2.126.378 personas",
-      "valor": 2126378.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Castilla - La Mancha",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 2126378.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Castilla - La Mancha"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t10",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "1.586.989 personas",
-      "valor": 1586989.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Murcia, Región de",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 1586989.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Murcia, Región de"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t11",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "1.364.621 personas",
-      "valor": 1364621.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Aragón",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 1364621.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Aragón"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t12",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "1.249.844 personas",
-      "valor": 1249844.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Illes Balears",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 1249844.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Balears, Illes"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t13",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "1.053.345 personas",
-      "valor": 1053345.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Extremadura",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 1053345.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Extremadura"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t14",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "1.015.128 personas",
-      "valor": 1015128.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Asturias, Principado de",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 1015128.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Asturias, Principado de"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t15",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "683.854 personas",
-      "valor": 683854.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Navarra, Comunidad Foral de",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 683854.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Navarra, Comunidad Foral de"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t16",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "593.623 personas",
-      "valor": 593623.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Cantabria",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 593623.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Cantabria"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t17",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "326.803 personas",
-      "valor": 326803.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · La Rioja",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 326803.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Rioja, La"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t18",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "87.067 personas",
-      "valor": 87067.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Melilla",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 87067.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Melilla"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t19",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "83.567 personas",
-      "valor": 83567.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Ceuta",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 83567.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Ceuta"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "r1",
-      "tipo": "COMPARACIÓN",
-      "texto_valor": "103,8 veces",
-      "valor": 103.8294183110558,
-      "unidad": "veces",
-      "descripcion": "Andalucía frente a Ceuta",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 8676713.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Andalucía"
-       },
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 83567.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Ceuta"
-       }
-      ],
-      "calculo": "8.676.713 / 83.567",
-      "aproximado": false
-     },
-     {
-      "id": "r2",
-      "tipo": "COMPARACIÓN",
-      "texto_valor": "8.593.146 personas",
-      "valor": 8593146.0,
-      "unidad": "personas",
-      "descripcion": "Distancia entre Andalucía y Ceuta",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 8676713.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Andalucía"
-       },
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 83567.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Ceuta"
-       }
-      ],
-      "calculo": "8.676.713 − 83.567",
-      "aproximado": false
-     }
-    ],
-    "visual": {
-     "tipo": "ranking",
-     "destacar": "Cataluña",
-     "nivel": "provincia",
-     "valores": {
-      "Andalucía": 8676713.0,
-      "Aragón": 1364621.0,
-      "Asturias, Principado de": 1015128.0,
-      "Balears, Illes": 1249844.0,
-      "Canarias": 2258866.0,
-      "Cantabria": 593623.0,
-      "Castilla y León": 2401221.0,
-      "Castilla - La Mancha": 2126378.0,
-      "Cataluña": 8124126.0,
-      "Comunitat Valenciana": 5425182.0,
-      "Extremadura": 1053345.0,
-      "Galicia": 2714741.0,
-      "Madrid, Comunidad de": 7113886.0,
-      "Murcia, Región de": 1586989.0,
-      "Navarra, Comunidad Foral de": 683854.0,
-      "País Vasco": 2242343.0,
-      "Rioja, La": 326803.0,
-      "Ceuta": 83567.0,
-      "Melilla": 87067.0
-     },
-     "total": 25037928.0,
-     "unidad": "personas",
-     "decimales": 0
-    },
-    "contexto": {
-     "z_robusto": 4.88
-    },
-    "tema": "población",
-    "puntuacion": 0.5
-   },
-   "secundarios": [],
-   "formato": "¿SABÍAS QUE…?",
-   "puntuacion": 0.5
-  },
-  {
-   "principal": {
-    "id": "ine.ecp.provincias.outlier.Madrid, Comunidad de.2025-01-01",
-    "detector": "outlier_territorial",
-    "formato": "¿SABÍAS QUE…?",
-    "intensidad": 1.0,
-    "fuente_id": "ine.ecp.provincias",
-    "titular_base": "Madrid, Comunidad de se sale de lo habitual: 7.113.886 personas frente a 25.037.928 personas en el conjunto de España.",
-    "afirmaciones": [
-     {
-      "id": "t0",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "25.037.928 personas",
-      "valor": 25037928.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · total nacional",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 25037928.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Total Nacional"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t1",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "8.676.713 personas",
-      "valor": 8676713.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Andalucía",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 8676713.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Andalucía"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t2",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "8.124.126 personas",
-      "valor": 8124126.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Cataluña",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 8124126.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Cataluña"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t3",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "7.113.886 personas",
-      "valor": 7113886.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Madrid, Comunidad de",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 7113886.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Madrid, Comunidad de"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t4",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "5.425.182 personas",
-      "valor": 5425182.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Comunitat Valenciana",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 5425182.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Comunitat Valenciana"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t5",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "2.714.741 personas",
-      "valor": 2714741.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Galicia",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 2714741.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Galicia"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t6",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "2.401.221 personas",
-      "valor": 2401221.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Castilla y León",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 2401221.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Castilla y León"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t7",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "2.258.866 personas",
-      "valor": 2258866.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Canarias",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 2258866.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Canarias"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t8",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "2.242.343 personas",
-      "valor": 2242343.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · País Vasco",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 2242343.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "País Vasco"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t9",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "2.126.378 personas",
-      "valor": 2126378.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Castilla - La Mancha",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 2126378.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Castilla - La Mancha"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t10",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "1.586.989 personas",
-      "valor": 1586989.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Murcia, Región de",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 1586989.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Murcia, Región de"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t11",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "1.364.621 personas",
-      "valor": 1364621.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Aragón",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 1364621.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Aragón"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t12",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "1.249.844 personas",
-      "valor": 1249844.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Illes Balears",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 1249844.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Balears, Illes"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t13",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "1.053.345 personas",
-      "valor": 1053345.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Extremadura",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 1053345.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Extremadura"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t14",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "1.015.128 personas",
-      "valor": 1015128.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Asturias, Principado de",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 1015128.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Asturias, Principado de"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t15",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "683.854 personas",
-      "valor": 683854.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Navarra, Comunidad Foral de",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 683854.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Navarra, Comunidad Foral de"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t16",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "593.623 personas",
-      "valor": 593623.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Cantabria",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 593623.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Cantabria"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t17",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "326.803 personas",
-      "valor": 326803.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · La Rioja",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 326803.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Rioja, La"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t18",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "87.067 personas",
-      "valor": 87067.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Melilla",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 87067.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Melilla"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "t19",
-      "tipo": "DATO OFICIAL",
-      "texto_valor": "83.567 personas",
-      "valor": 83567.0,
-      "unidad": "personas",
-      "descripcion": "Población residente · Ceuta",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 83567.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Ceuta"
-       }
-      ],
-      "calculo": "",
-      "aproximado": false
-     },
-     {
-      "id": "r1",
-      "tipo": "COMPARACIÓN",
-      "texto_valor": "103,8 veces",
-      "valor": 103.8294183110558,
-      "unidad": "veces",
-      "descripcion": "Andalucía frente a Ceuta",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 8676713.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Andalucía"
-       },
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 83567.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Ceuta"
-       }
-      ],
-      "calculo": "8.676.713 / 83.567",
-      "aproximado": false
-     },
-     {
-      "id": "r2",
-      "tipo": "COMPARACIÓN",
-      "texto_valor": "8.593.146 personas",
-      "valor": 8593146.0,
-      "unidad": "personas",
-      "descripcion": "Distancia entre Andalucía y Ceuta",
-      "periodo": "1T 2025",
-      "origenes": [
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 8676713.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Andalucía"
-       },
-       {
-        "fuente": "INE",
-        "dataset": "ECP · tabla 56940",
-        "indicador": "Población residente",
-        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/56940?nult=1",
-        "codigo": "",
-        "descargado": "2026-11-13T10:27:17+00:00",
-        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
-        "valor_original": 83567.0,
-        "periodo_original": "2025-01-01",
-        "territorio": "Ceuta"
-       }
-      ],
-      "calculo": "8.676.713 − 83.567",
-      "aproximado": false
-     }
-    ],
-    "visual": {
-     "tipo": "ranking",
-     "destacar": "Madrid, Comunidad de",
-     "nivel": "provincia",
-     "valores": {
-      "Andalucía": 8676713.0,
-      "Aragón": 1364621.0,
-      "Asturias, Principado de": 1015128.0,
-      "Balears, Illes": 1249844.0,
-      "Canarias": 2258866.0,
-      "Cantabria": 593623.0,
-      "Castilla y León": 2401221.0,
-      "Castilla - La Mancha": 2126378.0,
-      "Cataluña": 8124126.0,
-      "Comunitat Valenciana": 5425182.0,
-      "Extremadura": 1053345.0,
-      "Galicia": 2714741.0,
-      "Madrid, Comunidad de": 7113886.0,
-      "Murcia, Región de": 1586989.0,
-      "Navarra, Comunidad Foral de": 683854.0,
-      "País Vasco": 2242343.0,
-      "Rioja, La": 326803.0,
-      "Ceuta": 83567.0,
-      "Melilla": 87067.0
-     },
-     "total": 25037928.0,
-     "unidad": "personas",
-     "decimales": 0
-    },
-    "contexto": {
-     "z_robusto": 4.13
-    },
-    "tema": "población",
-    "puntuacion": 0.5
-   },
-   "secundarios": [],
-   "formato": "¿SABÍAS QUE…?",
-   "puntuacion": 0.5
+   "formato": "RÉCORD",
+   "puntuacion": 0.6
   }
  ],
- "descartados": [
-  {
-   "id": "ine.ipv.ccaa.mapa.2026-04-01",
-   "puntuacion": 0.364,
-   "titular_base": "Subida del precio de la vivienda por ccaas: de 9,5 % en Navarra, Comunidad Foral de a 15,2 % en Ceuta."
-  },
-  {
-   "id": "ine.eoh.pernoctaciones.giro.2026-09-01",
-   "puntuacion": 0.173,
-   "titular_base": "Pernoctaciones en hoteles vuelve a bajar tras 7 periodos subiendo."
-  }
- ],
+ "descartados": [],
  "fecha": "2026-11-13",
  "avisos": [
-  "ℹ️ Precio de la vivienda (IPV, variación anual): la fuente ha revisado 8 valores anteriores.",
-  "⚠️ Coste laboral por trabajador y mes (ETCL4155) no se actualiza desde 2026-04-01: ¿cambio de base o serie discontinuada?",
-  "ℹ️ Renovable: la fuente ha revisado 1 valores anteriores.",
-  "ℹ️ No renovable: la fuente ha revisado 1 valores anteriores."
+  "⚠️ Nacimientos (EMN39) no se actualiza desde 2026-08-01: ¿cambio de base o serie discontinuada?"
  ]
 }
