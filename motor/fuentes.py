@@ -66,6 +66,26 @@ def _periodo_ine(dato: dict) -> tuple[str, str, str]:
     return "?", f.date().isoformat(), f.date().isoformat()
 
 
+def _partes(nombre: str) -> list[str]:
+    return [p.strip() for p in nombre.strip().rstrip(".").split(".") if p.strip()]
+
+
+def _coincide(filtro: list[str], partes: list[str]) -> bool:
+    """Cada elemento del filtro debe ser IGUAL a alguna parte del nombre de la serie (sin distinguir
+    mayúsculas). Un elemento que acaba en '*' basta con que sea el comienzo de una parte.
+    Coincidencia exacta a propósito: con 'contiene', «Total» también encajaba en «Total Nacional»
+    y se colaban series de mujeres u hombres en lugar del total."""
+    pl = [p.lower() for p in partes]
+    for f in filtro:
+        f = f.lower()
+        if f.endswith("*"):
+            if not any(p.startswith(f[:-1]) for p in pl):
+                return False
+        elif f not in pl:
+            return False
+    return True
+
+
 def ine_tabla(tabla: int, nult: int | None = None, extra: str = "") -> list[dict]:
     q = f"?nult={nult}" if nult else "?"
     url = f"{INE_BASE}/DATOS_TABLA/{tabla}{q}{extra}"
@@ -87,7 +107,7 @@ def ine_series_de_tabla(tabla: int, filtro_nombre: list[str], nult: int | None =
     out = []
     for s in datos:
         nombre = s["Nombre"].strip().rstrip(".").strip()
-        if not all(f.lower() in nombre.lower() for f in filtro_nombre):
+        if not _coincide(filtro_nombre, _partes(nombre)):
             continue
         puntos = [(_periodo_ine(d), d["Valor"]) for d in s.get("Data", [])
                   if d.get("Valor") is not None and not d.get("Secreto")]
@@ -122,6 +142,8 @@ def _territorio(partes: list[str]) -> str:
         nombres = list(cfg["provincias"]) + cfg.get("ccaa_ine", []) + ["Total Nacional"]
         _TERRITORIOS = {_clave(n): n for n in nombres}
     for p in partes:
+        if _clave(p) in ("nacional", "totalnacional"):
+            return "Total Nacional"
         if _clave(p) in _TERRITORIOS:
             return _TERRITORIOS[_clave(p)]
     return partes[-1]
@@ -135,9 +157,8 @@ def ine_corte_territorial(tabla: int, filtro_nombre: list[str], nivel: str, id_:
     datos, url = ine_tabla(tabla, 1)
     valores, total, per = {}, None, None
     for s in datos:
-        partes = [p.strip() for p in s["Nombre"].strip().rstrip(".").split(".")]
-        if not all(any(f.lower() == p.lower() or f.lower() in p.lower() for p in partes)
-                   for f in filtro_nombre):
+        partes = _partes(s["Nombre"])
+        if not _coincide(filtro_nombre, partes):
             continue
         d = max(s["Data"], key=lambda x: _periodo_ine(x)[1])
         if d.get("Valor") is None:
@@ -145,6 +166,9 @@ def ine_corte_territorial(tabla: int, filtro_nombre: list[str], nivel: str, id_:
         per = _periodo_ine(d)
         terr = _territorio(partes)
         if total_contiene and total_contiene.lower() in terr.lower():
+            if total is not None:
+                raise ValueError(f"Tabla {tabla}: el filtro {filtro_nombre} deja varias series para el total nacional "
+                                 f"(hay que afinarlo). Ejemplo: {s['Nombre']}")
             total = float(d["Valor"])
         elif terr in valores:
             raise ValueError(f"Tabla {tabla}: el filtro {filtro_nombre} deja varias series para «{terr}» "
@@ -269,7 +293,8 @@ def aemet(ruta: str) -> tuple[list, str]:
 # ---------------------------------------------------------------------------
 # Comprobación de series congeladas (cambios de base, series discontinuadas…)
 # ---------------------------------------------------------------------------
-RETRASO_MAXIMO_DIAS = {"D": 7, "M": 75, "T": 160, "A": 500}
+# Días máximos entre el INICIO del último periodo y hoy (duración del periodo + retraso habitual de publicación)
+RETRASO_MAXIMO_DIAS = {"D": 7, "M": 100, "T": 270, "A": 550}
 
 
 def esta_congelada(serie: Serie, hoy: date | None = None) -> bool:
@@ -278,17 +303,26 @@ def esta_congelada(serie: Serie, hoy: date | None = None) -> bool:
     return (hoy - ultimo).days > RETRASO_MAXIMO_DIAS.get(serie.frecuencia, 400)
 
 
-def ine_buscar_tabla(operacion: str, contiene: str) -> list[int]:
+def ine_buscar_tabla(operacion: str, contiene: str, operacion_nombre: str = "") -> list[int]:
     """Ids de las tablas de una operación del INE cuyo nombre contiene el texto, de la más nueva a la más antigua.
-    Si el código corto de la operación no funciona (error 500), se busca su código oficial en
-    OPERACIONES_DISPONIBLES por código, código IOE o nombre."""
-    try:
-        tablas = json.loads(_get(f"{INE_BASE}/TABLAS_OPERACION/{operacion}", reintentos=1))
-    except RuntimeError:
+    La operación se busca por su código corto; si se da 'operacion_nombre' o el código falla, se busca en
+    OPERACIONES_DISPONIBLES por nombre, código o código IOE."""
+    tablas = None
+    if not operacion_nombre:
+        try:
+            tablas = json.loads(_get(f"{INE_BASE}/TABLAS_OPERACION/{operacion}", reintentos=1))
+        except RuntimeError:
+            tablas = None
+    if tablas is None:
         ops = json.loads(_get(f"{INE_BASE}/OPERACIONES_DISPONIBLES"))
-        op = next((o for o in ops if operacion.upper() in (str(o.get("Codigo", "")).upper(), str(o.get("Cod_IOE", "")).upper())), None)
+        op = None
+        if operacion_nombre:
+            op = next((o for o in ops if operacion_nombre.lower() in str(o.get("Nombre", "")).lower()), None)
         if op is None:
-            raise ValueError(f"INE: operación «{operacion}» no encontrada en OPERACIONES_DISPONIBLES")
+            op = next((o for o in ops if operacion.upper() in (str(o.get("Codigo", "")).upper(), str(o.get("Cod_IOE", "")).upper())), None)
+        if op is None:
+            parecidas = [o.get("Nombre") for o in ops if (operacion_nombre or operacion).split()[0].lower() in str(o.get("Nombre", "")).lower()][:8]
+            raise ValueError(f"INE: operación «{operacion_nombre or operacion}» no encontrada. Parecidas: {parecidas}")
         tablas = json.loads(_get(f"{INE_BASE}/TABLAS_OPERACION/{op['Id']}"))
     cand = [t for t in tablas if contiene.lower() in t["Nombre"].lower()]
     if not cand:
