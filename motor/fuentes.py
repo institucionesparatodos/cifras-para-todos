@@ -93,6 +93,7 @@ def ine_series_de_tabla(tabla: int, filtro_nombre: list[str], nult: int | None =
                   if d.get("Valor") is not None and not d.get("Secreto")]
         if not puntos:
             continue
+        puntos.sort(key=lambda x: x[0][1])          # el INE puede devolver los datos del más nuevo al más antiguo
         frec = puntos[-1][0][0]
         out.append(Serie(
             id=f"{id_base}.{s['COD']}".lower(), nombre=nombre, unidad=unidad, frecuencia=frec,
@@ -138,7 +139,7 @@ def ine_corte_territorial(tabla: int, filtro_nombre: list[str], nivel: str, id_:
         if not all(any(f.lower() == p.lower() or f.lower() in p.lower() for p in partes)
                    for f in filtro_nombre):
             continue
-        d = s["Data"][-1]
+        d = max(s["Data"], key=lambda x: _periodo_ine(x)[1])
         if d.get("Valor") is None:
             continue
         per = _periodo_ine(d)
