@@ -1,10 +1,12 @@
-# Igual que en boe-para-todos: n8n sube datos/lotes/<lote>.json (cifras + textos ya verificados),
-# esta Action genera los JPEG, los publica en GitHub Pages y llama a la resume URL del lote.
+# n8n sube datos/lotes/<lote>.json (plan del motor + textos ya verificados). Esta Action:
+# 1) monta las diapositivas (motor/montar.py: las cifras de los gráficos las pone el código),
+# 2) genera los JPEG y la hoja de vista previa, 3) los publica en GitHub Pages (carpeta docs/)
+# y 4) avisa a n8n llamando a la resume URL del lote.
 name: render
 on:
   push:
     paths: ["datos/lotes/**.json"]
-permissions: {contents: write, pages: write, id-token: write}
+permissions: {contents: write}
 concurrency: {group: datos, cancel-in-progress: false}
 jobs:
   render:
@@ -12,23 +14,33 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v5
+        with: {fetch-depth: 2}
       - uses: actions/setup-python@v6
         with: {python-version: "3.12"}
       - run: pip install -r requirements.txt && python -m playwright install --with-deps chromium
-      - name: Renderizar lotes nuevos
+      - name: Montar y renderizar los lotes nuevos
         run: |
           git diff --name-only HEAD~1 HEAD -- 'datos/lotes/*.json' > /tmp/lotes.txt
+          cat /tmp/lotes.txt
           for f in $(cat /tmp/lotes.txt); do
             lote=$(basename "$f" .json)
-            python -m render.render "$f" "docs/$lote"
+            python -m motor.montar "$f" "docs/$lote"
+            python -m render.render "docs/$lote/lote.json" "docs/$lote"
             python -m render.hoja "docs/$lote"
           done
-      - name: Publicar en Pages y avisar a n8n
+      - name: Publicar en Pages
         run: |
           git config user.name "cifras-bot"; git config user.email "institucionesparatodos@gmail.com"
-          git add docs/ && git commit -m "Imágenes" && git push || true
-          sleep 40   # tiempo para que GitHub Pages sirva las imágenes nuevas
+          git add docs/ && git commit -m "Imágenes" && git pull --rebase && git push || echo "Sin cambios"
+      - name: Esperar a que Pages sirva las imágenes y avisar a n8n
+        run: |
           for f in $(cat /tmp/lotes.txt); do
+            lote=$(basename "$f" .json)
+            url_img="https://institucionesparatodos.github.io/cifras-para-todos/$lote/c1_01.jpg"
+            for i in $(seq 1 30); do
+              code=$(curl -s -o /dev/null -w "%{http_code}" "$url_img"); [ "$code" = "200" ] && break; sleep 10
+            done
+            echo "Pages: $code"
             url=$(python -c "import json;print(json.load(open('$f')).get('resume_url',''))")
-            [ -n "$url" ] && curl -s -X POST "$url" -H 'Content-Type: application/json' -d "{\"lote\":\"$(basename $f .json)\"}"
+            [ -n "$url" ] && curl -s -X POST "$url" -H 'Content-Type: application/json' -d "{\"lote\":\"$lote\",\"pages\":\"$code\"}"
           done
