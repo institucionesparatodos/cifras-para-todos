@@ -4,7 +4,7 @@
 3. pasa los detectores sobre lo que ha cambiado (novedades) y sobre todo el histórico (reserva);
 4. puntúa, agrupa en carruseles y escribe datos/plan/<fecha>.json;
 5. si existe RESUME_URL (la manda n8n al lanzar la Action), le envía el plan.
-Uso: python -m motor.ejecutar [--sin-red ejemplos/]"""
+Uso: python -m motor.ejecutar"""
 from __future__ import annotations
 import json
 import os
@@ -33,8 +33,11 @@ def main():
     def procesar_serie(s, cfg):
         cambios = alm.guardar(s)
         s = alm.serie_completa(s)
+        s.fecha_puntual = bool(cfg.get("fecha_puntual"))     # p. ej. población: "a 1 de octubre de 2026"
         series[cfg["id"]] = s
-        if not cfg.get("solo_cambios") and F.esta_congelada(s):
+        limite = cfg.get("retraso_max_dias")                 # margen propio de un indicador (si lo tiene)
+        congelada = ((date.today() - date.fromisoformat(s.periodos[-1])).days > limite) if limite else F.esta_congelada(s)
+        if not cfg.get("solo_cambios") and congelada:
             avisos.append(f"⚠️ {s.nombre} ({s.origen.codigo}) no se actualiza desde {s.periodos[-1]}: ¿cambio de base o serie discontinuada?")
             return
         if cambios["revisados"]:
