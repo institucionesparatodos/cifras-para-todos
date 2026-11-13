@@ -1,0 +1,19 @@
+{
+ "id": "ine.ipc.grupos.ipc290786",
+ "nombre": "Nacional. Actividades recreativas, deporte y cultura. Variación anual",
+ "unidad": "%",
+ "frecuencia": "M",
+ "origen": {
+  "fuente": "INE",
+  "dataset": "IPC · tabla 25333",
+  "indicador": "Nacional. Actividades recreativas, deporte y cultura. Variación anual",
+  "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/25333?nult=600",
+  "codigo": "IPC290786",
+  "descargado": "2026-11-13T08:54:21+00:00",
+  "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)"
+ },
+ "decimales": 1,
+ "polaridad": 0,
+ "territorio": "España",
+ "actualizado": "2026-11-13T08:54:21+00:00"
+}
