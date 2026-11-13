@@ -1,0 +1,53 @@
+{
+  "_nota": "Catálogo de la fase 1. 'interes' de 1 a 3 (3 = le importa a todo el mundo). Para el INE se indica la OPERACIÓN y un texto del nombre de la tabla: el motor busca el id de tabla en TABLAS_OPERACION en cada ejecución, así sobrevive a cambios de base y tablas nuevas. 'verificado' = probado contra la API real; el resto se valida en la primera ejecución de la Action (si algo no cuadra, aviso por Telegram y se salta).",
+  "ine": [
+    {"id": "ine.epa.paro.provincias", "tipo": "corte", "operacion": "EPA", "tabla": 65349, "verificado": true,
+     "filtro": ["Tasa de paro de la población", "Ambos sexos"], "nivel": "provincia", "nombre": "Tasa de paro", "unidad": "%", "decimales": 2,
+     "brecha": {"a": ["Tasa de paro de la población", "Mujeres"], "b": ["Tasa de paro de la población", "Hombres"], "etiquetas": ["mujeres", "hombres"]},
+     "interes": 3, "tema": "empleo", "nota": "La EPA es una encuesta: en provincias pequeñas el margen de error es mayor."},
+    {"id": "ine.epa.paro.nacional", "tipo": "serie", "operacion": "EPA", "tabla_contiene": "Tasas de paro por distintos grupos de edad, sexo y comunidad autónoma",
+     "filtro": ["Total Nacional", "Ambos sexos", "Total"], "nombre": "Tasa de paro", "unidad": "%", "decimales": 2, "interes": 3, "tema": "empleo"},
+    {"id": "ine.ipc.general", "tipo": "serie", "operacion": "IPC", "tabla_contiene": "Índices nacionales: general y de grupos ECOICOP",
+     "filtro": ["Nacional", "Índice general", "Variación anual"], "nombre": "Inflación (IPC, variación anual)", "unidad": "%", "decimales": 1,
+     "interes": 3, "tema": "precios", "nota": "Desde enero de 2026 el IPC está en base 2025 (nuevas series); las de base 2021 terminan en diciembre de 2025."},
+    {"id": "ine.ipc.grupos", "tipo": "serie_multiple", "operacion": "IPC", "tabla_contiene": "Índices nacionales: general y de grupos ECOICOP",
+     "filtro": ["Nacional", "Variación anual"], "nombre": "Inflación por grupos de gasto", "unidad": "%", "decimales": 1, "interes": 2, "tema": "precios"},
+    {"id": "ine.ipv.general", "tipo": "serie", "operacion": "IPV", "tabla_contiene": "Índices por CCAA: general, vivienda nueva y de segunda mano",
+     "filtro": ["Nacional", "General", "Variación anual"], "nombre": "Precio de la vivienda (IPV, variación anual)", "unidad": "%", "decimales": 1, "interes": 3, "tema": "vivienda"},
+    {"id": "ine.ipv.ccaa", "tipo": "corte", "operacion": "IPV", "tabla_contiene": "Índices por CCAA: general, vivienda nueva y de segunda mano",
+     "filtro": ["General", "Variación anual"], "nivel": "ccaa", "nombre": "Subida del precio de la vivienda", "unidad": "%", "decimales": 1, "interes": 3, "tema": "vivienda"},
+    {"id": "ine.ecp.poblacion", "tipo": "serie", "operacion": "ECP", "tabla_contiene": "Población residente por fecha, sexo y edad",
+     "filtro": ["Total Nacional", "Todas las edades", "Total"], "nombre": "Población residente en España", "unidad": "personas", "decimales": 0, "interes": 3, "tema": "población"},
+    {"id": "ine.ecp.provincias", "tipo": "corte", "operacion": "ECP", "tabla_contiene": "Población residente por fecha, sexo, grupo de edad y provincia",
+     "filtro": ["Total", "Todas las edades"], "nivel": "provincia", "nombre": "Población residente", "unidad": "personas", "decimales": 0, "interes": 2, "tema": "población"},
+    {"id": "ine.mnp.nacimientos", "tipo": "serie", "operacion": "MNP", "tabla_contiene": "Nacimientos por mes",
+     "filtro": ["Total Nacional"], "nombre": "Nacimientos", "unidad": "nacimientos", "decimales": 0, "interes": 3, "tema": "natalidad"},
+    {"id": "ine.eoh.pernoctaciones", "tipo": "serie", "operacion": "EOH", "tabla_contiene": "Viajeros y pernoctaciones por comunidades autónomas y provincias",
+     "filtro": ["Total Nacional", "Pernoctaciones", "Total"], "nombre": "Pernoctaciones en hoteles", "unidad": "noches", "decimales": 0, "interes": 2, "tema": "turismo"},
+    {"id": "ine.frontur.turistas", "tipo": "serie", "operacion": "FRONTUR", "tabla_contiene": "Número de turistas según comunidad autónoma de destino principal",
+     "filtro": ["Total", "Dato base"], "nombre": "Turistas internacionales", "unidad": "turistas", "decimales": 0, "interes": 2, "tema": "turismo"},
+    {"id": "ine.etcl.coste", "tipo": "serie", "operacion": "ETCL", "tabla_contiene": "Coste laboral por trabajador, comunidad autónoma",
+     "filtro": ["Total Nacional", "Coste total"], "nombre": "Coste laboral por trabajador y mes", "unidad": "€", "decimales": 2, "interes": 2, "tema": "salarios"}
+  ],
+  "redata": [
+    {"id": "ree.demanda", "categoria": "demanda", "widget": "evolucion", "trunc": "day", "desde": "2014-01-01", "unidad": "MWh",
+     "nombre": "Demanda eléctrica diaria", "interes": 2, "tema": "energía", "detectores_extra": ["hoy_vs_media"]},
+    {"id": "ree.generacion", "categoria": "generacion", "widget": "estructura-generacion", "trunc": "day", "desde": "2015-01-01", "unidad": "MWh",
+     "nombre": "Generación por tecnología", "interes": 2, "tema": "energía", "componentes_interes": ["Solar fotovoltaica", "Eólica", "Nuclear", "Hidráulica", "Ciclo combinado"]},
+    {"id": "ree.renovable", "categoria": "generacion", "widget": "evolucion-renovable-no-renovable", "trunc": "month", "desde": "2011-01-01", "unidad": "%",
+     "nombre": "Peso de las renovables en la generación", "interes": 3, "tema": "energía", "usar_porcentaje": true}
+  ],
+  "bce": [
+    {"id": "bce.tipo.depositos", "flujo": "FM", "clave": "B.U2.EUR.4F.KR.DFR.LEV", "frecuencia": "D", "unidad": "%", "nombre": "Tipo de interés de la facilidad de depósito del BCE", "interes": 3, "tema": "tipos"},
+    {"id": "bce.euribor12m", "flujo": "FM", "clave": "M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA", "frecuencia": "M", "unidad": "%", "nombre": "Euríbor a 12 meses (media mensual)", "interes": 3, "tema": "hipotecas"},
+    {"id": "bce.hicp.es", "flujo": "ICP", "clave": "M.ES.N.000000.4.ANR", "frecuencia": "M", "unidad": "%", "nombre": "Inflación armonizada de España", "interes": 2, "tema": "precios", "cruzar_con": "bce.hicp.u2"},
+    {"id": "bce.hicp.u2", "flujo": "ICP", "clave": "M.U2.N.000000.4.ANR", "frecuencia": "M", "unidad": "%", "nombre": "Inflación de la zona euro", "interes": 2, "tema": "precios"},
+    {"id": "bce.usd", "flujo": "EXR", "clave": "M.USD.EUR.SP00.A", "frecuencia": "M", "unidad": "dólares", "decimales": 4, "nombre": "Dólares por euro (media mensual)", "interes": 1, "tema": "divisas"},
+    {"id": "bce.hipotecas.es", "flujo": "MIR", "clave": "M.ES.B.A2C.AM.R.A.2250.EUR.N", "frecuencia": "M", "unidad": "%", "nombre": "Tipo medio de las nuevas hipotecas en España", "interes": 3, "tema": "hipotecas"}
+  ],
+  "cruces": [
+    {"a": "bce.euribor12m", "b": "bce.hipotecas.es", "texto": "Euríbor y tipo de las nuevas hipotecas"},
+    {"a": "ree.demanda", "b": "aemet.temperatura.media", "texto": "Temperatura y demanda eléctrica (fase 2)"},
+    {"a": "bce.tipo.depositos", "b": "ine.ipc.general", "texto": "Tipos del BCE e inflación en España"}
+  ]
+}

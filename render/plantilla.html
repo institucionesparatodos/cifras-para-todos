@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face{font-family:"Jakarta";font-weight:800;src:url("fuentes_tipo/plus-jakarta-sans-latin-800-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2212}
+@font-face{font-family:"Jakarta";font-weight:800;src:url("fuentes_tipo/plus-jakarta-sans-latin-ext-800-normal.woff2") format("woff2")}
+@font-face{font-family:"Atkinson";font-weight:400;src:url("fuentes_tipo/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2212}
+@font-face{font-family:"Atkinson";font-weight:400;src:url("fuentes_tipo/atkinson-hyperlegible-latin-ext-400-normal.woff2") format("woff2")}
+@font-face{font-family:"Atkinson";font-weight:700;src:url("fuentes_tipo/atkinson-hyperlegible-latin-700-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2212}
+@font-face{font-family:"Atkinson";font-weight:700;src:url("fuentes_tipo/atkinson-hyperlegible-latin-ext-700-normal.woff2") format("woff2")}
+:root{--petroleo:#1F4E5F;--crema:#FAF6EE;--tinta:#1C1C1C;--melocoton:#F2A477;--niebla:#DDE3E6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1080px;height:1350px;font-family:"Atkinson",sans-serif;color:var(--tinta);background:var(--crema);overflow:hidden}
+#d{position:relative;width:1080px;height:1350px;padding:72px 80px 0 80px;display:flex;flex-direction:column}
+#d.oscura{background:var(--petroleo);color:var(--crema)}
+.cab{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:16px}
+.logo .t1{font-family:"Jakarta";font-weight:800;font-size:34px;letter-spacing:.5px;line-height:1}
+.logo .t2{font-size:26px;line-height:1.1}
+.pag{font-size:26px;opacity:.75}
+.etq{display:inline-flex;align-items:center;gap:10px;background:var(--melocoton);color:var(--tinta);font-weight:700;font-size:28px;padding:10px 22px;border-radius:999px}
+h1{font-family:"Jakarta";font-weight:800;font-size:76px;line-height:1.08;letter-spacing:-.5px}
+h2{font-family:"Jakarta";font-weight:800;font-size:60px;line-height:1.1;letter-spacing:-.3px;margin-top:40px}
+.sub{font-size:38px;line-height:1.3;margin-top:22px}
+.cuerpo{flex:1;display:flex;flex-direction:column;position:relative}
+.pie{height:132px;display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:3px solid var(--niebla);font-size:26px;margin-top:12px}
+#d.oscura .pie{border-top-color:rgba(250,246,238,.25)}
+.tipo{display:inline-flex;align-items:center;gap:8px;border:2.5px solid currentColor;border-radius:999px;padding:6px 14px;font-weight:700;font-size:22px;white-space:nowrap}
+.fuente{text-align:right;line-height:1.25}
+.grande{font-family:"Jakarta";font-weight:800;font-size:220px;line-height:1;letter-spacing:-4px;color:var(--petroleo)}
+.caja{background:var(--niebla);border-radius:24px;padding:36px 40px;font-size:38px;line-height:1.3}
+.resalte{background:var(--melocoton);border-radius:8px;padding:0 10px;font-weight:700}
+svg text{font-family:"Atkinson"}
+.vineta{display:flex;gap:28px;align-items:flex-start;font-size:46px;line-height:1.3;margin-top:56px}
+.vineta .n{flex:0 0 72px;height:72px;border-radius:50%;background:var(--petroleo);color:var(--crema);font-family:"Jakarta";font-weight:800;font-size:32px;display:flex;align-items:center;justify-content:center}
+.marca-ejemplo{position:absolute;top:18px;left:50%;transform:translateX(-50%);font-size:22px;font-weight:700;background:#fff;border:2px dashed var(--tinta);padding:4px 14px;border-radius:8px;color:var(--tinta)}
+</style>
+</head>
+<body>
+<div id="d"></div>
+<script>
+// ---------------------------------------------------------------------------
+// Utilidades. TODAS las cifras que se pintan llegan ya formateadas o se formatean
+// aquí con las mismas reglas que el motor (punto miles, coma decimales).
+// ---------------------------------------------------------------------------
+const C = {petroleo:"#1F4E5F", crema:"#FAF6EE", tinta:"#1C1C1C", melocoton:"#F2A477", niebla:"#DDE3E6"};
+const num = (v, d=1) => (v<0?"−":"") + Math.abs(v).toLocaleString("es-ES",{minimumFractionDigits:d,maximumFractionDigits:d,useGrouping:"always"});
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+// Escala secuencial dentro de la paleta: crema cálido -> melocotón claro -> petróleo
+const RAMPA = ["#E6EEF1","#BACFD6","#87A9B4","#527D8C","#1F4E5F"];
+const textoSobre = hex => { const c=parseInt(hex.slice(1),16); const r=(c>>16)&255,g=(c>>8)&255,b=c&255;
+  return (0.299*r+0.587*g+0.114*b) > 150 ? C.tinta : C.crema; };
+
+const ICONO_FORMATO = {"DATO":"📊","RÉCORD":"🚨","RANKING":"🥇","MAPA":"🗺️","COMPARACIÓN TEMPORAL":"⏳",
+  "EXTREMOS":"🌡️","CURIOSIDAD":"🤯","¿SABÍAS QUE…?":"💡","HOY VS MEDIA HISTÓRICA":"📈","TOP / BOTTOM":"↕️"};
+
+function logo(oscura){
+  const f = oscura ? C.crema : C.petroleo;
+  return `<div class="logo"><svg width="58" height="54" viewBox="0 0 58 54"><path d="M10 2h38a8 8 0 0 1 8 8v24a8 8 0 0 1-8 8H24l-12 10v-10h-2a8 8 0 0 1-8-8V10a8 8 0 0 1 8-8z" fill="${f}"/><circle cx="29" cy="22" r="7" fill="${C.melocoton}"/></svg>
+  <div><div class="t1">CIFRAS</div><div class="t2">para todos</div></div></div>`;
+}
+function cabecera(s, k){
+  return `<div class="cab">${logo(s.oscura)}<div class="pag">${k.n} / ${k.total}</div></div>`;
+}
+function pie(s, k){
+  if (s.sin_pie) return "";
+  const tipos = (s.tipos||[]).map(t=>`<span class="tipo">${t==="DATO OFICIAL"?"✓":t==="ESTIMACIÓN"?"≈":"="} ${t}</span>`).join(" ");
+  return `<div class="pie"><div style="display:flex;gap:10px;flex-wrap:nowrap">${tipos}</div><div class="fuente">${esc(s.fuente_corta||k.fuente_corta)}</div></div>`;
+}
+
+// ---------------------------------------------------------------------------
+// Tipos de diapositiva
+// ---------------------------------------------------------------------------
+const T = {};
+
+T.portada = (s) => `
+  <div class="cuerpo" style="justify-content:center">
+    <div><span class="etq">${ICONO_FORMATO[s.formato]||""} ${esc(s.formato)}</span></div>
+    <h1 style="margin-top:48px">${s.titulo}</h1>
+    <div class="sub" style="margin-top:36px;opacity:.9">${esc(s.subtitulo||"")}</div>
+    ${s.mini ? miniTiras(s.mini) : ""}
+  </div>`;
+
+function miniTiras(m){ // pequeño gráfico decorativo de la portada con datos reales (mín. y máx.)
+  const max = Math.max(...m.map(x=>x.valor));
+  return `<div style="margin-top:64px;display:flex;flex-direction:column;gap:22px">` + m.map(x=>`
+    <div style="display:flex;align-items:center;gap:20px;font-size:32px">
+      <div style="width:230px">${esc(x.nombre)}</div>
+      <div style="height:44px;width:${Math.round(470*x.valor/max)}px;background:${x.destacar?C.melocoton:C.crema};border-radius:12px"></div>
+      <div style="font-weight:700;white-space:nowrap">${x.texto}</div></div>`).join("") + `</div>`;
+}
+
+T.contador = (s) => `
+  <div class="cuerpo">
+    <h2>${s.titulo}</h2>
+    <div class="grande" style="margin-top:40px">${s.cifra}</div>
+    <div class="sub" style="margin-top:8px">${s.etiqueta}</div>
+    ${s.pictograma ? pictograma(s.pictograma) : ""}
+    ${s.nota ? `<div class="caja" style="margin-top:auto;margin-bottom:28px">${s.nota}</div>` : ""}
+  </div>`;
+
+function pictograma(p){ // 100 personas, p.resaltadas en melocotón
+  let h = `<div style="display:grid;grid-template-columns:repeat(20,1fr);gap:10px;margin-top:40px;width:920px">`;
+  for (let i=0;i<p.total;i++){
+    const on = i < p.resaltadas;
+    h += `<svg viewBox="0 0 20 30" width="36" height="54"><circle cx="10" cy="6" r="5.2" fill="${on?C.melocoton:C.niebla}" stroke="${on?C.tinta:"none"}" stroke-width="1.2"/><path d="M2.5 29V18a7.5 7.5 0 0 1 15 0v11z" fill="${on?C.melocoton:C.niebla}" stroke="${on?C.tinta:"none"}" stroke-width="1.2"/></svg>`;
+  }
+  return h + `</div><div style="font-size:30px;margin-top:18px;display:flex;gap:30px">
+    <span><b style="color:${C.tinta};background:${C.melocoton};padding:0 8px;border-radius:6px">${p.resaltadas}</b> ${esc(p.leyenda_si)}</span>
+    <span>${p.total - p.resaltadas} ${esc(p.leyenda_no)}</span></div>`;
+}
+
+T.mapa = (s) => {
+  const vals = Object.values(s.valores);
+  const cortes = s.cortes; // límites de los tramos (los calcula el motor)
+  const color = v => RAMPA[cortes.findIndex((c,i)=> i===cortes.length-1 || v < cortes[i+1])] ;
+  const L = 84, G = 6, ox = 0, oy = 8;
+  let celdas = "";
+  for (const [nombre, v] of Object.entries(s.valores)){
+    const p = s.provincias[nombre]; if (!p) continue;
+    const x = ox + p.pos[0]*(L+G), y = oy + p.pos[1]*(L+G), f = color(v), t = textoSobre(f);
+    celdas += `<rect x="${x}" y="${y}" width="${L}" height="${L}" rx="14" fill="${f}"/>
+      <text x="${x+L/2}" y="${y+L/2+9}" text-anchor="middle" font-size="27" font-weight="700" fill="${t}">${p.abr}</text>`;
+  }
+  // recuadro de Canarias
+  const can = s.provincias["Palmas, Las"];
+  const cx = can.pos[0]*(L+G) - (L+G) - 10, cy = can.pos[1]*(L+G) - 2;
+  const caja = `<rect x="${cx}" y="${cy}" width="${2*(L+G)+18}" height="${L+18}" rx="18" fill="none" stroke="${C.tinta}" stroke-opacity=".35" stroke-dasharray="6 6" stroke-width="2"/>`;
+  let ley = `<div style="display:flex;gap:8px;align-items:stretch;margin-top:22px">`;
+  for (let i=0;i<RAMPA.length;i++){
+    const a = cortes[i], b = cortes[i+1];
+    ley += `<div style="flex:1"><div style="height:30px;background:${RAMPA[i]};border-radius:8px"></div>
+      <div style="font-size:26px;margin-top:6px;text-align:center">${b===undefined?"≥ "+num(a,0):(i===0?"< "+num(b,0):num(a,0)+"–"+num(b,0))} ${s.unidad}</div></div>`;
+  }
+  ley += `</div>`;
+  return `<div class="cuerpo"><h2 style="font-size:54px">${s.titulo}</h2>
+    <svg viewBox="0 0 ${11*(L+G)} ${8.6*(L+G)+20}" width="920" style="margin-top:28px">${caja}${celdas}</svg>
+    ${ley}
+    <div style="font-size:26px;margin-top:14px;opacity:.85">${esc(s.nota||"")}</div></div>`;
+};
+
+T.top_bottom = (s) => {
+  const max = Math.max(...s.arriba.map(x=>x.valor), ...s.abajo.map(x=>x.valor));
+  const fila = (x, dest) => `<div style="display:grid;grid-template-columns:270px 1fr 150px;align-items:center;gap:16px;height:72px">
+      <div style="font-size:34px">${esc(x.nombre)}</div>
+      <div style="position:relative;height:46px"><div style="position:absolute;inset:0 auto 0 0;width:${100*x.valor/max}%;background:${dest?C.melocoton:C.petroleo};border-radius:10px"></div>
+        <div style="position:absolute;top:-10px;bottom:-10px;left:${100*s.referencia/max}%;border-left:3px dashed ${C.tinta}"></div></div>
+      <div style="font-size:34px;font-weight:700;text-align:right">${x.texto}</div></div>`;
+  return `<div class="cuerpo"><h2 style="font-size:54px">${s.titulo}</h2>
+    <div style="font-size:32px;margin-top:34px;font-weight:700">${esc(s.rotulo_arriba)}</div>
+    <div style="margin-top:10px">${s.arriba.map(x=>fila(x,true)).join("")}</div>
+    <div style="font-size:32px;margin-top:34px;font-weight:700">${esc(s.rotulo_abajo)}</div>
+    <div style="margin-top:10px">${s.abajo.map(x=>fila(x,false)).join("")}</div>
+    <div style="font-size:28px;margin-top:26px;display:flex;align-items:center;gap:12px">
+      <span style="display:inline-block;width:0;height:34px;border-left:3px dashed ${C.tinta}"></span>${esc(s.rotulo_referencia)}</div></div>`;
+};
+
+T.comparacion_grupos = (s) => {
+  const max = Math.max(...s.bloques.flatMap(b=>b.barras.map(x=>x.valor)));
+  const H = 380;
+  const bloque = b => `<div style="flex:1">
+      <div style="font-size:36px;font-weight:700;text-align:center;margin-bottom:16px">${esc(b.nombre)}</div>
+      <div style="display:flex;gap:28px;justify-content:center;align-items:flex-end;height:${H+60}px;border-bottom:3px solid ${C.tinta}">
+      ${b.barras.map((x,i)=>`<div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+          <div style="font-size:36px;font-weight:700">${x.texto}</div>
+          <div style="width:130px;height:${Math.round(H*x.valor/max)}px;background:${i===0?C.melocoton:C.petroleo};border-radius:14px 14px 0 0"></div></div>`).join("")}
+      </div>
+      <div style="display:flex;gap:28px;justify-content:center;margin-top:10px">${b.barras.map(x=>`<div style="width:130px;text-align:center;font-size:30px">${esc(x.nombre)}</div>`).join("")}</div>
+      <div style="text-align:center;margin-top:18px;font-size:32px"><span class="resalte">${b.diferencia}</span></div></div>`;
+  return `<div class="cuerpo"><h2 style="font-size:54px">${s.titulo}</h2>
+    <div style="display:flex;gap:40px;margin-top:50px">${s.bloques.map(bloque).join("")}</div>
+    ${s.nota?`<div class="caja" style="margin-top:auto;margin-bottom:28px">${s.nota}</div>`:""}</div>`;
+};
+
+T.conclusion = (s) => `<div class="cuerpo" style="justify-content:center;padding-bottom:60px"><h2 style="margin-top:0">${s.titulo}</h2>
+  ${s.puntos.map((p,i)=>`<div class="vineta"><div class="n">${i+1}</div><div>${p}</div></div>`).join("")}</div>`;
+
+T.fuente = (s) => `<div class="cuerpo"><h2>${s.titulo}</h2>
+  <div style="margin-top:40px;display:flex;flex-direction:column;gap:22px;font-size:32px;line-height:1.35">
+  ${s.filas.map(f=>`<div style="display:grid;grid-template-columns:230px 1fr;gap:20px"><b>${esc(f[0])}</b><div>${f[1]}</div></div>`).join("")}
+  </div>
+  <div class="caja" style="margin-top:auto;margin-bottom:28px;font-size:30px">${s.leyenda_tipos}</div>
+  <div style="font-size:28px;margin-bottom:24px;text-align:center">Divulgación independiente, no oficial · @cifrasparatodos</div></div>`;
+
+T.lineas = (s) => { // evolución con un punto destacado (récords, tendencias)
+  const W=920,H=620,P={l:110,r:30,t:30,b:70};
+  const v=s.serie.valores, n=v.length, lo=Math.min(...v), hi=Math.max(...v), pad=(hi-lo)*0.1||1;
+  const X=i=>P.l+(W-P.l-P.r)*i/(n-1), Y=x=>P.t+(H-P.t-P.b)*(1-(x-lo+pad)/(hi-lo+2*pad));
+  const d=v.map((x,i)=>`${i?"L":"M"}${X(i).toFixed(1)},${Y(x).toFixed(1)}`).join("");
+  const ticks=[lo,(lo+hi)/2,hi].map(t=>`<line x1="${P.l}" x2="${W-P.r}" y1="${Y(t)}" y2="${Y(t)}" stroke="${C.niebla}" stroke-width="2"/><text x="${P.l-14}" y="${Y(t)+9}" text-anchor="end" font-size="26">${num(t,s.serie.decimales)}</text>`).join("");
+  const anyos=[0,Math.floor((n-1)/2),n-1].map(i=>`<text x="${X(i)}" y="${H-24}" text-anchor="middle" font-size="26">${s.serie.periodos[i].slice(0,4)}</text>`).join("");
+  return `<div class="cuerpo"><h2 style="font-size:54px">${s.titulo}</h2>
+   <svg width="${W}" height="${H}" style="margin-top:40px">${ticks}${anyos}<path d="${d}" fill="none" stroke="${C.petroleo}" stroke-width="6" stroke-linejoin="round"/>
+   <circle cx="${X(n-1)}" cy="${Y(v[n-1])}" r="16" fill="${C.melocoton}" stroke="${C.tinta}" stroke-width="3"/></svg>
+   ${s.nota?`<div class="caja" style="margin-top:auto;margin-bottom:28px">${s.nota}</div>`:""}</div>`;
+};
+
+window.pintar = (s, k) => {
+  const d = document.getElementById("d");
+  d.className = s.oscura ? "oscura" : "";
+  d.innerHTML = (k.ejemplo?`<div class="marca-ejemplo">${esc(k.ejemplo)}</div>`:"") + cabecera(s,k) + T[s.tipo](s,k) + pie(s,k);
+  return document.fonts.ready.then(()=>true);
+};
+</script>
+</body>
+</html>

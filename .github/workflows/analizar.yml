@@ -1,0 +1,27 @@
+# Lo lanza n8n cada mañana (workflow_dispatch) con su resume URL.
+# Descarga datos, actualiza el histórico, detecta insights y devuelve el plan a n8n.
+name: analizar
+on:
+  workflow_dispatch:
+    inputs:
+      resume_url: {description: "URL de reanudación de n8n", required: false}
+permissions: {contents: write}
+concurrency: {group: datos, cancel-in-progress: false}
+jobs:
+  analizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -r requirements.txt
+      - run: python -m pytest -q tests
+      - run: python -m motor.ejecutar
+        env:
+          RESUME_URL: ${{ inputs.resume_url }}
+          AEMET_API_KEY: ${{ secrets.AEMET_API_KEY }}
+      - name: Guardar histórico y plan
+        run: |
+          git config user.name "cifras-bot"; git config user.email "institucionesparatodos@gmail.com"
+          git add datos/ && git commit -m "Datos $(date +%F)" && git push || echo "Sin cambios"
