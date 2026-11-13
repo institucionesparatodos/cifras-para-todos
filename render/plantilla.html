@@ -47,7 +47,7 @@ svg text{font-family:"Atkinson"}
 const C = {petroleo:"#1F4E5F", crema:"#FAF6EE", tinta:"#1C1C1C", melocoton:"#F2A477", niebla:"#DDE3E6"};
 const num = (v, d=1) => (v<0?"−":"") + Math.abs(v).toLocaleString("es-ES",{minimumFractionDigits:d,maximumFractionDigits:d,useGrouping:"always"});
 const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
-// Escala secuencial dentro de la paleta: crema cálido -> melocotón claro -> petróleo
+// Escala secuencial dentro de la paleta: de niebla a azul petróleo
 const RAMPA = ["#E6EEF1","#BACFD6","#87A9B4","#527D8C","#1F4E5F"];
 const textoSobre = hex => { const c=parseInt(hex.slice(1),16); const r=(c>>16)&255,g=(c>>8)&255,b=c&255;
   return (0.299*r+0.587*g+0.114*b) > 150 ? C.tinta : C.crema; };
@@ -91,14 +91,17 @@ function miniTiras(m){ // pequeño gráfico decorativo de la portada con datos r
       <div style="font-weight:700;white-space:nowrap">${x.texto}</div></div>`).join("") + `</div>`;
 }
 
-T.contador = (s) => `
-  <div class="cuerpo">
-    <h2>${s.titulo}</h2>
-    <div class="grande" style="margin-top:40px">${s.cifra}</div>
-    <div class="sub" style="margin-top:8px">${s.etiqueta}</div>
+T.contador = (s) => {
+  const largo = String(s.cifra).length, fs = largo <= 6 ? 220 : largo <= 9 ? 170 : 132;
+  return `<div class="cuerpo" style="justify-content:center;padding-bottom:40px">
+    <h2 style="margin-top:0">${s.titulo}</h2>
+    <div class="grande" style="margin-top:40px;font-size:${fs}px">${s.cifra}</div>
+    ${s.unidad?`<div style="font-family:Jakarta;font-weight:800;font-size:56px;color:${C.petroleo};margin-top:6px">${esc(s.unidad)}</div>`:""}
+    <div class="sub" style="margin-top:18px">${s.etiqueta}</div>
     ${s.pictograma ? pictograma(s.pictograma) : ""}
-    ${s.nota ? `<div class="caja" style="margin-top:auto;margin-bottom:28px">${s.nota}</div>` : ""}
+    ${s.nota ? `<div class="caja" style="margin-top:48px">${s.nota}</div>` : ""}
   </div>`;
+};
 
 function pictograma(p){ // 100 personas, p.resaltadas en melocotón
   let h = `<div style="display:grid;grid-template-columns:repeat(20,1fr);gap:10px;margin-top:40px;width:920px">`;
@@ -112,32 +115,34 @@ function pictograma(p){ // 100 personas, p.resaltadas en melocotón
 }
 
 T.mapa = (s) => {
-  const vals = Object.values(s.valores);
-  const cortes = s.cortes; // límites de los tramos (los calcula el motor)
-  const color = v => RAMPA[cortes.findIndex((c,i)=> i===cortes.length-1 || v < cortes[i+1])] ;
-  const L = 84, G = 6, ox = 0, oy = 8;
-  let celdas = "";
-  for (const [nombre, v] of Object.entries(s.valores)){
-    const p = s.provincias[nombre]; if (!p) continue;
-    const x = ox + p.pos[0]*(L+G), y = oy + p.pos[1]*(L+G), f = color(v), t = textoSobre(f);
+  // Mapa de cuadrícula (cartograma): una celda por territorio; posiciones y tramos vienen del montador
+  const cortes = s.cortes;
+  const color = v => RAMPA[Math.max(0, cortes.findIndex((c,i)=> i===cortes.length-1 || v < cortes[i+1]))];
+  const cols = s.columnas || 11, L = Math.floor(920 / cols) - 6, G = 6;
+  let celdas = "", maxY = 0;
+  for (const c of s.celdas){
+    const x = c.pos[0]*(L+G), y = c.pos[1]*(L+G), f = color(c.valor), t = textoSobre(f);
+    maxY = Math.max(maxY, y + L);
     celdas += `<rect x="${x}" y="${y}" width="${L}" height="${L}" rx="14" fill="${f}"/>
-      <text x="${x+L/2}" y="${y+L/2+9}" text-anchor="middle" font-size="27" font-weight="700" fill="${t}">${p.abr}</text>`;
+      <text x="${x+L/2}" y="${y+L/2+10}" text-anchor="middle" font-size="${L > 110 ? 32 : 27}" font-weight="700" fill="${t}">${c.abr}</text>`;
   }
-  // recuadro de Canarias
-  const can = s.provincias["Palmas, Las"];
-  const cx = can.pos[0]*(L+G) - (L+G) - 10, cy = can.pos[1]*(L+G) - 2;
-  const caja = `<rect x="${cx}" y="${cy}" width="${2*(L+G)+18}" height="${L+18}" rx="18" fill="none" stroke="${C.tinta}" stroke-opacity=".35" stroke-dasharray="6 6" stroke-width="2"/>`;
+  let caja = "";
+  if (s.recuadro && s.recuadro.length){
+    const xs = s.recuadro.map(p=>p[0]*(L+G)), ys = s.recuadro.map(p=>p[1]*(L+G));
+    caja = `<rect x="${Math.min(...xs)-9}" y="${Math.min(...ys)-9}" width="${Math.max(...xs)-Math.min(...xs)+L+18}" height="${Math.max(...ys)-Math.min(...ys)+L+18}" rx="18" fill="none" stroke="${C.tinta}" stroke-opacity=".35" stroke-dasharray="6 6" stroke-width="2"/>`;
+  }
   let ley = `<div style="display:flex;gap:8px;align-items:stretch;margin-top:22px">`;
-  for (let i=0;i<RAMPA.length;i++){
-    const a = cortes[i], b = cortes[i+1];
+  for (let i=0;i<RAMPA.length && i<cortes.length;i++){
+    const a = cortes[i], b = cortes[i+1], f = x => num(x, Number.isInteger(x) ? 0 : 1);
     ley += `<div style="flex:1"><div style="height:30px;background:${RAMPA[i]};border-radius:8px"></div>
-      <div style="font-size:26px;margin-top:6px;text-align:center">${b===undefined?"≥ "+num(a,0):(i===0?"< "+num(b,0):num(a,0)+"–"+num(b,0))} ${s.unidad}</div></div>`;
+      <div style="font-size:26px;margin-top:6px;text-align:center">${b===undefined?"≥ "+f(a):(i===0?"< "+f(b):f(a)+"–"+f(b))}${s.unidad==="%"?" %":""}</div></div>`;
   }
   ley += `</div>`;
+  const ancho = cols*(L+G);
   return `<div class="cuerpo"><h2 style="font-size:54px">${s.titulo}</h2>
-    <svg viewBox="0 0 ${11*(L+G)} ${8.6*(L+G)+20}" width="920" style="margin-top:28px">${caja}${celdas}</svg>
+    <svg viewBox="-10 -10 ${ancho+20} ${maxY+20}" width="920" style="margin-top:28px;max-height:720px">${caja}${celdas}</svg>
     ${ley}
-    <div style="font-size:26px;margin-top:14px;opacity:.85">${esc(s.nota||"")}</div></div>`;
+    ${s.nota?`<div style="font-size:28px;margin-top:14px">${s.nota}</div>`:""}</div>`;
 };
 
 T.top_bottom = (s) => {
@@ -183,18 +188,86 @@ T.fuente = (s) => `<div class="cuerpo"><h2>${s.titulo}</h2>
   <div class="caja" style="margin-top:auto;margin-bottom:28px;font-size:30px">${s.leyenda_tipos}</div>
   <div style="font-size:28px;margin-bottom:24px;text-align:center">Divulgación independiente, no oficial · @cifrasparatodos</div></div>`;
 
-T.lineas = (s) => { // evolución con un punto destacado (récords, tendencias)
-  const W=920,H=620,P={l:110,r:30,t:30,b:70};
-  const v=s.serie.valores, n=v.length, lo=Math.min(...v), hi=Math.max(...v), pad=(hi-lo)*0.1||1;
+function ejeX(periodos, X, H){
+  // 3-5 etiquetas de año repartidas, sin repetir
+  const n = periodos.length, idx = [...new Set([0, Math.round((n-1)/3), Math.round(2*(n-1)/3), n-1])];
+  return idx.map(i=>`<text x="${X(i)}" y="${H-22}" text-anchor="${i===0?"start":i===n-1?"end":"middle"}" font-size="26">${periodos[i].slice(0,4)}</text>`).join("");
+}
+function abreviar(v){ // 49935642 -> "49,9 M" para los ejes
+  const a = Math.abs(v);
+  if (a >= 1e6) return num(v/1e6, 1) + " M";
+  if (a >= 1e4) return num(v/1e3, 0) + " mil";
+  return num(v, Math.abs(v) < 10 ? 1 : 0);
+}
+
+T.lineas = (s) => { // evolución con el último dato destacado (y, si la hay, la racha sombreada)
+  const W=920,H=640,P={l:130,r:40,t:70,b:70};
+  const per=s.serie.periodos, v=s.serie.valores, n=v.length, lo=Math.min(...v), hi=Math.max(...v), pad=(hi-lo)*0.12||1;
   const X=i=>P.l+(W-P.l-P.r)*i/(n-1), Y=x=>P.t+(H-P.t-P.b)*(1-(x-lo+pad)/(hi-lo+2*pad));
   const d=v.map((x,i)=>`${i?"L":"M"}${X(i).toFixed(1)},${Y(x).toFixed(1)}`).join("");
-  const ticks=[lo,(lo+hi)/2,hi].map(t=>`<line x1="${P.l}" x2="${W-P.r}" y1="${Y(t)}" y2="${Y(t)}" stroke="${C.niebla}" stroke-width="2"/><text x="${P.l-14}" y="${Y(t)+9}" text-anchor="end" font-size="26">${num(t,s.serie.decimales)}</text>`).join("");
-  const anyos=[0,Math.floor((n-1)/2),n-1].map(i=>`<text x="${X(i)}" y="${H-24}" text-anchor="middle" font-size="26">${s.serie.periodos[i].slice(0,4)}</text>`).join("");
+  const area = d + `L${X(n-1)},${H-P.b}L${X(0)},${H-P.b}Z`;
+  const ticks=[lo,(lo+hi)/2,hi].map(t=>`<line x1="${P.l}" x2="${W-P.r}" y1="${Y(t)}" y2="${Y(t)}" stroke="${C.niebla}" stroke-width="2"/><text x="${P.l-14}" y="${Y(t)+9}" text-anchor="end" font-size="26">${abreviar(t)}</text>`).join("");
+  let sombra = "";
+  if (s.desde){ const i0 = per.findIndex(p=>p>=s.desde); if (i0>=0) sombra = `<rect x="${X(i0)}" y="${P.t-20}" width="${X(n-1)-X(i0)}" height="${H-P.b-P.t+20}" fill="${C.melocoton}" opacity=".22" rx="10"/>`; }
+  const xl = X(n-1), yl = Y(v[n-1]);
+  const ancho = String(s.ultimo_texto).length * 17 + 36;
+  const etiqueta = `<g><rect x="${xl-ancho-10}" y="${yl-80}" width="${ancho}" height="56" rx="12" fill="${C.petroleo}"/><text x="${xl-10-ancho/2}" y="${yl-42}" text-anchor="middle" font-size="30" font-weight="700" fill="${C.crema}">${s.ultimo_texto}</text></g>`;
   return `<div class="cuerpo"><h2 style="font-size:54px">${s.titulo}</h2>
-   <svg width="${W}" height="${H}" style="margin-top:40px">${ticks}${anyos}<path d="${d}" fill="none" stroke="${C.petroleo}" stroke-width="6" stroke-linejoin="round"/>
-   <circle cx="${X(n-1)}" cy="${Y(v[n-1])}" r="16" fill="${C.melocoton}" stroke="${C.tinta}" stroke-width="3"/></svg>
+   <svg width="${W}" height="${H}" style="margin-top:30px">${ticks}${sombra}${ejeX(per,X,H)}
+   <path d="${area}" fill="${C.petroleo}" opacity=".08"/><path d="${d}" fill="none" stroke="${C.petroleo}" stroke-width="6" stroke-linejoin="round"/>
+   <circle cx="${xl}" cy="${yl}" r="15" fill="${C.melocoton}" stroke="${C.tinta}" stroke-width="3"/>${etiqueta}</svg>
    ${s.nota?`<div class="caja" style="margin-top:auto;margin-bottom:28px">${s.nota}</div>`:""}</div>`;
 };
+
+T.barras = (s) => {
+  const W=920,H=620,P={l:110,r:20,t:60,b:70};
+  const per=s.serie.periodos.slice(-24), v=s.serie.valores.slice(-24), n=v.length;
+  const lo=Math.min(0,...v), hi=Math.max(0,...v)||1, Y=x=>P.t+(H-P.t-P.b)*(1-(x-lo)/(hi-lo)), bw=(W-P.l-P.r)/n;
+  const X=i=>P.l+bw*i+bw/2;
+  const barras=v.map((x,i)=>`<rect x="${P.l+bw*i+3}" y="${Math.min(Y(x),Y(0))}" width="${bw-6}" height="${Math.abs(Y(x)-Y(0))}" rx="6" fill="${i===n-1?C.melocoton:C.petroleo}"/>`).join("");
+  return `<div class="cuerpo"><h2 style="font-size:54px">${s.titulo}</h2>
+   <svg width="${W}" height="${H}" style="margin-top:30px"><line x1="${P.l}" x2="${W-P.r}" y1="${Y(0)}" y2="${Y(0)}" stroke="${C.tinta}" stroke-width="2"/>${barras}${ejeX(per,X,H)}
+   <text x="${X(n-1)}" y="${Y(v[n-1])-14}" text-anchor="end" font-size="30" font-weight="700">${s.ultimo_texto}</text></svg>
+   ${s.nota?`<div class="caja" style="margin-top:auto;margin-bottom:28px">${s.nota}</div>`:""}</div>`;
+};
+
+T.comparacion = (s) => { // antes / ahora con barras proporcionales
+  const max = Math.max(s.antes.valor, s.ahora.valor), H = 380;
+  const col = (o, dest) => `<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end">
+      <div style="font-family:Jakarta;font-weight:800;font-size:${String(o.texto).length > 8 ? 46 : 60}px;letter-spacing:-1px;white-space:nowrap">${o.texto}</div>
+      ${s.unidad?`<div style="font-size:30px">${esc(s.unidad)}</div>`:""}
+      <div style="width:220px;height:${Math.round(H*o.valor/max)}px;background:${dest?C.melocoton:C.petroleo};border-radius:18px 18px 0 0;margin-top:16px"></div>
+      <div style="font-size:32px;margin-top:14px;text-align:center">${o.etiqueta}</div></div>`;
+  return `<div class="cuerpo"><h2 style="font-size:54px">${s.titulo}</h2>
+    <div style="display:flex;gap:40px;align-items:flex-end;margin-top:50px;border-bottom:3px solid ${C.tinta};padding:0 20px">${col(s.antes,false)}${col(s.ahora,true)}</div>
+    ${s.variacion?`<div style="text-align:center;margin-top:28px"><span class="etq" style="font-size:40px;padding:12px 30px">${s.variacion}</span></div>`:""}
+    ${s.nota?`<div class="caja" style="margin-top:auto;margin-bottom:28px">${s.nota}</div>`:""}</div>`;
+};
+
+T.ranking = (s) => {
+  const max = Math.max(...s.filas.map(f=>f.valor));
+  return `<div class="cuerpo"><h2 style="font-size:54px">${s.titulo}</h2><div style="margin-top:36px">` + s.filas.map(f=>`
+    <div style="display:grid;grid-template-columns:280px 1fr 190px;align-items:center;gap:16px;height:84px">
+      <div style="font-size:34px;${f.destacar?"font-weight:700":""}">${esc(f.nombre)}</div>
+      <div style="height:48px;width:${100*f.valor/max}%;background:${f.destacar?C.melocoton:C.petroleo};border-radius:10px"></div>
+      <div style="font-size:32px;font-weight:700;text-align:right">${f.texto}</div></div>`).join("") +
+    `</div>${s.nota?`<div class="caja" style="margin-top:auto;margin-bottom:28px">${s.nota}</div>`:""}</div>`;
+};
+
+T.hoy_vs_media = (s) => T.comparacion({...s,
+  antes:{etiqueta:"Lo habitual", valor:s.media.valor, texto:s.media.texto},
+  ahora:{etiqueta:"Hoy", valor:s.hoy.valor, texto:s.hoy.texto}, variacion:""});
+
+T.doble_linea = (s) => {
+  const mini = (o, color) => { const W=920,H=300,v=o.valores,n=v.length,lo=Math.min(...v),hi=Math.max(...v)||1;
+    const X=i=>40+(W-80)*i/(n-1), Y=x=>30+(H-90)*(1-(x-lo)/((hi-lo)||1));
+    return `<div style="font-size:32px;font-weight:700;margin-top:24px">${esc(o.nombre)}</div><svg width="${W}" height="${H}">
+      <path d="${v.map((x,i)=>`${i?"L":"M"}${X(i)},${Y(x)}`).join("")}" fill="none" stroke="${color}" stroke-width="6"/>${ejeX(o.periodos,X,H)}</svg>`; };
+  return `<div class="cuerpo"><h2 style="font-size:54px">${s.titulo}</h2>${mini(s.a,C.petroleo)}${mini(s.b,C.melocoton)}
+    ${s.nota?`<div class="caja" style="margin-top:auto;margin-bottom:28px">${s.nota}</div>`:""}</div>`;
+};
+
+T.texto = (s) => `<div class="cuerpo" style="justify-content:center"><h2>${s.titulo}</h2>${s.nota?`<div class="sub">${s.nota}</div>`:""}</div>`;
 
 window.pintar = (s, k) => {
   const d = document.getElementById("d");
