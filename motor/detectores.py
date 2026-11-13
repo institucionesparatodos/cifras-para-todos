@@ -43,8 +43,11 @@ class Insight:
 # ---------------------------------------------------------------------------
 # Utilidades
 # ---------------------------------------------------------------------------
-def etiqueta_periodo(iso: str, frec: str, larga: bool = False) -> str:
+def etiqueta_periodo(iso: str, frec: str, larga: bool = False, puntual: bool = False) -> str:
+    """'3T 2026', 'septiembre de 2026'… Si el dato es una foto a una fecha (población), 'a 1 de octubre de 2026'."""
     a, m, d = int(iso[:4]), int(iso[5:7]), int(iso[8:10])
+    if puntual:
+        return "a " + fmt.fecha_larga(iso)
     if frec == "D":
         return fmt.fecha_larga(iso)
     if frec == "M":
@@ -53,6 +56,20 @@ def etiqueta_periodo(iso: str, frec: str, larga: bool = False) -> str:
         t = (m - 1) // 3 + 1
         return f"{ORDINAL_T[t]} trimestre de {a}" if larga else f"{t}T {a}"
     return str(a)
+
+
+def _et(s: Serie, iso: str, larga: bool = False) -> str:
+    """Etiqueta del periodo de una serie, respetando si es una fecha puntual."""
+    return etiqueta_periodo(iso, s.frecuencia, larga, getattr(s, "fecha_puntual", False))
+
+
+def _cuando(s: Serie, iso: str) -> str:
+    """'en septiembre de 2026' o, si es una fecha puntual, 'a 1 de octubre de 2026'."""
+    t = _et(s, iso, True)
+    return t if t.startswith("a ") else "en " + t
+
+
+UNIDAD_PERIODO = {"D": "días", "M": "meses", "T": "trimestres", "A": "años"}
 
 
 def periodos_por_anyo(frec: str) -> int:
@@ -64,7 +81,7 @@ def af_dato(serie: Serie, i: int, aid: str, descripcion: str | None = None) -> A
     return Afirmacion(
         id=aid, tipo="DATO OFICIAL", texto_valor=fmt.con_unidad(v, serie.unidad, serie.decimales),
         valor=v, unidad=serie.unidad, descripcion=descripcion or f"{serie.nombre} ({serie.territorio})",
-        periodo=etiqueta_periodo(p, serie.frecuencia),
+        periodo=_et(serie, p),
         origenes=[origen_con_valor(serie.origen, v, p, serie.territorio)])
 
 
@@ -127,12 +144,12 @@ def det_records(s: Serie) -> list[Insight]:
         afs = [af_dato(s, -1, "a1")]
         if idx_previo is not None:
             afs.append(af_dato(s, idx_previo, "a2", f"{s.nombre}: último valor igual o más {'alto' if signo > 0 else 'bajo'}"))
-        texto_desde = (f"desde que hay registros ({etiqueta_periodo(inicio_serie, s.frecuencia)})"
-                       if idx_previo is None else f"desde {etiqueta_periodo(desde, s.frecuencia, True)}")
+        texto_desde = (f"desde que hay registros ({_et(s, inicio_serie)})"
+                       if idx_previo is None else f"desde {_et(s, desde, True)}")
         out.append(Insight(
             id=f"{s.id}.{nombre}.{p_ult}", detector=f"{nombre}_{alcance.replace(' ', '_')}",
             formato=formato, intensidad=intensidad, fuente_id=s.id,
-            titular_base=f"{s.nombre}: {afs[0].texto_valor} en {etiqueta_periodo(p_ult, s.frecuencia, True)}, "
+            titular_base=f"{s.nombre}: {afs[0].texto_valor} {_cuando(s, p_ult)}, "
                          f"el valor más {'alto' if signo > 0 else 'bajo'} {texto_desde}.",
             afirmaciones=afs,
             visual={"tipo": "lineas", "serie": _tramo(s, 20), "destacar": p_ult},
@@ -166,13 +183,13 @@ def det_cambios(s: Serie, z_min: float = 2.0) -> list[Insight]:
         if relativo:
             var = (v1 - v0) / abs(v0) * 100
             af_var = af_calculo("a3", "CÁLCULO DERIVADO", var, "%", 1, f"Variación {nombre.replace('_', ' ')}",
-                                etiqueta_periodo(s.periodos[-1], s.frecuencia),
+                                _et(s, s.periodos[-1]),
                                 f"({fmt.num(v1, s.decimales)} − {fmt.num(v0, s.decimales)}) / {fmt.num(v0, s.decimales)} × 100",
                                 [origen_con_valor(s.origen, v1, s.periodos[-1]), origen_con_valor(s.origen, v0, s.periodos[-1 - lag])])
         else:
             var = v1 - v0
             af_var = af_calculo("a3", "CÁLCULO DERIVADO", var, "puntos" if s.unidad == "%" else s.unidad, s.decimales,
-                                f"Diferencia {nombre.replace('_', ' ')}", etiqueta_periodo(s.periodos[-1], s.frecuencia),
+                                f"Diferencia {nombre.replace('_', ' ')}", _et(s, s.periodos[-1]),
                                 f"{fmt.num(v1, s.decimales)} − {fmt.num(v0, s.decimales)}",
                                 [origen_con_valor(s.origen, v1, s.periodos[-1]), origen_con_valor(s.origen, v0, s.periodos[-1 - lag])])
         out.append(Insight(
@@ -212,10 +229,11 @@ def det_tendencias(s: Serie) -> list[Insight]:
         out.append(Insight(
             id=f"{s.id}.racha.{s.periodos[-1]}", detector="tendencia_sostenida", formato="DATO",
             intensidad=min(1.0, 0.3 + 0.07 * (racha - minimo)), fuente_id=s.id,
-            titular_base=f"{s.nombre} lleva {racha} periodos seguidos {'subiendo' if ult > 0 else 'bajando'}.",
+            titular_base=f"{s.nombre} lleva {racha} {UNIDAD_PERIODO.get(s.frecuencia, 'periodos')} seguidos {'subiendo' if ult > 0 else 'bajando'}.",
             afirmaciones=[af_dato(s, -1, "a1"), af_dato(s, i0, "a2"),
-                          af_calculo("a3", "CÁLCULO DERIVADO", racha, "periodos", 0, "Periodos consecutivos en la misma dirección",
-                                     etiqueta_periodo(s.periodos[-1], s.frecuencia), "recuento de variaciones consecutivas del mismo signo",
+                          af_calculo("a3", "CÁLCULO DERIVADO", racha, UNIDAD_PERIODO.get(s.frecuencia, "periodos"), 0,
+                                     f"{UNIDAD_PERIODO.get(s.frecuencia, 'periodos').capitalize()} consecutivos en la misma dirección",
+                                     _et(s, s.periodos[-1]), "recuento de variaciones consecutivas del mismo signo",
                                      [origen_con_valor(s.origen, s.valores[-1], s.periodos[-1])])],
             visual={"tipo": "lineas", "serie": _tramo(s, 5), "destacar_desde": s.periodos[i0]}))
     # Cambio de tendencia: la racha anterior era larga y en sentido contrario
@@ -259,7 +277,7 @@ def det_hito(s: Serie) -> list[Insight]:
                 titular_base=f"{s.nombre} supera por primera vez {fmt.con_unidad(umbral, s.unidad, 0)}.",
                 afirmaciones=[af_dato(s, -1, "a1"),
                               af_calculo("a2", "COMPARACIÓN", umbral, s.unidad, 0, "Umbral redondo superado por primera vez",
-                                         etiqueta_periodo(s.periodos[-1], s.frecuencia),
+                                         _et(s, s.periodos[-1]),
                                          f"máximo anterior {fmt.num(v0, s.decimales)} < {fmt.num(umbral, 0)} ≤ {fmt.num(v1, s.decimales)}",
                                          [origen_con_valor(s.origen, v1, s.periodos[-1])])],
                 visual={"tipo": "contador", "valor": v1, "unidad": s.unidad, "serie": _tramo(s, 20)})]
@@ -300,7 +318,7 @@ def det_anomalia_estacional(s: Serie, anyos_ref: int = 30, ventana_dias: int = 7
                 if normal_oficial is not None else
                 af_calculo("a2", "CÁLCULO DERIVADO", media, s.unidad, s.decimales,
                            f"Media de las mismas fechas en los {len(refs)} registros de los últimos {anyos_ref} años",
-                           etiqueta_periodo(p_ult, s.frecuencia), "media aritmética de los valores de referencia",
+                           _et(s, p_ult), "media aritmética de los valores de referencia",
                            [origen_con_valor(s.origen, v_ult, p_ult, s.territorio)]))
     return [Insight(
         id=f"{s.id}.anomalia.{p_ult}", detector="hoy_vs_media", formato="HOY VS MEDIA HISTÓRICA",
@@ -309,7 +327,7 @@ def det_anomalia_estacional(s: Serie, anyos_ref: int = 30, ventana_dias: int = 7
                      f"{'por encima' if dif > 0 else 'por debajo'} de lo habitual para esta fecha.",
         afirmaciones=[af_dato(s, -1, "a1"), af_media,
                       af_calculo("a3", "COMPARACIÓN", dif, s.unidad, s.decimales, "Diferencia con lo habitual",
-                                 etiqueta_periodo(p_ult, s.frecuencia), f"{fmt.num(v_ult, s.decimales)} − {fmt.num(media, s.decimales)}",
+                                 _et(s, p_ult), f"{fmt.num(v_ult, s.decimales)} − {fmt.num(media, s.decimales)}",
                                  [origen_con_valor(s.origen, v_ult, p_ult, s.territorio)])],
         visual={"tipo": "hoy_vs_media", "hoy": v_ult, "media": media, "unidad": s.unidad,
                 "banda": [media - (sd or 0), media + (sd or 0)]},
@@ -320,24 +338,36 @@ def det_anomalia_estacional(s: Serie, anyos_ref: int = 30, ventana_dias: int = 7
 # 5 (formato). Comparación temporal: hoy frente a hace 20 años (pieza atemporal de reserva)
 # ---------------------------------------------------------------------------
 def det_comparacion_temporal(s: Serie, anyos: int = 20) -> list[Insight]:
-    k = periodos_por_anyo(s.frecuencia) * anyos
-    if len(s.valores) <= k:
+    """Hoy frente a hace N años, buscando la FECHA (no contando periodos: hay series que cambian
+    de frecuencia, como la población, semestral hasta 2021 y trimestral después)."""
+    if len(s.valores) < 2:
         return []
-    v0, v1 = s.valores[-1 - k], s.valores[-1]
+    d_ult = date.fromisoformat(s.periodos[-1])
+    try:
+        objetivo = d_ult.replace(year=d_ult.year - anyos)
+    except ValueError:                                   # 29 de febrero
+        objetivo = d_ult.replace(year=d_ult.year - anyos, day=28)
+    previos = [i for i, p in enumerate(s.periodos) if date.fromisoformat(p) <= objetivo]
+    if not previos:
+        return []
+    i0 = previos[-1]
+    if (objetivo - date.fromisoformat(s.periodos[i0])).days > 200:   # no hay dato cerca de esa fecha
+        return []
+    v0, v1 = s.valores[i0], s.valores[-1]
     if v0 == 0:
         return []
     var = (v1 - v0) / abs(v0) * 100
     return [Insight(
         id=f"{s.id}.hace{anyos}.{s.periodos[-1]}", detector="comparacion_temporal", formato="COMPARACIÓN TEMPORAL",
         intensidad=min(1.0, abs(var) / 100), fuente_id=s.id,
-        titular_base=f"{s.nombre}: {etiqueta_periodo(s.periodos[-1 - k], s.frecuencia)} frente a {etiqueta_periodo(s.periodos[-1], s.frecuencia)}.",
-        afirmaciones=[af_dato(s, -1, "a1"), af_dato(s, -1 - k, "a2"),
+        titular_base=f"{s.nombre}: {_et(s, s.periodos[i0]).removeprefix('a ')} frente a {_et(s, s.periodos[-1]).removeprefix('a ')}.",
+        afirmaciones=[af_dato(s, -1, "a1"), af_dato(s, i0, "a2"),
                       af_calculo("a3", "CÁLCULO DERIVADO", var, "%", 0, f"Variación en {anyos} años",
-                                 etiqueta_periodo(s.periodos[-1], s.frecuencia),
+                                 _et(s, s.periodos[-1]),
                                  f"({fmt.num(v1, s.decimales)} − {fmt.num(v0, s.decimales)}) / {fmt.num(v0, s.decimales)} × 100",
-                                 [origen_con_valor(s.origen, v1, s.periodos[-1]), origen_con_valor(s.origen, v0, s.periodos[-1 - k])])],
-        visual={"tipo": "comparacion", "antes": {"periodo": s.periodos[-1 - k], "valor": v0},
-                "ahora": {"periodo": s.periodos[-1], "valor": v1}, "unidad": s.unidad})]
+                                 [origen_con_valor(s.origen, v1, s.periodos[-1]), origen_con_valor(s.origen, v0, s.periodos[i0])])],
+        visual={"tipo": "comparacion", "antes": {"periodo": s.periodos[i0], "valor": v0},
+                "ahora": {"periodo": s.periodos[-1], "valor": v1}, "unidad": s.unidad, "decimales": s.decimales})]
 
 
 # ---------------------------------------------------------------------------
