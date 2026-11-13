@@ -66,9 +66,14 @@ def main():
                                     decimales=cfg.get("decimales", 2), dataset=ds, nota=cfg.get("nota", ""))
         if len(c.valores) < 5:
             raise ValueError(f"tabla {tabla}: solo {len(c.valores)} territorios reconocidos ({list(c.valores)[:5]})")
+        print(f"   tabla {tabla}: {len(c.valores)} territorios, periodo {c.periodo}, total {c.total}", flush=True)
+        if (date.today() - date.fromisoformat(c.fecha)).days > cfg.get("retraso_max_dias", 270):
+            raise ValueError(f"tabla {tabla}: el último dato es de {c.periodo}, demasiado antiguo")
         marca = f"{R}/datos/historico/{cfg['id']}.ultimo"
         es_nuevo = not os.path.exists(marca) or open(marca).read() != c.fecha
         ins = D.det_corte(c, prov)
+        if cfg.get("detectores_corte"):              # p. ej. en población no tiene sentido «outlier» (las grandes son grandes)
+            ins = [i for i in ins if i.detector in cfg["detectores_corte"]]
         if "brecha" in cfg:
             b = cfg["brecha"]
             ca = F.ine_corte_territorial(tabla, b["a"], cfg["nivel"], cfg["id"] + ".a", cfg["nombre"], cfg["unidad"], decimales=cfg.get("decimales", 2), dataset=ds)
@@ -93,7 +98,7 @@ def main():
             elif recordada:
                 candidatas = [int(recordada)]           # la tabla buena de ejecuciones anteriores (sin volver a buscar)
             else:
-                candidatas = F.ine_buscar_tabla(cfg["operacion"], cfg["tabla_contiene"])
+                candidatas = F.ine_buscar_tabla(cfg["operacion"], cfg["tabla_contiene"], cfg.get("operacion_nombre", ""))
             nult = 36 if recordada else 600             # la primera vez, histórico largo; después, solo lo reciente
             ultimo_error = None
             for tabla in candidatas[:4]:
