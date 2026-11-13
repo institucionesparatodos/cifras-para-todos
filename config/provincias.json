@@ -1,57 +1,494 @@
 {
-  "_nota": "Nombre tal como lo devuelve el INE -> abreviatura, nombre corto para textos, comunidad autónoma y posición [columna, fila] en el mapa de cuadrícula (cartograma). Canarias va en un recuadro aparte abajo a la izquierda.",
-  "provincias": {
-    "Coruña, A":              {"abr": "C",   "corto": "A Coruña",       "ccaa": "Galicia",               "pos": [1, 0]},
-    "Lugo":                   {"abr": "LU",  "corto": "Lugo",           "ccaa": "Galicia",               "pos": [2, 0]},
-    "Asturias":               {"abr": "O",   "corto": "Asturias",       "ccaa": "Principado de Asturias","pos": [3, 0]},
-    "Cantabria":              {"abr": "S",   "corto": "Cantabria",      "ccaa": "Cantabria",             "pos": [4, 0]},
-    "Bizkaia":                {"abr": "BI",  "corto": "Bizkaia",        "ccaa": "País Vasco",            "pos": [5, 0]},
-    "Gipuzkoa":               {"abr": "SS",  "corto": "Gipuzkoa",       "ccaa": "País Vasco",            "pos": [6, 0]},
-    "Pontevedra":             {"abr": "PO",  "corto": "Pontevedra",     "ccaa": "Galicia",               "pos": [1, 1]},
-    "Ourense":                {"abr": "OU",  "corto": "Ourense",        "ccaa": "Galicia",               "pos": [2, 1]},
-    "León":                   {"abr": "LE",  "corto": "León",           "ccaa": "Castilla y León",       "pos": [3, 1]},
-    "Palencia":               {"abr": "P",   "corto": "Palencia",       "ccaa": "Castilla y León",       "pos": [4, 1]},
-    "Burgos":                 {"abr": "BU",  "corto": "Burgos",         "ccaa": "Castilla y León",       "pos": [5, 1]},
-    "Araba/Álava":            {"abr": "VI",  "corto": "Álava",          "ccaa": "País Vasco",            "pos": [6, 1]},
-    "Navarra":                {"abr": "NA",  "corto": "Navarra",        "ccaa": "Comunidad Foral de Navarra", "pos": [7, 1]},
-    "Huesca":                 {"abr": "HU",  "corto": "Huesca",         "ccaa": "Aragón",                "pos": [8, 1]},
-    "Lleida":                 {"abr": "L",   "corto": "Lleida",         "ccaa": "Cataluña",              "pos": [9, 1]},
-    "Girona":                 {"abr": "GI",  "corto": "Girona",         "ccaa": "Cataluña",              "pos": [10, 1]},
-    "Zamora":                 {"abr": "ZA",  "corto": "Zamora",         "ccaa": "Castilla y León",       "pos": [2, 2]},
-    "Valladolid":             {"abr": "VA",  "corto": "Valladolid",     "ccaa": "Castilla y León",       "pos": [3, 2]},
-    "Segovia":                {"abr": "SG",  "corto": "Segovia",        "ccaa": "Castilla y León",       "pos": [4, 2]},
-    "Soria":                  {"abr": "SO",  "corto": "Soria",          "ccaa": "Castilla y León",       "pos": [5, 2]},
-    "Rioja, La":              {"abr": "LO",  "corto": "La Rioja",       "ccaa": "La Rioja",              "pos": [6, 2]},
-    "Zaragoza":               {"abr": "Z",   "corto": "Zaragoza",       "ccaa": "Aragón",                "pos": [7, 2]},
-    "Tarragona":              {"abr": "T",   "corto": "Tarragona",      "ccaa": "Cataluña",              "pos": [9, 2]},
-    "Barcelona":              {"abr": "B",   "corto": "Barcelona",      "ccaa": "Cataluña",              "pos": [10, 2]},
-    "Salamanca":              {"abr": "SA",  "corto": "Salamanca",      "ccaa": "Castilla y León",       "pos": [2, 3]},
-    "Ávila":                  {"abr": "AV",  "corto": "Ávila",          "ccaa": "Castilla y León",       "pos": [3, 3]},
-    "Madrid":                 {"abr": "M",   "corto": "Madrid",         "ccaa": "Comunidad de Madrid",   "pos": [4, 3]},
-    "Guadalajara":            {"abr": "GU",  "corto": "Guadalajara",    "ccaa": "Castilla-La Mancha",    "pos": [5, 3]},
-    "Cuenca":                 {"abr": "CU",  "corto": "Cuenca",         "ccaa": "Castilla-La Mancha",    "pos": [6, 3]},
-    "Teruel":                 {"abr": "TE",  "corto": "Teruel",         "ccaa": "Aragón",                "pos": [7, 3]},
-    "Castellón/Castelló":     {"abr": "CS",  "corto": "Castellón",      "ccaa": "Comunitat Valenciana",  "pos": [8, 3]},
-    "Balears, Illes":         {"abr": "PM",  "corto": "Illes Balears",  "ccaa": "Illes Balears",         "pos": [10, 3.6]},
-    "Cáceres":                {"abr": "CC",  "corto": "Cáceres",        "ccaa": "Extremadura",           "pos": [2, 4]},
-    "Toledo":                 {"abr": "TO",  "corto": "Toledo",         "ccaa": "Castilla-La Mancha",    "pos": [3, 4]},
-    "Ciudad Real":            {"abr": "CR",  "corto": "Ciudad Real",    "ccaa": "Castilla-La Mancha",    "pos": [4, 4]},
-    "Albacete":               {"abr": "AB",  "corto": "Albacete",       "ccaa": "Castilla-La Mancha",    "pos": [6, 4]},
-    "Valencia/València":      {"abr": "V",   "corto": "Valencia",       "ccaa": "Comunitat Valenciana",  "pos": [7, 4]},
-    "Badajoz":                {"abr": "BA",  "corto": "Badajoz",        "ccaa": "Extremadura",           "pos": [2, 5]},
-    "Córdoba":                {"abr": "CO",  "corto": "Córdoba",        "ccaa": "Andalucía",             "pos": [3, 5]},
-    "Jaén":                   {"abr": "J",   "corto": "Jaén",           "ccaa": "Andalucía",             "pos": [4, 5]},
-    "Murcia":                 {"abr": "MU",  "corto": "Murcia",         "ccaa": "Región de Murcia",      "pos": [6, 5]},
-    "Alicante/Alacant":       {"abr": "A",   "corto": "Alicante",       "ccaa": "Comunitat Valenciana",  "pos": [7, 5]},
-    "Huelva":                 {"abr": "H",   "corto": "Huelva",         "ccaa": "Andalucía",             "pos": [1, 6]},
-    "Sevilla":                {"abr": "SE",  "corto": "Sevilla",        "ccaa": "Andalucía",             "pos": [2, 6]},
-    "Málaga":                 {"abr": "MA",  "corto": "Málaga",         "ccaa": "Andalucía",             "pos": [3, 6]},
-    "Granada":                {"abr": "GR",  "corto": "Granada",        "ccaa": "Andalucía",             "pos": [4, 6]},
-    "Almería":                {"abr": "AL",  "corto": "Almería",        "ccaa": "Andalucía",             "pos": [5, 6]},
-    "Cádiz":                  {"abr": "CA",  "corto": "Cádiz",          "ccaa": "Andalucía",             "pos": [2, 7]},
-    "Ceuta":                  {"abr": "CE",  "corto": "Ceuta",          "ccaa": "Ceuta",                 "pos": [3, 7.6]},
-    "Melilla":                {"abr": "ML",  "corto": "Melilla",        "ccaa": "Melilla",               "pos": [5, 7.6]},
-    "Santa Cruz de Tenerife": {"abr": "TF",  "corto": "S. C. de Tenerife","ccaa": "Canarias",            "pos": [7.6, 7.3]},
-    "Palmas, Las":            {"abr": "GC",  "corto": "Las Palmas",     "ccaa": "Canarias",              "pos": [8.6, 7.3]}
+ "_nota": "Nombre tal como lo devuelve el INE -> abreviatura, nombre corto para textos, comunidad autónoma y posición [columna, fila] en el mapa de cuadrícula (cartograma). Canarias va en un recuadro aparte abajo a la izquierda.",
+ "provincias": {
+  "Coruña, A": {
+   "abr": "C",
+   "corto": "A Coruña",
+   "ccaa": "Galicia",
+   "pos": [
+    1,
+    0
+   ]
+  },
+  "Lugo": {
+   "abr": "LU",
+   "corto": "Lugo",
+   "ccaa": "Galicia",
+   "pos": [
+    2,
+    0
+   ]
+  },
+  "Asturias": {
+   "abr": "O",
+   "corto": "Asturias",
+   "ccaa": "Principado de Asturias",
+   "pos": [
+    3,
+    0
+   ]
+  },
+  "Cantabria": {
+   "abr": "S",
+   "corto": "Cantabria",
+   "ccaa": "Cantabria",
+   "pos": [
+    4,
+    0
+   ]
+  },
+  "Bizkaia": {
+   "abr": "BI",
+   "corto": "Bizkaia",
+   "ccaa": "País Vasco",
+   "pos": [
+    5,
+    0
+   ]
+  },
+  "Gipuzkoa": {
+   "abr": "SS",
+   "corto": "Gipuzkoa",
+   "ccaa": "País Vasco",
+   "pos": [
+    6,
+    0
+   ]
+  },
+  "Pontevedra": {
+   "abr": "PO",
+   "corto": "Pontevedra",
+   "ccaa": "Galicia",
+   "pos": [
+    1,
+    1
+   ]
+  },
+  "Ourense": {
+   "abr": "OU",
+   "corto": "Ourense",
+   "ccaa": "Galicia",
+   "pos": [
+    2,
+    1
+   ]
+  },
+  "León": {
+   "abr": "LE",
+   "corto": "León",
+   "ccaa": "Castilla y León",
+   "pos": [
+    3,
+    1
+   ]
+  },
+  "Palencia": {
+   "abr": "P",
+   "corto": "Palencia",
+   "ccaa": "Castilla y León",
+   "pos": [
+    4,
+    1
+   ]
+  },
+  "Burgos": {
+   "abr": "BU",
+   "corto": "Burgos",
+   "ccaa": "Castilla y León",
+   "pos": [
+    5,
+    1
+   ]
+  },
+  "Araba/Álava": {
+   "abr": "VI",
+   "corto": "Álava",
+   "ccaa": "País Vasco",
+   "pos": [
+    6,
+    1
+   ]
+  },
+  "Navarra": {
+   "abr": "NA",
+   "corto": "Navarra",
+   "ccaa": "Comunidad Foral de Navarra",
+   "pos": [
+    7,
+    1
+   ]
+  },
+  "Huesca": {
+   "abr": "HU",
+   "corto": "Huesca",
+   "ccaa": "Aragón",
+   "pos": [
+    8,
+    1
+   ]
+  },
+  "Lleida": {
+   "abr": "L",
+   "corto": "Lleida",
+   "ccaa": "Cataluña",
+   "pos": [
+    9,
+    1
+   ]
+  },
+  "Girona": {
+   "abr": "GI",
+   "corto": "Girona",
+   "ccaa": "Cataluña",
+   "pos": [
+    10,
+    1
+   ]
+  },
+  "Zamora": {
+   "abr": "ZA",
+   "corto": "Zamora",
+   "ccaa": "Castilla y León",
+   "pos": [
+    2,
+    2
+   ]
+  },
+  "Valladolid": {
+   "abr": "VA",
+   "corto": "Valladolid",
+   "ccaa": "Castilla y León",
+   "pos": [
+    3,
+    2
+   ]
+  },
+  "Segovia": {
+   "abr": "SG",
+   "corto": "Segovia",
+   "ccaa": "Castilla y León",
+   "pos": [
+    4,
+    2
+   ]
+  },
+  "Soria": {
+   "abr": "SO",
+   "corto": "Soria",
+   "ccaa": "Castilla y León",
+   "pos": [
+    5,
+    2
+   ]
+  },
+  "Rioja, La": {
+   "abr": "LO",
+   "corto": "La Rioja",
+   "ccaa": "La Rioja",
+   "pos": [
+    6,
+    2
+   ]
+  },
+  "Zaragoza": {
+   "abr": "Z",
+   "corto": "Zaragoza",
+   "ccaa": "Aragón",
+   "pos": [
+    7,
+    2
+   ]
+  },
+  "Tarragona": {
+   "abr": "T",
+   "corto": "Tarragona",
+   "ccaa": "Cataluña",
+   "pos": [
+    9,
+    2
+   ]
+  },
+  "Barcelona": {
+   "abr": "B",
+   "corto": "Barcelona",
+   "ccaa": "Cataluña",
+   "pos": [
+    10,
+    2
+   ]
+  },
+  "Salamanca": {
+   "abr": "SA",
+   "corto": "Salamanca",
+   "ccaa": "Castilla y León",
+   "pos": [
+    2,
+    3
+   ]
+  },
+  "Ávila": {
+   "abr": "AV",
+   "corto": "Ávila",
+   "ccaa": "Castilla y León",
+   "pos": [
+    3,
+    3
+   ]
+  },
+  "Madrid": {
+   "abr": "M",
+   "corto": "Madrid",
+   "ccaa": "Comunidad de Madrid",
+   "pos": [
+    4,
+    3
+   ]
+  },
+  "Guadalajara": {
+   "abr": "GU",
+   "corto": "Guadalajara",
+   "ccaa": "Castilla-La Mancha",
+   "pos": [
+    5,
+    3
+   ]
+  },
+  "Cuenca": {
+   "abr": "CU",
+   "corto": "Cuenca",
+   "ccaa": "Castilla-La Mancha",
+   "pos": [
+    6,
+    3
+   ]
+  },
+  "Teruel": {
+   "abr": "TE",
+   "corto": "Teruel",
+   "ccaa": "Aragón",
+   "pos": [
+    7,
+    3
+   ]
+  },
+  "Castellón/Castelló": {
+   "abr": "CS",
+   "corto": "Castellón",
+   "ccaa": "Comunitat Valenciana",
+   "pos": [
+    8,
+    3
+   ]
+  },
+  "Balears, Illes": {
+   "abr": "PM",
+   "corto": "Illes Balears",
+   "ccaa": "Illes Balears",
+   "pos": [
+    10,
+    3.6
+   ]
+  },
+  "Cáceres": {
+   "abr": "CC",
+   "corto": "Cáceres",
+   "ccaa": "Extremadura",
+   "pos": [
+    2,
+    4
+   ]
+  },
+  "Toledo": {
+   "abr": "TO",
+   "corto": "Toledo",
+   "ccaa": "Castilla-La Mancha",
+   "pos": [
+    3,
+    4
+   ]
+  },
+  "Ciudad Real": {
+   "abr": "CR",
+   "corto": "Ciudad Real",
+   "ccaa": "Castilla-La Mancha",
+   "pos": [
+    4,
+    4
+   ]
+  },
+  "Albacete": {
+   "abr": "AB",
+   "corto": "Albacete",
+   "ccaa": "Castilla-La Mancha",
+   "pos": [
+    6,
+    4
+   ]
+  },
+  "Valencia/València": {
+   "abr": "V",
+   "corto": "Valencia",
+   "ccaa": "Comunitat Valenciana",
+   "pos": [
+    7,
+    4
+   ]
+  },
+  "Badajoz": {
+   "abr": "BA",
+   "corto": "Badajoz",
+   "ccaa": "Extremadura",
+   "pos": [
+    2,
+    5
+   ]
+  },
+  "Córdoba": {
+   "abr": "CO",
+   "corto": "Córdoba",
+   "ccaa": "Andalucía",
+   "pos": [
+    3,
+    5
+   ]
+  },
+  "Jaén": {
+   "abr": "J",
+   "corto": "Jaén",
+   "ccaa": "Andalucía",
+   "pos": [
+    4,
+    5
+   ]
+  },
+  "Murcia": {
+   "abr": "MU",
+   "corto": "Murcia",
+   "ccaa": "Región de Murcia",
+   "pos": [
+    6,
+    5
+   ]
+  },
+  "Alicante/Alacant": {
+   "abr": "A",
+   "corto": "Alicante",
+   "ccaa": "Comunitat Valenciana",
+   "pos": [
+    7,
+    5
+   ]
+  },
+  "Huelva": {
+   "abr": "H",
+   "corto": "Huelva",
+   "ccaa": "Andalucía",
+   "pos": [
+    1,
+    6
+   ]
+  },
+  "Sevilla": {
+   "abr": "SE",
+   "corto": "Sevilla",
+   "ccaa": "Andalucía",
+   "pos": [
+    2,
+    6
+   ]
+  },
+  "Málaga": {
+   "abr": "MA",
+   "corto": "Málaga",
+   "ccaa": "Andalucía",
+   "pos": [
+    3,
+    6
+   ]
+  },
+  "Granada": {
+   "abr": "GR",
+   "corto": "Granada",
+   "ccaa": "Andalucía",
+   "pos": [
+    4,
+    6
+   ]
+  },
+  "Almería": {
+   "abr": "AL",
+   "corto": "Almería",
+   "ccaa": "Andalucía",
+   "pos": [
+    5,
+    6
+   ]
+  },
+  "Cádiz": {
+   "abr": "CA",
+   "corto": "Cádiz",
+   "ccaa": "Andalucía",
+   "pos": [
+    2,
+    7
+   ]
+  },
+  "Ceuta": {
+   "abr": "CE",
+   "corto": "Ceuta",
+   "ccaa": "Ceuta",
+   "pos": [
+    3,
+    7.6
+   ]
+  },
+  "Melilla": {
+   "abr": "ML",
+   "corto": "Melilla",
+   "ccaa": "Melilla",
+   "pos": [
+    5,
+    7.6
+   ]
+  },
+  "Santa Cruz de Tenerife": {
+   "abr": "TF",
+   "corto": "S. C. de Tenerife",
+   "ccaa": "Canarias",
+   "pos": [
+    7.6,
+    7.3
+   ]
+  },
+  "Palmas, Las": {
+   "abr": "GC",
+   "corto": "Las Palmas",
+   "ccaa": "Canarias",
+   "pos": [
+    8.6,
+    7.3
+   ]
   }
+ },
+ "ccaa_ine": [
+  "Andalucía",
+  "Aragón",
+  "Asturias, Principado de",
+  "Balears, Illes",
+  "Canarias",
+  "Cantabria",
+  "Castilla y León",
+  "Castilla - La Mancha",
+  "Cataluña",
+  "Comunitat Valenciana",
+  "Extremadura",
+  "Galicia",
+  "Madrid, Comunidad de",
+  "Murcia, Región de",
+  "Navarra, Comunidad Foral de",
+  "País Vasco",
+  "Rioja, La",
+  "Ceuta",
+  "Melilla"
+ ]
 }

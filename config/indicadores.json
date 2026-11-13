@@ -38,10 +38,10 @@
      "nombre": "Peso de las renovables en la generación", "interes": 3, "tema": "energía", "usar_porcentaje": true}
   ],
   "bce": [
-    {"id": "bce.tipo.depositos", "flujo": "FM", "clave": "B.U2.EUR.4F.KR.DFR.LEV", "frecuencia": "D", "unidad": "%", "nombre": "Tipo de interés de la facilidad de depósito del BCE", "interes": 3, "tema": "tipos"},
+    {"id": "bce.tipo.depositos", "flujo": "FM", "clave": "B.U2.EUR.4F.KR.DFR.LEV", "frecuencia": "D", "unidad": "%", "nombre": "Tipo de interés de la facilidad de depósito del BCE", "interes": 3, "tema": "tipos", "solo_cambios": true, "_nota": "La serie solo tiene observaciones cuando el BCE cambia el tipo; no se comprueba si está congelada."},
     {"id": "bce.euribor12m", "flujo": "FM", "clave": "M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA", "frecuencia": "M", "unidad": "%", "nombre": "Euríbor a 12 meses (media mensual)", "interes": 3, "tema": "hipotecas"},
-    {"id": "bce.hicp.es", "flujo": "ICP", "clave": "M.ES.N.000000.4.ANR", "frecuencia": "M", "unidad": "%", "nombre": "Inflación armonizada de España", "interes": 2, "tema": "precios", "cruzar_con": "bce.hicp.u2"},
-    {"id": "bce.hicp.u2", "flujo": "ICP", "clave": "M.U2.N.000000.4.ANR", "frecuencia": "M", "unidad": "%", "nombre": "Inflación de la zona euro", "interes": 2, "tema": "precios"},
+    {"activo": false, "_nota": "Clave congelada en dic-2025 (probable cambio de base del IAPC); buscar la nueva clave. La inflación de España ya llega por el IPC del INE.", "id": "bce.hicp.es", "flujo": "ICP", "clave": "M.ES.N.000000.4.ANR", "frecuencia": "M", "unidad": "%", "nombre": "Inflación armonizada de España", "interes": 2, "tema": "precios", "cruzar_con": "bce.hicp.u2"},
+    {"activo": false, "_nota": "Clave congelada en dic-2025 (probable cambio de base del IAPC); buscar la nueva clave. La inflación de España ya llega por el IPC del INE.", "id": "bce.hicp.u2", "flujo": "ICP", "clave": "M.U2.N.000000.4.ANR", "frecuencia": "M", "unidad": "%", "nombre": "Inflación de la zona euro", "interes": 2, "tema": "precios"},
     {"id": "bce.usd", "flujo": "EXR", "clave": "M.USD.EUR.SP00.A", "frecuencia": "M", "unidad": "dólares", "decimales": 4, "nombre": "Dólares por euro (media mensual)", "interes": 1, "tema": "divisas"},
     {"id": "bce.hipotecas.es", "flujo": "MIR", "clave": "M.ES.B.A2C.AM.R.A.2250.EUR.N", "frecuencia": "M", "unidad": "%", "nombre": "Tipo medio de las nuevas hipotecas en España", "interes": 3, "tema": "hipotecas"}
   ],

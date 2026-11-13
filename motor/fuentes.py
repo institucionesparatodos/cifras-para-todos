@@ -69,10 +69,17 @@ def _periodo_ine(dato: dict) -> tuple[str, str, str]:
 def ine_tabla(tabla: int, nult: int | None = None, extra: str = "") -> list[dict]:
     q = f"?nult={nult}" if nult else "?"
     url = f"{INE_BASE}/DATOS_TABLA/{tabla}{q}{extra}"
-    return json.loads(_get(url)), url
+    datos = json.loads(_get(url))
+    if not isinstance(datos, list):                 # el INE devuelve un objeto con un mensaje si algo falla
+        raise ValueError(f"Tabla {tabla}: respuesta inesperada del INE: {str(datos)[:300]}")
+    return datos, url
 
 
-def ine_series_de_tabla(tabla: int, filtro_nombre: list[str], nult: int | None = None,
+def _muestra_nombres(datos: list[dict], n: int = 8) -> str:
+    return " | ".join(s.get("Nombre", "?").strip() for s in datos[:n])
+
+
+def ine_series_de_tabla(tabla: int, filtro_nombre: list[str], nult: int | None = 600,
                         id_base: str = "", unidad: str = "", decimales: int = 1,
                         dataset: str = "") -> list[Serie]:
     """Una Serie por cada serie de la tabla cuyo nombre contenga todos los textos de filtro_nombre."""
@@ -93,7 +100,30 @@ def ine_series_de_tabla(tabla: int, filtro_nombre: list[str], nult: int | None =
             origen=Origen("INE", dataset or f"Tabla {tabla}", nombre, url, s["COD"], ahora_iso(),
                           "Licencia de uso del INE (cita obligatoria de la fuente)"),
             decimales=decimales))
+    if not out:
+        raise ValueError(f"Tabla {tabla}: ninguna serie contiene {filtro_nombre}. Ejemplos de nombres: {_muestra_nombres(datos)}")
     return out
+
+
+def _clave(t: str) -> str:
+    return "".join(c for c in t.lower() if c.isalnum())
+
+
+_TERRITORIOS = None
+
+
+def _territorio(partes: list[str]) -> str:
+    """Busca en las partes del nombre de la serie un territorio conocido (provincias, CCAA, Total Nacional),
+    sin depender de la posición. Si no encuentra ninguno, usa la última parte."""
+    global _TERRITORIOS
+    if _TERRITORIOS is None:
+        cfg = json.load(open(os.path.join(os.path.dirname(__file__), "..", "config", "provincias.json"), encoding="utf-8"))
+        nombres = list(cfg["provincias"]) + cfg.get("ccaa_ine", []) + ["Total Nacional"]
+        _TERRITORIOS = {_clave(n): n for n in nombres}
+    for p in partes:
+        if _clave(p) in _TERRITORIOS:
+            return _TERRITORIOS[_clave(p)]
+    return partes[-1]
 
 
 def ine_corte_territorial(tabla: int, filtro_nombre: list[str], nivel: str, id_: str, nombre: str,
@@ -105,20 +135,23 @@ def ine_corte_territorial(tabla: int, filtro_nombre: list[str], nivel: str, id_:
     valores, total, per = {}, None, None
     for s in datos:
         partes = [p.strip() for p in s["Nombre"].strip().rstrip(".").split(".")]
-        if not all(any(f.lower() == p.lower() or f.lower() in p.lower() for p in partes[:-1])
+        if not all(any(f.lower() == p.lower() or f.lower() in p.lower() for p in partes)
                    for f in filtro_nombre):
             continue
         d = s["Data"][-1]
         if d.get("Valor") is None:
             continue
         per = _periodo_ine(d)
-        terr = partes[-1]
+        terr = _territorio(partes)
         if total_contiene and total_contiene.lower() in terr.lower():
             total = float(d["Valor"])
+        elif terr in valores:
+            raise ValueError(f"Tabla {tabla}: el filtro {filtro_nombre} deja varias series para «{terr}» "
+                             f"(hay que afinarlo). Ejemplo: {s['Nombre']}")
         else:
             valores[terr] = float(d["Valor"])
     if per is None:
-        raise ValueError(f"Tabla {tabla}: ninguna serie coincide con {filtro_nombre}")
+        raise ValueError(f"Tabla {tabla}: ninguna serie coincide con {filtro_nombre}. Ejemplos de nombres: {_muestra_nombres(datos)}")
     return Corte(id=id_, nombre=nombre, unidad=unidad, periodo=per[2], fecha=per[1], nivel=nivel,
                  valores=valores, total=total,
                  origen=Origen("INE", dataset or f"Tabla {tabla}", nombre, url, "", ahora_iso(),
@@ -148,7 +181,7 @@ def redata_series(categoria: str, widget: str, inicio: date, fin: date, trunc: s
                   id_base: str, unidad: str, decimales: int = 0) -> list[Serie]:
     """Una Serie por cada componente del widget (p. ej. Solar fotovoltaica, Eólica, Nuclear…)."""
     tramos, a = [], inicio
-    paso = timedelta(days=365) if trunc == "day" else timedelta(days=365 * 30)
+    paso = timedelta(days=365) if trunc in ("day", "month") else timedelta(days=365 * 30)   # REData rechaza rangos largos
     while a <= fin:
         b = min(fin, a + paso - timedelta(days=1))
         tramos.append((a, b))
@@ -244,10 +277,21 @@ def esta_congelada(serie: Serie, hoy: date | None = None) -> bool:
     return (hoy - ultimo).days > RETRASO_MAXIMO_DIAS.get(serie.frecuencia, 400)
 
 
-def ine_buscar_tabla(operacion: str, contiene: str) -> int:
-    """Id de la tabla de una operación del INE cuyo nombre contiene el texto (la más reciente si hay varias)."""
-    tablas = json.loads(_get(f"{INE_BASE}/TABLAS_OPERACION/{operacion}"))
+def ine_buscar_tabla(operacion: str, contiene: str) -> list[int]:
+    """Ids de las tablas de una operación del INE cuyo nombre contiene el texto, de la más nueva a la más antigua.
+    Si el código corto de la operación no funciona (error 500), se busca su código oficial en
+    OPERACIONES_DISPONIBLES por código, código IOE o nombre."""
+    try:
+        tablas = json.loads(_get(f"{INE_BASE}/TABLAS_OPERACION/{operacion}", reintentos=1))
+    except RuntimeError:
+        ops = json.loads(_get(f"{INE_BASE}/OPERACIONES_DISPONIBLES"))
+        op = next((o for o in ops if operacion.upper() in (str(o.get("Codigo", "")).upper(), str(o.get("Cod_IOE", "")).upper())), None)
+        if op is None:
+            raise ValueError(f"INE: operación «{operacion}» no encontrada en OPERACIONES_DISPONIBLES")
+        tablas = json.loads(_get(f"{INE_BASE}/TABLAS_OPERACION/{op['Id']}"))
     cand = [t for t in tablas if contiene.lower() in t["Nombre"].lower()]
     if not cand:
-        raise ValueError(f"INE {operacion}: ninguna tabla contiene «{contiene}»")
-    return max(cand, key=lambda t: t["Id"])["Id"]
+        palabra = contiene.split()[0].lower()
+        parecidas = [f"{t['Id']}: {t['Nombre']}" for t in tablas if palabra in t["Nombre"].lower()][:10]
+        raise ValueError(f"INE {operacion}: ninguna tabla contiene «{contiene}». Parecidas: {parecidas}")
+    return [t["Id"] for t in sorted(cand, key=lambda t: t["Id"], reverse=True)]   # de la más nueva a la más antigua

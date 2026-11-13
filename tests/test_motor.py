@@ -60,3 +60,7 @@ def test_verificador_detecta_cifra_inventada():
     afs = [{"valor": 10.18, "texto_valor": "10,18 %", "periodo": "3T 2026", "descripcion": ""}]
     assert not verificar(["La tasa de paro es del 10,18 % en el 3T 2026"], afs)
     assert verificar(["La tasa de paro es del 11,4 %"], afs)
+
+def test_tendencia_con_ultimo_cambio_cero():
+    vals = [100 + (i % 3) for i in range(60)] + [105, 105]
+    D.det_tendencias(mensual(vals))   # no debe fallar

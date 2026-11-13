@@ -45,6 +45,12 @@ def puntuar(ins: Insight, interes: float, frescura: float, publicados: list[dict
     return ins.puntuacion
 
 
+def _raiz(fuente_id: str) -> str:
+    """Mismo origen de datos: quita los sufijos .a / .b de los cortes de brecha (mujeres/hombres…)."""
+    f = fuente_id.split("|")[0]
+    return f[:-2] if f.endswith((".a", ".b")) else f
+
+
 def agrupar_en_carruseles(insights: list[Insight]) -> list[list[Insight]]:
     """Un carrusel = un insight principal + los secundarios de la misma fuente que aportan contexto
     (p. ej. MAPA principal + TOP/BOTTOM + brecha por sexo del mismo corte). Máximo 3 por carrusel."""
@@ -52,13 +58,13 @@ def agrupar_en_carruseles(insights: list[Insight]) -> list[list[Insight]]:
     for ins in sorted(insights, key=lambda i: i.puntuacion, reverse=True):
         if ins.id in usados:
             continue
-        raiz = ins.fuente_id.split("|")[0].rsplit(".", 1)[0]
+        raiz = _raiz(ins.fuente_id)
         grupo = [ins]
         usados.add(ins.id)
         for otro in sorted(insights, key=lambda i: i.puntuacion, reverse=True):
             if otro.id in usados or len(grupo) >= 3:
                 continue
-            if otro.fuente_id.split("|")[0].rsplit(".", 1)[0] == raiz and otro.formato != ins.formato:
+            if _raiz(otro.fuente_id) == raiz and otro.formato != ins.formato:
                 grupo.append(otro)
                 usados.add(otro.id)
         grupos.append(grupo)

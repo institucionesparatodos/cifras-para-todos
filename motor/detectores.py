@@ -219,8 +219,8 @@ def det_tendencias(s: Serie) -> list[Insight]:
                                      [origen_con_valor(s.origen, s.valores[-1], s.periodos[-1])])],
             visual={"tipo": "lineas", "serie": _tramo(s, 5), "destacar_desde": s.periodos[i0]}))
     # Cambio de tendencia: la racha anterior era larga y en sentido contrario
-    if racha <= 2 and len(difs) > racha + minimo:
-        previo = difs[:-racha]
+    if 1 <= racha <= 2 and len(difs) > racha + minimo:
+        previo = difs[:len(difs) - racha]
         sp = signo(previo[-1])
         r2 = 0
         for d in reversed(previo):
@@ -281,7 +281,7 @@ def det_anomalia_estacional(s: Serie, anyos_ref: int = 30, ventana_dias: int = 7
         d = date.fromisoformat(p)
         if d.year < d_ult.year and d_ult.year - d.year <= anyos_ref:
             if s.frecuencia == "D":
-                dd = abs((d.replace(year=2001) - d_ult.replace(year=2001)).days)
+                dd = abs(d.timetuple().tm_yday - d_ult.timetuple().tm_yday)   # día del año (sirve con años bisiestos)
                 if min(dd, 365 - dd) <= ventana_dias:
                     refs.append(v)
             elif d.month == d_ult.month:
