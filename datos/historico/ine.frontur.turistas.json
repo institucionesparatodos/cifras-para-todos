@@ -7,13 +7,13 @@
   "fuente": "INE",
   "dataset": "FRONTUR · tabla 75721",
   "indicador": "Turista. Total. Total Nacional. Dato base",
-  "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/75721?nult=600",
+  "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/75721?nult=36",
   "codigo": "FREG651",
-  "descargado": "2026-11-13T10:44:47+00:00",
+  "descargado": "2026-11-13T22:56:45+00:00",
   "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)"
  },
  "decimales": 0,
  "polaridad": 0,
  "territorio": "España",
- "actualizado": "2026-11-13T10:44:47+00:00"
+ "actualizado": "2026-11-13T22:56:45+00:00"
 }
