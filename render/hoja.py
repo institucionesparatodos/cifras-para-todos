@@ -4,7 +4,7 @@ from PIL import Image
 
 def hoja(carpeta: str):
     for pref in sorted({os.path.basename(p).split("_")[0] for p in glob.glob(f"{carpeta}/c*_*.jpg")}):
-        fs = sorted(glob.glob(f"{carpeta}/{pref}_*.jpg"))
+        fs = sorted(f for f in glob.glob(f"{carpeta}/{pref}_*.jpg") if not f.endswith("_hoja.jpg"))
         ims = [Image.open(f).resize((360, 450)) for f in fs]
         cols = 4; filas = (len(ims) + cols - 1) // cols
         h = Image.new("RGB", (cols * 370 + 10, filas * 460 + 10), "white")
