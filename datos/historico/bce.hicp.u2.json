@@ -1,0 +1,19 @@
+{
+ "id": "bce.hicp.u2",
+ "nombre": "Inflación de la zona euro",
+ "unidad": "%",
+ "frecuencia": "M",
+ "origen": {
+  "fuente": "BCE",
+  "dataset": "ECB Data Portal · ICP",
+  "indicador": "Inflación de la zona euro",
+  "url": "https://data-api.ecb.europa.eu/service/data/ICP/M.U2.N.000000.4.ANR?format=csvdata&detail=dataonly&startPeriod=1999-01",
+  "codigo": "ICP.M.U2.N.000000.4.ANR",
+  "descargado": "2026-11-13T08:40:38+00:00",
+  "licencia": "Reutilización con cita de la fuente (BCE)"
+ },
+ "decimales": 2,
+ "polaridad": 0,
+ "territorio": "España",
+ "actualizado": "2026-11-13T08:40:38+00:00"
+}

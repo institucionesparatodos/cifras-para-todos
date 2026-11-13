@@ -1,0 +1,19 @@
+{
+ "id": "ine.ipv.general",
+ "nombre": "Precio de la vivienda (IPV, variación anual)",
+ "unidad": "%",
+ "frecuencia": "A",
+ "origen": {
+  "fuente": "INE",
+  "dataset": "IPV · tabla 80271",
+  "indicador": "Nacional. Variación anual. General",
+  "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/80271?",
+  "codigo": "IPV1279",
+  "descargado": "2026-11-13T08:28:27+00:00",
+  "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)"
+ },
+ "decimales": 1,
+ "polaridad": 0,
+ "territorio": "España",
+ "actualizado": "2026-11-13T08:28:27+00:00"
+}

@@ -1,0 +1,19 @@
+{
+ "id": "bce.euribor12m",
+ "nombre": "Euríbor a 12 meses (media mensual)",
+ "unidad": "%",
+ "frecuencia": "M",
+ "origen": {
+  "fuente": "BCE",
+  "dataset": "ECB Data Portal · FM",
+  "indicador": "Euríbor a 12 meses (media mensual)",
+  "url": "https://data-api.ecb.europa.eu/service/data/FM/M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA?format=csvdata&detail=dataonly&startPeriod=1999-01",
+  "codigo": "FM.M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA",
+  "descargado": "2026-11-13T08:40:06+00:00",
+  "licencia": "Reutilización con cita de la fuente (BCE)"
+ },
+ "decimales": 2,
+ "polaridad": 0,
+ "territorio": "España",
+ "actualizado": "2026-11-13T08:40:06+00:00"
+}

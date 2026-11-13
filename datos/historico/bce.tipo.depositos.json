@@ -1,0 +1,19 @@
+{
+ "id": "bce.tipo.depositos",
+ "nombre": "Tipo de interés de la facilidad de depósito del BCE",
+ "unidad": "%",
+ "frecuencia": "D",
+ "origen": {
+  "fuente": "BCE",
+  "dataset": "ECB Data Portal · FM",
+  "indicador": "Tipo de interés de la facilidad de depósito del BCE",
+  "url": "https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.DFR.LEV?format=csvdata&detail=dataonly&startPeriod=1999-01",
+  "codigo": "FM.B.U2.EUR.4F.KR.DFR.LEV",
+  "descargado": "2026-11-13T08:39:51+00:00",
+  "licencia": "Reutilización con cita de la fuente (BCE)"
+ },
+ "decimales": 2,
+ "polaridad": 0,
+ "territorio": "España",
+ "actualizado": "2026-11-13T08:39:51+00:00"
+}

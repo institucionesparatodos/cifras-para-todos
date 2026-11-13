@@ -1,0 +1,168 @@
+{
+ "tipo": "novedad",
+ "carruseles": [
+  {
+   "principal": {
+    "id": "ine.epa.paro.provincias.a.brecha.2026-07-01",
+    "detector": "brecha_grupos",
+    "formato": "CURIOSIDAD",
+    "intensidad": 1.0,
+    "fuente_id": "ine.epa.paro.provincias.a",
+    "titular_base": "Tasa de paro: mujeres frente a hombres. La mayor diferencia está en Total.",
+    "afirmaciones": [
+     {
+      "id": "b4",
+      "tipo": "DATO OFICIAL",
+      "texto_valor": "30,17 %",
+      "valor": 30.17,
+      "unidad": "%",
+      "descripcion": "Tasa de paro · mujeres · Total",
+      "periodo": "3T 2026",
+      "origenes": [
+       {
+        "fuente": "INE",
+        "dataset": "EPA · tabla 65349",
+        "indicador": "Tasa de paro",
+        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/65349?nult=1",
+        "codigo": "",
+        "descargado": "2026-11-13T08:27:32+00:00",
+        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
+        "valor_original": 30.17,
+        "periodo_original": "2026-07-01",
+        "territorio": "Total"
+       }
+      ],
+      "calculo": "",
+      "aproximado": false
+     },
+     {
+      "id": "b5",
+      "tipo": "DATO OFICIAL",
+      "texto_valor": "9,03 %",
+      "valor": 9.03,
+      "unidad": "%",
+      "descripcion": "Tasa de paro · hombres · Total",
+      "periodo": "3T 2026",
+      "origenes": [
+       {
+        "fuente": "INE",
+        "dataset": "EPA · tabla 65349",
+        "indicador": "Tasa de paro",
+        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/65349?nult=1",
+        "codigo": "",
+        "descargado": "2026-11-13T08:27:33+00:00",
+        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
+        "valor_original": 9.03,
+        "periodo_original": "2026-07-01",
+        "territorio": "Total"
+       }
+      ],
+      "calculo": "",
+      "aproximado": false
+     },
+     {
+      "id": "b6",
+      "tipo": "COMPARACIÓN",
+      "texto_valor": "21,14 puntos",
+      "valor": 21.14,
+      "unidad": "puntos",
+      "descripcion": "Diferencia mujeres − hombres en Total",
+      "periodo": "3T 2026",
+      "origenes": [
+       {
+        "fuente": "INE",
+        "dataset": "EPA · tabla 65349",
+        "indicador": "Tasa de paro",
+        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/65349?nult=1",
+        "codigo": "",
+        "descargado": "2026-11-13T08:27:32+00:00",
+        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
+        "valor_original": 30.17,
+        "periodo_original": "2026-07-01",
+        "territorio": "Total"
+       },
+       {
+        "fuente": "INE",
+        "dataset": "EPA · tabla 65349",
+        "indicador": "Tasa de paro",
+        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/65349?nult=1",
+        "codigo": "",
+        "descargado": "2026-11-13T08:27:33+00:00",
+        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
+        "valor_original": 9.03,
+        "periodo_original": "2026-07-01",
+        "territorio": "Total"
+       }
+      ],
+      "calculo": "30,17 − 9,03",
+      "aproximado": false
+     },
+     {
+      "id": "b7",
+      "tipo": "CÁLCULO DERIVADO",
+      "texto_valor": "1 de 1",
+      "valor": 1,
+      "unidad": "territorios",
+      "descripcion": "Territorios donde mujeres supera a hombres",
+      "periodo": "3T 2026",
+      "origenes": [
+       {
+        "fuente": "INE",
+        "dataset": "EPA · tabla 65349",
+        "indicador": "Tasa de paro",
+        "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/65349?nult=1",
+        "codigo": "",
+        "descargado": "2026-11-13T08:27:32+00:00",
+        "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
+        "valor_original": 0,
+        "periodo_original": "2026-07-01",
+        "territorio": "todos"
+       }
+      ],
+      "calculo": "recuento de territorios con diferencia positiva",
+      "aproximado": false
+     }
+    ],
+    "visual": {
+     "tipo": "comparacion_grupos",
+     "a": "mujeres",
+     "b": "hombres",
+     "total": [
+      null,
+      null
+     ],
+     "destacado": [
+      "Total",
+      30.17,
+      9.03
+     ],
+     "unidad": "%",
+     "decimales": 2
+    },
+    "contexto": {},
+    "tema": "empleo",
+    "puntuacion": 0.7
+   },
+   "secundarios": [],
+   "formato": "CURIOSIDAD",
+   "puntuacion": 0.7
+  }
+ ],
+ "descartados": [],
+ "fecha": "2026-11-13",
+ "avisos": [
+  "❌ ine.ipc.general: list index out of range",
+  "❌ ine.ipc.grupos: list index out of range",
+  "⚠️ Precio de la vivienda (IPV, variación anual) (IPV1279) no se actualiza desde 2025-01-01: ¿cambio de base o serie discontinuada?",
+  "❌ ine.ipv.ccaa: Tabla 80271: ninguna serie coincide con ['General', 'Variación anual']",
+  "❌ ine.ecp.poblacion: string indices must be integers, not 'str'",
+  "❌ ine.ecp.provincias: INE ECP: ninguna tabla contiene «Población residente por fecha, sexo, grupo de edad y provincia»",
+  "❌ ine.mnp.nacimientos: No se pudo descargar https://servicios.ine.es/wstempus/js/ES/TABLAS_OPERACION/MNP: HTTP Error 500: Internal Server Error",
+  "❌ ine.frontur.turistas: No se pudo descargar https://servicios.ine.es/wstempus/js/ES/TABLAS_OPERACION/FRONTUR: HTTP Error 500: Internal Server Error",
+  "❌ ree.demanda: day is out of range for month",
+  "❌ ree.renovable: No se pudo descargar https://apidatos.ree.es/es/datos/generacion/evolucion-renovable-no-renovable?start_date=2011-01-01T00%3A00&end_date=2026-11-13T23%3A59&time_trunc=month: HTTP Error 400: Bad Request",
+  "⚠️ Tipo de interés de la facilidad de depósito del BCE (FM.B.U2.EUR.4F.KR.DFR.LEV) no se actualiza desde 2026-09-16: ¿cambio de base o serie discontinuada?",
+  "⚠️ Inflación armonizada de España (ICP.M.ES.N.000000.4.ANR) no se actualiza desde 2025-12-01: ¿cambio de base o serie discontinuada?",
+  "⚠️ Inflación de la zona euro (ICP.M.U2.N.000000.4.ANR) no se actualiza desde 2025-12-01: ¿cambio de base o serie discontinuada?"
+ ]
+}
