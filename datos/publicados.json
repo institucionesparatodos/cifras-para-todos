@@ -1,1 +1,13 @@
-[]
+[
+ {
+  "id": "ine.ecp.poblacion.máximo.2026-10-01",
+  "fuente_id": "ine.ecp.poblacion",
+  "formato": "RÉCORD",
+  "fecha": "2026-11-14",
+  "estado": "descartado",
+  "lote": "cifras-2026-11-14-2207",
+  "n": 1,
+  "titulo": "Récord de población residente en España",
+  "enlace": ""
+ }
+]
