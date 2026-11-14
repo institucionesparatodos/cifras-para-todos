@@ -25,7 +25,7 @@
         "indicador": "Total Nacional. Todas las edades. Total. Población. Número",
         "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/59583?nult=36",
         "codigo": "ECP320",
-        "descargado": "2026-11-14T00:10:18+00:00",
+        "descargado": "2026-11-14T21:06:03+00:00",
         "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
         "valor_original": 49935642.0,
         "periodo_original": "2026-10-01",
@@ -240,7 +240,7 @@
          "indicador": "Total Nacional. Todas las edades. Total. Población. Número",
          "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/59583?nult=36",
          "codigo": "ECP320",
-         "descargado": "2026-11-14T00:10:18+00:00",
+         "descargado": "2026-11-14T21:06:03+00:00",
          "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
          "valor_original": 49935642.0,
          "periodo_original": "2026-10-01",
@@ -265,7 +265,7 @@
          "indicador": "Total Nacional. Todas las edades. Total. Población. Número",
          "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/59583?nult=36",
          "codigo": "ECP320",
-         "descargado": "2026-11-14T00:10:18+00:00",
+         "descargado": "2026-11-14T21:06:03+00:00",
          "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
          "valor_original": 47346836.0,
          "periodo_original": "2021-07-01",
@@ -290,7 +290,7 @@
          "indicador": "Total Nacional. Todas las edades. Total. Población. Número",
          "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/59583?nult=36",
          "codigo": "ECP320",
-         "descargado": "2026-11-14T00:10:18+00:00",
+         "descargado": "2026-11-14T21:06:03+00:00",
          "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
          "valor_original": 49935642.0,
          "periodo_original": "2026-10-01",
@@ -381,7 +381,7 @@
          "indicador": "Total Nacional. Todas las edades. Total. Población. Número",
          "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/59583?nult=36",
          "codigo": "ECP320",
-         "descargado": "2026-11-14T00:10:18+00:00",
+         "descargado": "2026-11-14T21:06:03+00:00",
          "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
          "valor_original": 49935642.0,
          "periodo_original": "2026-10-01",
@@ -406,7 +406,7 @@
          "indicador": "Total Nacional. Todas las edades. Total. Población. Número",
          "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/59583?nult=36",
          "codigo": "ECP320",
-         "descargado": "2026-11-14T00:10:18+00:00",
+         "descargado": "2026-11-14T21:06:03+00:00",
          "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
          "valor_original": 44360521.0,
          "periodo_original": "2006-07-01",
@@ -431,7 +431,7 @@
          "indicador": "Total Nacional. Todas las edades. Total. Población. Número",
          "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/59583?nult=36",
          "codigo": "ECP320",
-         "descargado": "2026-11-14T00:10:18+00:00",
+         "descargado": "2026-11-14T21:06:03+00:00",
          "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
          "valor_original": 49935642.0,
          "periodo_original": "2026-10-01",
@@ -443,7 +443,7 @@
          "indicador": "Total Nacional. Todas las edades. Total. Población. Número",
          "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/59583?nult=36",
          "codigo": "ECP320",
-         "descargado": "2026-11-14T00:10:18+00:00",
+         "descargado": "2026-11-14T21:06:03+00:00",
          "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)",
          "valor_original": 44360521.0,
          "periodo_original": "2006-07-01",
@@ -476,7 +476,22 @@
    "puntuacion": 0.6
   }
  ],
- "descartados": [],
+ "descartados": [
+  {
+   "id": "ree.demanda.demanda.interanual.2026-11-14",
+   "puntuacion": 0.171,
+   "titular_base": "Demanda baja −14,6 % (en un año)."
+  }
+ ],
  "fecha": "2026-11-14",
- "avisos": []
+ "avisos": [
+  "ℹ️ Demanda: la fuente ha revisado 1 valores anteriores.",
+  "ℹ️ Hidráulica: la fuente ha revisado 1 valores anteriores.",
+  "ℹ️ Nuclear: la fuente ha revisado 1 valores anteriores.",
+  "ℹ️ Ciclo combinado: la fuente ha revisado 1 valores anteriores.",
+  "ℹ️ Eólica: la fuente ha revisado 1 valores anteriores.",
+  "ℹ️ Solar fotovoltaica: la fuente ha revisado 1 valores anteriores.",
+  "ℹ️ Renovable: la fuente ha revisado 2 valores anteriores.",
+  "ℹ️ No renovable: la fuente ha revisado 2 valores anteriores."
+ ]
 }

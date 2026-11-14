@@ -7,13 +7,13 @@
   "fuente": "REE (REData)",
   "dataset": "demanda/evolucion",
   "indicador": "Demanda",
-  "url": "https://apidatos.ree.es/es/datos/demanda/evolucion?start_date=2026-09-14T00%3A00&end_date=2026-11-14T23%3A59&time_trunc=day",
+  "url": "https://apidatos.ree.es/es/datos/demanda/evolucion?start_date=2026-09-15T00%3A00&end_date=2026-11-14T23%3A59&time_trunc=day",
   "codigo": "",
-  "descargado": "2026-11-14T00:11:16+00:00",
+  "descargado": "2026-11-14T21:06:55+00:00",
   "licencia": "Datos de Red Eléctrica (REData), uso con cita de la fuente"
  },
  "decimales": 0,
  "polaridad": 0,
  "territorio": "España",
- "actualizado": "2026-11-14T00:11:16+00:00"
+ "actualizado": "2026-11-14T21:06:55+00:00"
 }
