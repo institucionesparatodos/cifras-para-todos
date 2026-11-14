@@ -9,11 +9,11 @@
   "indicador": "Dólares por euro (media mensual)",
   "url": "https://data-api.ecb.europa.eu/service/data/EXR/M.USD.EUR.SP00.A?format=csvdata&detail=dataonly&startPeriod=2024-10",
   "codigo": "EXR.M.USD.EUR.SP00.A",
-  "descargado": "2026-11-13T22:57:11+00:00",
+  "descargado": "2026-11-14T00:11:40+00:00",
   "licencia": "Reutilización con cita de la fuente (BCE)"
  },
  "decimales": 4,
  "polaridad": 0,
  "territorio": "España",
- "actualizado": "2026-11-13T22:57:11+00:00"
+ "actualizado": "2026-11-14T00:11:40+00:00"
 }
