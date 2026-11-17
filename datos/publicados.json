@@ -9,5 +9,16 @@
   "n": 1,
   "titulo": "Récord de población residente en España",
   "enlace": ""
+ },
+ {
+  "id": "ine.epa.paro.provincias.mapa.2026-07-01",
+  "fuente_id": "ine.epa.paro.provincias",
+  "formato": "MAPA",
+  "fecha": "2026-11-17",
+  "estado": "publicado",
+  "lote": "cifras-2026-11-17-1222",
+  "n": 1,
+  "titulo": "Paro por provincias: mapa de España",
+  "enlace": "https://www.instagram.com/p/Df10jkICmHz/"
  }
 ]
