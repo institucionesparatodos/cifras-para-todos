@@ -1,0 +1,643 @@
+{
+ "lote": "cifras-2026-11-17-1222",
+ "resume_url": "https://jordiborbon.app.n8n.cloud/webhook-waiting/113?signature=f83a57b90599a0a981ccacd8f07fc5472c64d52f5dbc088bbccaa7b630efea0f",
+ "carruseles": [
+  {
+   "titulo_publicacion": "Paro por provincias: mapa de España",
+   "fuente_corta": "Fuente: INE (EPA), 3T 2026",
+   "pie_de_foto": "En el tercer trimestre de 2026, la tasa de paro en España es 10,18 %. Por provincias, va de 4,63 % en Illes Balears a 18,87 % en Melilla. La tasa de Melilla es 4,1 veces la de Illes Balears. Desliza para ver el mapa y la comparación entre mujeres y hombres.\n🗺️ Busca tu provincia en el mapa y compárala con el total nacional.\n📊 Fuente: INE (Encuesta de Población Activa). Divulgación independiente, no oficial.",
+   "hashtags": [
+    "#CifrasParaTodos",
+    "#Paro",
+    "#EPA",
+    "#INE",
+    "#Provincias"
+   ],
+   "alt": "Portada con el titular. Cifra grande del paro nacional. Mapa de España coloreado según la tasa de paro de cada provincia. Comparación entre mujeres y hombres. Lista de las provincias con más y con menos paro.",
+   "insight_id": "ine.epa.paro.provincias.mapa.2026-07-01",
+   "fuente_id": "ine.epa.paro.provincias",
+   "formato": "MAPA",
+   "diapositivas": [
+    {
+     "tipo": "portada",
+     "oscura": true,
+     "formato": "MAPA",
+     "titulo": "Paro por provincias: de 4,63 % a 18,87 %",
+     "subtitulo": "Tasa de paro por provincias · tercer trimestre de 2026",
+     "sin_pie": true
+    },
+    {
+     "tipo": "contador",
+     "titulo": "La tasa de paro en España es 10,18 %",
+     "cifra": "10,18 %",
+     "unidad": "",
+     "etiqueta": "Tasa de paro · total nacional · 3T 2026",
+     "nota": "Es el dato del total nacional en el tercer trimestre de 2026.",
+     "tipos": [
+      "DATO OFICIAL"
+     ]
+    },
+    {
+     "titulo": "Illes Balears tiene 4,63 % y Melilla 18,87 %",
+     "nota": "La tasa de Melilla es 4,1 veces la de Illes Balears. La distancia entre ambas es 14,24 puntos.",
+     "tipos": [
+      "DATO OFICIAL",
+      "COMPARACIÓN"
+     ],
+     "tipo": "mapa",
+     "celdas": [
+      {
+       "abr": "AB",
+       "pos": [
+        6,
+        4
+       ],
+       "valor": 7.32
+      },
+      {
+       "abr": "A",
+       "pos": [
+        7,
+        5
+       ],
+       "valor": 11.73
+      },
+      {
+       "abr": "AL",
+       "pos": [
+        5,
+        6
+       ],
+       "valor": 16.1
+      },
+      {
+       "abr": "VI",
+       "pos": [
+        6,
+        1
+       ],
+       "valor": 5.84
+      },
+      {
+       "abr": "O",
+       "pos": [
+        3,
+        0
+       ],
+       "valor": 10.04
+      },
+      {
+       "abr": "AV",
+       "pos": [
+        3,
+        3
+       ],
+       "valor": 9.25
+      },
+      {
+       "abr": "BA",
+       "pos": [
+        2,
+        5
+       ],
+       "valor": 12.84
+      },
+      {
+       "abr": "PM",
+       "pos": [
+        10,
+        3.6
+       ],
+       "valor": 4.63
+      },
+      {
+       "abr": "B",
+       "pos": [
+        10,
+        2
+       ],
+       "valor": 8.17
+      },
+      {
+       "abr": "BI",
+       "pos": [
+        5,
+        0
+       ],
+       "valor": 8.73
+      },
+      {
+       "abr": "BU",
+       "pos": [
+        5,
+        1
+       ],
+       "valor": 5.49
+      },
+      {
+       "abr": "CC",
+       "pos": [
+        2,
+        4
+       ],
+       "valor": 13.32
+      },
+      {
+       "abr": "CA",
+       "pos": [
+        2,
+        7
+       ],
+       "valor": 15.37
+      },
+      {
+       "abr": "S",
+       "pos": [
+        4,
+        0
+       ],
+       "valor": 7.56
+      },
+      {
+       "abr": "CS",
+       "pos": [
+        8,
+        3
+       ],
+       "valor": 12.25
+      },
+      {
+       "abr": "CR",
+       "pos": [
+        4,
+        4
+       ],
+       "valor": 13.75
+      },
+      {
+       "abr": "CO",
+       "pos": [
+        3,
+        5
+       ],
+       "valor": 14.42
+      },
+      {
+       "abr": "C",
+       "pos": [
+        1,
+        0
+       ],
+       "valor": 7.94
+      },
+      {
+       "abr": "CU",
+       "pos": [
+        6,
+        3
+       ],
+       "valor": 11.2
+      },
+      {
+       "abr": "SS",
+       "pos": [
+        6,
+        0
+       ],
+       "valor": 5.16
+      },
+      {
+       "abr": "GI",
+       "pos": [
+        10,
+        1
+       ],
+       "valor": 7.68
+      },
+      {
+       "abr": "GR",
+       "pos": [
+        4,
+        6
+       ],
+       "valor": 16.14
+      },
+      {
+       "abr": "GU",
+       "pos": [
+        5,
+        3
+       ],
+       "valor": 6.06
+      },
+      {
+       "abr": "H",
+       "pos": [
+        1,
+        6
+       ],
+       "valor": 14.84
+      },
+      {
+       "abr": "HU",
+       "pos": [
+        8,
+        1
+       ],
+       "valor": 6.29
+      },
+      {
+       "abr": "J",
+       "pos": [
+        4,
+        5
+       ],
+       "valor": 15.19
+      },
+      {
+       "abr": "LE",
+       "pos": [
+        3,
+        1
+       ],
+       "valor": 9.27
+      },
+      {
+       "abr": "L",
+       "pos": [
+        9,
+        1
+       ],
+       "valor": 6.49
+      },
+      {
+       "abr": "LU",
+       "pos": [
+        2,
+        0
+       ],
+       "valor": 7.73
+      },
+      {
+       "abr": "M",
+       "pos": [
+        4,
+        3
+       ],
+       "valor": 8.18
+      },
+      {
+       "abr": "MA",
+       "pos": [
+        3,
+        6
+       ],
+       "valor": 13.62
+      },
+      {
+       "abr": "MU",
+       "pos": [
+        6,
+        5
+       ],
+       "valor": 10.8
+      },
+      {
+       "abr": "NA",
+       "pos": [
+        7,
+        1
+       ],
+       "valor": 9.16
+      },
+      {
+       "abr": "OU",
+       "pos": [
+        2,
+        1
+       ],
+       "valor": 9.59
+      },
+      {
+       "abr": "P",
+       "pos": [
+        4,
+        1
+       ],
+       "valor": 6.98
+      },
+      {
+       "abr": "GC",
+       "pos": [
+        8.6,
+        7.3
+       ],
+       "valor": 11.71
+      },
+      {
+       "abr": "PO",
+       "pos": [
+        1,
+        1
+       ],
+       "valor": 10.93
+      },
+      {
+       "abr": "LO",
+       "pos": [
+        6,
+        2
+       ],
+       "valor": 8.63
+      },
+      {
+       "abr": "SA",
+       "pos": [
+        2,
+        3
+       ],
+       "valor": 9.04
+      },
+      {
+       "abr": "TF",
+       "pos": [
+        7.6,
+        7.3
+       ],
+       "valor": 10.06
+      },
+      {
+       "abr": "SG",
+       "pos": [
+        4,
+        2
+       ],
+       "valor": 8.28
+      },
+      {
+       "abr": "SE",
+       "pos": [
+        2,
+        6
+       ],
+       "valor": 14.95
+      },
+      {
+       "abr": "SO",
+       "pos": [
+        5,
+        2
+       ],
+       "valor": 5.54
+      },
+      {
+       "abr": "T",
+       "pos": [
+        9,
+        2
+       ],
+       "valor": 10.69
+      },
+      {
+       "abr": "TE",
+       "pos": [
+        7,
+        3
+       ],
+       "valor": 5.56
+      },
+      {
+       "abr": "TO",
+       "pos": [
+        3,
+        4
+       ],
+       "valor": 14.2
+      },
+      {
+       "abr": "V",
+       "pos": [
+        7,
+        4
+       ],
+       "valor": 11.79
+      },
+      {
+       "abr": "VA",
+       "pos": [
+        3,
+        2
+       ],
+       "valor": 6.48
+      },
+      {
+       "abr": "ZA",
+       "pos": [
+        2,
+        2
+       ],
+       "valor": 10.6
+      },
+      {
+       "abr": "Z",
+       "pos": [
+        7,
+        2
+       ],
+       "valor": 10.36
+      },
+      {
+       "abr": "CE",
+       "pos": [
+        3,
+        7.6
+       ],
+       "valor": 18.5
+      },
+      {
+       "abr": "ML",
+       "pos": [
+        5,
+        7.6
+       ],
+       "valor": 18.87
+      }
+     ],
+     "recuadro": [
+      [
+       7.6,
+       7.3
+      ],
+      [
+       8.6,
+       7.3
+      ]
+     ],
+     "unidad": "%",
+     "decimales": 2,
+     "cortes": [
+      4.63,
+      7,
+      9,
+      11,
+      14
+     ],
+     "columnas": 11
+    },
+    {
+     "titulo": "Paro de mujeres y hombres: 11,28 % y 9,20 %",
+     "nota": "En Melilla la diferencia es de 21,14 puntos: 30,17 % en mujeres y 9,03 % en hombres.",
+     "tipos": [
+      "DATO OFICIAL",
+      "CÁLCULO DERIVADO",
+      "COMPARACIÓN"
+     ],
+     "tipo": "comparacion_grupos",
+     "bloques": [
+      {
+       "nombre": "España",
+       "barras": [
+        {
+         "nombre": "Mujeres",
+         "valor": 11.28,
+         "texto": "11,28 %"
+        },
+        {
+         "nombre": "Hombres",
+         "valor": 9.2,
+         "texto": "9,20 %"
+        }
+       ],
+       "diferencia": "2,08 puntos de diferencia"
+      },
+      {
+       "nombre": "Melilla",
+       "barras": [
+        {
+         "nombre": "Mujeres",
+         "valor": 30.17,
+         "texto": "30,17 %"
+        },
+        {
+         "nombre": "Hombres",
+         "valor": 9.03,
+         "texto": "9,03 %"
+        }
+       ],
+       "diferencia": "21,14 puntos de diferencia"
+      }
+     ]
+    },
+    {
+     "titulo": "Las provincias con más y con menos paro",
+     "nota": "Arriba: Melilla 18,87 %, Ceuta 18,50 %. Abajo: Illes Balears 4,63 %, Gipuzkoa 5,16 %. Total nacional: 10,18 %.",
+     "tipos": [
+      "DATO OFICIAL",
+      "COMPARACIÓN"
+     ],
+     "tipo": "top_bottom",
+     "arriba": [
+      {
+       "nombre": "Melilla",
+       "valor": 18.87,
+       "texto": "18,87 %"
+      },
+      {
+       "nombre": "Ceuta",
+       "valor": 18.5,
+       "texto": "18,50 %"
+      },
+      {
+       "nombre": "Granada",
+       "valor": 16.14,
+       "texto": "16,14 %"
+      },
+      {
+       "nombre": "Almería",
+       "valor": 16.1,
+       "texto": "16,10 %"
+      },
+      {
+       "nombre": "Cádiz",
+       "valor": 15.37,
+       "texto": "15,37 %"
+      }
+     ],
+     "abajo": [
+      {
+       "nombre": "Illes Balears",
+       "valor": 4.63,
+       "texto": "4,63 %"
+      },
+      {
+       "nombre": "Gipuzkoa",
+       "valor": 5.16,
+       "texto": "5,16 %"
+      },
+      {
+       "nombre": "Burgos",
+       "valor": 5.49,
+       "texto": "5,49 %"
+      },
+      {
+       "nombre": "Soria",
+       "valor": 5.54,
+       "texto": "5,54 %"
+      },
+      {
+       "nombre": "Teruel",
+       "valor": 5.56,
+       "texto": "5,56 %"
+      }
+     ],
+     "rotulo_arriba": "Más alto",
+     "rotulo_abajo": "Más bajo",
+     "referencia": 10.18,
+     "rotulo_referencia": "España: 10,18 %"
+    },
+    {
+     "tipo": "conclusion",
+     "titulo": "En resumen",
+     "puntos": [
+      "La tasa de paro va del 4,63 % en Illes Balears al 18,87 % en Melilla.",
+      "La tasa de Melilla es 4,1 veces la de Illes Balears, en el tercer trimestre de 2026.",
+      "En 46 de 52 territorios, la tasa de las mujeres supera a la de los hombres."
+     ],
+     "tipos": [
+      "COMPARACIÓN",
+      "CÁLCULO DERIVADO",
+      "DATO OFICIAL"
+     ]
+    },
+    {
+     "tipo": "fuente",
+     "titulo": "Fuente y método",
+     "sin_pie": true,
+     "filas": [
+      [
+       "Fuente",
+       "Instituto Nacional de Estadística (INE)"
+      ],
+      [
+       "Estadística",
+       "EPA · tabla 65349"
+      ],
+      [
+       "Dato",
+       "3T 2026"
+      ],
+      [
+       "Qué se mide",
+       "Porcentaje de personas activas, es decir, con trabajo o que lo buscan, que están en paro."
+      ],
+      [
+       "Cálculos",
+       "Diferencias, variaciones y recuentos hechos por Cifras para todos con los datos oficiales"
+      ]
+     ],
+     "leyenda_tipos": "<b>✓ DATO OFICIAL</b>: cifra publicada por la fuente.<br><b>= COMPARACIÓN o CÁLCULO DERIVADO</b>: operación hecha por nosotros con datos oficiales.<br><b>≈ ESTIMACIÓN</b>: valor aproximado."
+    }
+   ]
+  }
+ ]
+}
