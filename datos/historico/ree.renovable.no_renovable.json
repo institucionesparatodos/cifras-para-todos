@@ -7,13 +7,13 @@
   "fuente": "REE (REData)",
   "dataset": "generacion/evolucion-renovable-no-renovable",
   "indicador": "No renovable",
-  "url": "https://apidatos.ree.es/es/datos/generacion/evolucion-renovable-no-renovable?start_date=2026-09-15T00%3A00&end_date=2026-11-14T23%3A59&time_trunc=month",
+  "url": "https://apidatos.ree.es/es/datos/generacion/evolucion-renovable-no-renovable?start_date=2026-09-15T00%3A00&end_date=2026-11-17T23%3A59&time_trunc=month",
   "codigo": "",
-  "descargado": "2026-11-14T21:07:01+00:00",
+  "descargado": "2026-11-17T11:21:28+00:00",
   "licencia": "Datos de Red Eléctrica (REData), uso con cita de la fuente"
  },
  "decimales": 0,
  "polaridad": 0,
  "territorio": "España",
- "actualizado": "2026-11-14T21:07:01+00:00"
+ "actualizado": "2026-11-17T11:21:28+00:00"
 }
