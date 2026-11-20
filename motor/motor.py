@@ -27,7 +27,9 @@ PESO_DETECTOR = {
 }
 UMBRAL_NOTICIA = 0.45      # por debajo no se propone como novedad
 MAX_DIA = 10               # carruseles de novedad propuestos al día (decisión de Jordi, 13/11/2026)
+MAX_POR_FUENTE = 4         # máximo de carruseles de una misma fuente (INE, REE, BCE, AEMET…) en un día
 DIAS_NOVEDAD = 10          # ventana para penalizar repeticiones
+RESERVA_MINIMA = 0.1       # una pieza de reserva más floja que esto no entra en la rotación de fuentes
 
 
 def puntuar(ins: Insight, interes: float, frescura: float, publicados: list[dict]) -> float:
@@ -71,14 +73,48 @@ def agrupar_en_carruseles(insights: list[Insight]) -> list[list[Insight]]:
     return grupos
 
 
-def seleccionar(insights: list[Insight], reserva: list[Insight]) -> dict:
-    """Devuelve el plan del día: novedades (máx MAX_DIA) o, si no hay, 1 pieza de reserva."""
+def familia(fuente_id: str) -> str:
+    """Fuente de origen de un insight: 'ine', 'ree', 'bce', 'aemet', 'esios'… (en un cruce, la del primero)."""
+    return fuente_id.split("|")[0].split(".")[0]
+
+
+def orden_de_fuentes(publicados: list[dict]) -> dict[str, str]:
+    """Fecha de la última publicación (o descarte) de cada fuente. Las que nunca han salido van primero."""
+    ultima: dict[str, str] = {}
+    for p in publicados:
+        f = familia(p.get("fuente_id", ""))
+        ultima[f] = max(ultima.get(f, ""), p.get("fecha", ""))
+    return ultima
+
+
+def seleccionar(insights: list[Insight], reserva: list[Insight], publicados: list[dict] | None = None) -> dict:
+    """Plan del día: novedades (máx MAX_DIA y MAX_POR_FUENTE por fuente) o, si no hay, 1 pieza de reserva.
+    La reserva rota entre fuentes: se elige la mejor pieza de la fuente que lleva más tiempo sin salir."""
+    publicados = publicados or []
     grupos = agrupar_en_carruseles(insights)
-    novedades = [g for g in grupos if g[0].puntuacion >= UMBRAL_NOTICIA][:MAX_DIA]
+    novedades, por_fuente = [], {}
+    for g in grupos:
+        if g[0].puntuacion < UMBRAL_NOTICIA or len(novedades) >= MAX_DIA:
+            continue
+        f = familia(g[0].fuente_id)
+        if por_fuente.get(f, 0) >= MAX_POR_FUENTE:
+            continue
+        por_fuente[f] = por_fuente.get(f, 0) + 1
+        novedades.append(g)
     descartados = [{"id": g[0].id, "puntuacion": g[0].puntuacion, "titular_base": g[0].titular_base}
                    for g in grupos if g not in novedades][:10]
     plan = {"tipo": "novedad" if novedades else "reserva", "carruseles": [], "descartados": descartados}
-    elegidos = novedades or agrupar_en_carruseles(reserva)[:1]
+    elegidos = novedades
+    if not elegidos:
+        todos = [g for g in agrupar_en_carruseles(reserva) if g[0].puntuacion > 0]
+        candidatos = [g for g in todos if g[0].puntuacion >= RESERVA_MINIMA] or todos
+        if candidatos:
+            ultima = orden_de_fuentes(publicados)
+            mejor = {}                                      # mejor pieza de cada fuente (ya vienen ordenadas)
+            for g in candidatos:
+                mejor.setdefault(familia(g[0].fuente_id), g)
+            fuente = min(mejor, key=lambda f: (ultima.get(f, ""), -mejor[f][0].puntuacion))
+            elegidos = [mejor[fuente]]
     for g in elegidos:
         plan["carruseles"].append({
             "principal": g[0].to_dict(), "secundarios": [x.to_dict() for x in g[1:]],
