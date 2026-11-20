@@ -40,17 +40,21 @@ def main():
         if not cfg.get("solo_cambios") and congelada:
             avisos.append(f"⚠️ {s.nombre} ({s.origen.codigo}) no se actualiza desde {s.periodos[-1]}: ¿cambio de base o serie discontinuada?")
             return
-        if cambios["revisados"]:
+        if cambios["revisados"] and s.frecuencia != "D":      # REE revisa a diario sus últimos días: no es noticia
             avisos.append(f"ℹ️ {s.nombre}: la fuente ha revisado {len(cambios['revisados'])} valores anteriores.")
         es_nuevo = bool(cambios["nuevos"])
         dets = D.det_records(s) + D.det_cambios(s) + D.det_tendencias(s) + D.det_hito(s)
         if "hoy_vs_media" in cfg.get("detectores_extra", []):
             dets += D.det_anomalia_estacional(s)
+        omitir = set(cfg.get("omitir_detectores", []))     # p. ej. en series diarias, el cambio de un día a otro es ruido
+        dets = [i for i in dets if i.detector not in omitir]
         for i in dets:
             i.tema = cfg.get("tema", "")
             puntuar(i, cfg.get("interes", 2), 1.0 if es_nuevo else 0.6, publicados)
             (novedades if es_nuevo else reserva).append(i)
-        for i in D.det_comparacion_temporal(s):
+        anyos_serie = (date.fromisoformat(s.periodos[-1]) - date.fromisoformat(s.periodos[0])).days / 365.25
+        comparar = [] if s.frecuencia == "D" else D.det_comparacion_temporal(s, 20 if anyos_serie >= 20.5 else 10)
+        for i in comparar:
             i.tema = cfg.get("tema", "")
             puntuar(i, cfg.get("interes", 2), 0.6, publicados)
             reserva.append(i)
@@ -136,19 +140,26 @@ def main():
 
     # --- REE (REData) ---
     for cfg in cat["redata"]:
+        if cfg.get("activo") is False:
+            continue
         t0 = time.time(); print(f"→ {cfg['id']}…", flush=True)
         try:
             ultima = leer_marca(cfg["id"], "hasta")
             desde = date.fromisoformat(cfg["desde"])
             if ultima:                                   # solo lo nuevo (con 60 días de margen por revisiones)
                 desde = max(desde, date.fromisoformat(ultima) - timedelta(days=60))
-            ss = F.redata_series(cfg["categoria"], cfg["widget"], desde, date.today(),
-                                 cfg["trunc"], cfg["id"], cfg["unidad"])
-            guardar_marca(cfg["id"], "hasta", date.today().isoformat())
+            ss = F.redata_series(cfg["categoria"], cfg["widget"], desde, date.today(), cfg["trunc"], cfg["id"],
+                                 cfg["unidad"], cfg.get("decimales", 0), porcentaje=bool(cfg.get("usar_porcentaje")))
+            corte = F.ultimo_periodo_completo(cfg["trunc"]).isoformat()
             for s in ss:
                 if cfg.get("componentes_interes") and s.nombre not in cfg["componentes_interes"]:
                     continue
+                quitados = alm.borrar_desde(s.id, corte)   # limpia periodos incompletos guardados antes
+                if quitados:
+                    print(f"   {s.id}: quitados {quitados} periodo(s) incompleto(s) del histórico", flush=True)
+                s.nombre = cfg.get("nombres", {}).get(s.nombre) or cfg.get("plantilla_nombre", "{}").format(s.nombre)
                 procesar_serie(s, {**cfg, "id": s.id})
+            guardar_marca(cfg["id"], "hasta", date.today().isoformat())
         except Exception as e:
             avisos.append(f"❌ {cfg['id']}: {e}")
         print(f"   {time.time() - t0:.0f} s", flush=True)
@@ -177,7 +188,7 @@ def main():
                 puntuar(i, 2, 0.6, publicados)
                 reserva.append(i)
 
-    plan = seleccionar(novedades, reserva)
+    plan = seleccionar(novedades, reserva, publicados)
     plan.update({"fecha": hoy, "avisos": avisos})
     os.makedirs(f"{R}/datos/plan", exist_ok=True)
     ruta = f"{R}/datos/plan/{hoy}.json"
