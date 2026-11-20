@@ -1,8 +1,8 @@
 """Descarga de datos de las fuentes oficiales. Sin IA: solo HTTP y parseo.
 
 Fase 1: INE (Tempus3), REE (REData) y BCE (ECB Data Portal, SDMX).
-Fase 2: AEMET OpenData (necesita API key gratuita en el secreto AEMET_API_KEY).
-Fase 3: datos.gob.es (descubrimiento de datasets) y e·sios (token personal de REE).
+Fase 2: AEMET OpenData (secreto AEMET_API_KEY) y e·sios (secreto ESIOS_TOKEN).
+Fase 3: datos.gob.es (aviso semanal de datasets nuevos, desde n8n).
 
 Cada función devuelve objetos Serie o Corte con su Origen (URL exacta incluida),
 para que cualquier cifra pueda trazarse hasta la consulta que la produjo.
@@ -202,13 +202,29 @@ def redata(categoria: str, widget: str, inicio: date, fin: date, trunc: str = "d
     return json.loads(_get(url, {"Accept": "application/json", "Content-Type": "application/json"})), url
 
 
+def ultimo_periodo_completo(trunc: str, hoy: date | None = None) -> date:
+    """Primer periodo que todavía NO está completo: hoy (day), el mes en curso (month) o el año en curso (year).
+    Los datos de ese periodo y posteriores son parciales o previsiones y no se guardan."""
+    hoy = hoy or date.today()
+    return {"day": hoy, "month": hoy.replace(day=1), "year": hoy.replace(month=1, day=1)}[trunc]
+
+
 def redata_series(categoria: str, widget: str, inicio: date, fin: date, trunc: str,
-                  id_base: str, unidad: str, decimales: int = 0) -> list[Serie]:
-    """Una Serie por cada componente del widget (p. ej. Solar fotovoltaica, Eólica, Nuclear…)."""
+                  id_base: str, unidad: str, decimales: int = 0, porcentaje: bool = False) -> list[Serie]:
+    """Una Serie por cada componente del widget (p. ej. Solar fotovoltaica, Eólica, Nuclear…).
+    - porcentaje=True: guarda el peso de cada componente sobre el total (campo 'percentage' de REData, × 100).
+    - Nunca guarda el periodo en curso (día de hoy, mes en curso), que REData da incompleto."""
+    if trunc == "month":
+        inicio = inicio.replace(day=1)                    # un mes pedido a medias daría un total parcial
+    elif trunc == "year":
+        inicio = inicio.replace(month=1, day=1)
+    corte = ultimo_periodo_completo(trunc)
     tramos, a = [], inicio
     paso = timedelta(days=365) if trunc in ("day", "month") else timedelta(days=365 * 30)   # REData rechaza rangos largos
     while a <= fin:
         b = min(fin, a + paso - timedelta(days=1))
+        if trunc == "month" and b < fin and (b + timedelta(days=1)).day != 1:
+            b = b.replace(day=1) - timedelta(days=1)      # que cada tramo acabe a final de mes
         tramos.append((a, b))
         a = b + timedelta(days=1)
     acumulado: dict[str, dict] = {}
@@ -221,16 +237,27 @@ def redata_series(categoria: str, widget: str, inicio: date, fin: date, trunc: s
             t = at["title"]
             acc = acumulado.setdefault(t, {})
             for v in at.get("values", []):
-                acc[v["datetime"][:10]] = float(v["value"])
+                dia = v["datetime"][:10]
+                if date.fromisoformat(dia) >= corte:
+                    continue
+                if porcentaje:
+                    if v.get("percentage") is None:
+                        continue
+                    acc[dia] = round(float(v["percentage"]) * 100, 4)
+                else:
+                    acc[dia] = float(v["value"])
     out = []
     for titulo, vals in acumulado.items():
+        if not vals:
+            continue
         ps = sorted(vals)
         slug = "".join(c for c in titulo.lower().replace(" ", "_") if c.isalnum() or c == "_")
         out.append(Serie(
             id=f"{id_base}.{slug}", nombre=titulo, unidad=unidad,
             frecuencia={"day": "D", "month": "M", "year": "A"}[trunc],
             periodos=ps, valores=[vals[p] for p in ps],
-            origen=Origen("REE (REData)", f"{categoria}/{widget}", titulo, urls[-1], "", ahora_iso(),
+            origen=Origen("REE (REData)", f"{categoria}/{widget}", titulo + (" (% del total)" if porcentaje else ""),
+                          urls[-1], "", ahora_iso(),
                           "Datos de Red Eléctrica (REData), uso con cita de la fuente"),
             decimales=decimales))
     return out
