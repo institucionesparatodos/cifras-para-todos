@@ -16,6 +16,8 @@ from datetime import date, timedelta
 
 from . import fuentes as F
 from . import detectores as D
+from . import aemet as A
+from . import esios as E
 from .motor import puntuar, seleccionar, cargar_publicados
 from .series import Almacen
 
@@ -30,9 +32,14 @@ def main():
     hoy = date.today().isoformat()
     novedades, reserva, avisos, series = [], [], [], {}
 
-    def procesar_serie(s, cfg):
-        cambios = alm.guardar(s)
-        s = alm.serie_completa(s)
+    def procesar_serie(s, cfg, guardar=True, es_nuevo=None):
+        """Guarda la serie (si guardar) y pasa los detectores. Con guardar=False (series derivadas que no se
+        guardan, como 'los octubres de cada año'), es_nuevo lo decide quien llama."""
+        if guardar:
+            cambios = alm.guardar(s)
+            s = alm.serie_completa(s)
+        else:
+            cambios = {"nuevos": [s.periodos[-1]] if es_nuevo else [], "revisados": []}
         s.fecha_puntual = bool(cfg.get("fecha_puntual"))     # p. ej. población: "a 1 de octubre de 2026"
         series[cfg["id"]] = s
         limite = cfg.get("retraso_max_dias")                 # margen propio de un indicador (si lo tiene)
@@ -48,12 +55,15 @@ def main():
             dets += D.det_anomalia_estacional(s)
         omitir = set(cfg.get("omitir_detectores", []))     # p. ej. en series diarias, el cambio de un día a otro es ruido
         dets = [i for i in dets if i.detector not in omitir]
+        if cfg.get("solo_detectores"):                      # lista cerrada de detectores para esa serie
+            dets = [i for i in dets if any(i.detector.startswith(d) for d in cfg["solo_detectores"])]
         for i in dets:
             i.tema = cfg.get("tema", "")
             puntuar(i, cfg.get("interes", 2), 1.0 if es_nuevo else 0.6, publicados)
             (novedades if es_nuevo else reserva).append(i)
         anyos_serie = (date.fromisoformat(s.periodos[-1]) - date.fromisoformat(s.periodos[0])).days / 365.25
-        comparar = [] if s.frecuencia == "D" else D.det_comparacion_temporal(s, 20 if anyos_serie >= 20.5 else 10)
+        comparar = ([] if s.frecuencia == "D" or cfg.get("sin_comparacion")
+                    else D.det_comparacion_temporal(s, 20 if anyos_serie >= 20.5 else 10))
         for i in comparar:
             i.tema = cfg.get("tema", "")
             puntuar(i, cfg.get("interes", 2), 0.6, publicados)
@@ -92,6 +102,86 @@ def main():
             (novedades if es_nuevo else reserva).append(i)
         os.makedirs(os.path.dirname(marca), exist_ok=True)
         open(marca, "w").write(c.fecha)
+
+    def procesar_aemet(cfg):
+        corto = {k: A.NOMBRE_CAPITAL.get(k, v.get("corto", k)) for k, v in prov.items()}   # se nombra la capital
+        provincias = list(prov)
+        ruta_est = f"{R}/datos/historico/aemet.estaciones.json"
+        previas = json.load(open(ruta_est, encoding="utf-8")) if os.path.exists(ruta_est) else {}
+        # 1) Diarios de todas las estaciones (últimos 14 días; AEMET publica con unos días de retraso)
+        hoy_d = date.today()
+        registros, url = A.diarios_todas(hoy_d - timedelta(days=14), hoy_d - timedelta(days=1))
+        estaciones = A.elegir_estaciones(registros, previas, cfg.get("estaciones_fijas", {}), provincias)
+        cambios_est = [p for p in estaciones if previas.get(p, {}).get("indicativo") != estaciones[p]["indicativo"]]
+        json.dump(estaciones, open(ruta_est, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        print(f"   {len(registros)} registros diarios; {len(estaciones)} provincias con estación", flush=True)
+        for p in cambios_est:
+            print(f"   estación de {corto.get(p, p)}: {estaciones[p]['indicativo']} · {estaciones[p]['nombre']}", flush=True)
+        sin = [corto.get(p, p) for p in provincias if p not in estaciones]
+        if sin:
+            avisos.append(f"ℹ️ AEMET: sin estación elegida en {', '.join(sin)} (se puede fijar en 'estaciones_fijas').")
+        diarias = A.series_diarias(registros, estaciones, corto, url)
+        tmed = []
+        for s in diarias:
+            alm.guardar(s)
+            if ".tmed." in s.id:
+                tmed.append(alm.serie_completa(s))
+        dias, medias = A.media_nacional_diaria(tmed, minimo=int(0.75 * len(estaciones)))
+        if dias:
+            nac = A.Serie(id="aemet.temperatura.media", nombre="Temperatura media de las capitales de provincia",
+                          unidad="°C", frecuencia="D", periodos=dias, valores=medias,
+                          origen=A.Origen("AEMET", "Valores climatológicos diarios (media de las capitales, cálculo propio)",
+                                          "Media de tmed de las estaciones de las capitales", url, "", A.ahora_iso(), A.LICENCIA),
+                          decimales=1)
+            alm.guardar(nac)
+            series["aemet.temperatura.media"] = alm.serie_completa(nac)
+        # 2) Mensuales por estación: carga del histórico poco a poco y, después, solo el mes que falta
+        anyo_desde = int(cfg.get("desde_mensual", 1991))
+        presupuesto = time.time() + cfg.get("presupuesto_s", 540)
+        completas = 0
+        for prov_n, e in estaciones.items():
+            idema, terr = e["indicativo"], corto.get(prov_n, prov_n)
+            hecho = leer_marca(f"aemet.mes.{idema}", "hecho")        # último año cargado
+            anyo_actual = hoy_d.year
+            if hecho is None or int(hecho) < anyo_actual - 1:
+                inicio = anyo_desde if hecho is None else int(hecho) + 1
+                while inicio <= anyo_actual - 1 and time.time() < presupuesto:
+                    fin = min(inicio + 2, anyo_actual - 1)
+                    regs, url_m = A.mensuales(idema, inicio, fin)
+                    for var, vals in A.leer_mensuales(regs).items():
+                        if vals:
+                            alm.guardar(A.serie_mensual(var, idema, e["nombre"], terr, vals, url_m))
+                    guardar_marca(f"aemet.mes.{idema}", "hecho", fin)
+                    inicio = fin + 1
+                if inicio <= anyo_actual - 1:
+                    continue                                  # sigue mañana
+            # Año en curso: solo si falta el mes pasado
+            mes_pasado = (hoy_d.replace(day=1) - timedelta(days=1)).replace(day=1).isoformat()
+            previo = alm.leer(f"aemet.mes.tm_mes.{idema}")
+            nuevo = False
+            if mes_pasado not in previo and hoy_d.day >= 3 and time.time() < presupuesto:
+                regs, url_m = A.mensuales(idema, int(mes_pasado[:4]), int(mes_pasado[:4]))
+                for var, vals in A.leer_mensuales(regs).items():
+                    if vals:
+                        alm.guardar(A.serie_mensual(var, idema, e["nombre"], terr, vals, url_m))
+                nuevo = mes_pasado in alm.leer(f"aemet.mes.tm_mes.{idema}")
+            completas += 1
+            # 3) Detectores (solo con el histórico completo)
+            for var in A.VARIABLES_MENSUALES:
+                datos = alm.leer(f"aemet.mes.{var}.{idema}")
+                if len(datos) < 120:
+                    continue
+                ps = sorted(datos)
+                s = A.serie_mensual(var, idema, e["nombre"], terr, {p: datos[p] for p in ps}, "")
+                s.origen = A.Origen(**{**json.load(open(f"{R}/datos/historico/{s.id}.json", encoding="utf-8"))["origen"]})
+                base = {"id": s.id, "tema": "tiempo", "interes": cfg.get("interes", 3), "sin_comparacion": True}
+                procesar_serie(s, {**base, "solo_detectores": ["hoy_vs_media"], "detectores_extra": ["hoy_vs_media"]},
+                               guardar=False, es_nuevo=nuevo)
+                mm = A.mismo_mes(s)
+                procesar_serie(mm, {**base, "id": mm.id, "solo_detectores": ["máximo", "mínimo"]},
+                               guardar=False, es_nuevo=nuevo)
+        if completas < len(estaciones):
+            avisos.append(f"ℹ️ AEMET: cargando el histórico mensual ({completas} de {len(estaciones)} estaciones completas).")
 
     # --- INE ---
     for cfg in cat["ine"]:
@@ -179,6 +269,45 @@ def main():
             procesar_serie(s, cfg)
         except Exception as e:
             avisos.append(f"❌ {cfg['id']}: {e}")
+        print(f"   {time.time() - t0:.0f} s", flush=True)
+
+    # --- REE (e·sios): precio de la luz ---
+    if cat.get("esios") and not os.environ.get("ESIOS_TOKEN"):
+        print("→ e·sios: falta el secreto ESIOS_TOKEN; se omite hasta que exista", flush=True)
+    for cfg in (cat.get("esios", []) if os.environ.get("ESIOS_TOKEN") else []):
+        if cfg.get("activo") is False:
+            continue
+        t0 = time.time(); print(f"→ {cfg['id']}…", flush=True)
+        try:
+            ultima = leer_marca(cfg["id"], "hasta")
+            desde = date.fromisoformat(cfg["desde"])
+            if ultima:                                   # solo lo nuevo (con margen por revisiones)
+                margen = 62 if cfg.get("trunc") == "month" else 15
+                desde = max(desde, date.fromisoformat(ultima) - timedelta(days=margen))
+            s = E.serie(cfg, desde)
+            if s is None:
+                print("   nada nuevo que pedir", flush=True)
+                guardar_marca(cfg["id"], "hasta", date.today().isoformat())
+                continue
+            if cfg.get("trunc") == "month":
+                alm.borrar_desde(s.id, date.today().replace(day=1).isoformat())
+            print(f"   {len(s.periodos)} valores de {s.periodos[0]} a {s.periodos[-1]}", flush=True)
+            procesar_serie(s, cfg)
+            guardar_marca(cfg["id"], "hasta", date.today().isoformat())
+        except Exception as e:
+            avisos.append(f"❌ {cfg['id']}: {e}")
+        print(f"   {time.time() - t0:.0f} s", flush=True)
+
+    # --- AEMET: temperatura y lluvia en las capitales de provincia ---
+    cfg_a = cat.get("aemet")
+    if cfg_a and cfg_a.get("activo") is not False and not os.environ.get("AEMET_API_KEY"):
+        print("→ AEMET: falta el secreto AEMET_API_KEY; se omite hasta que exista", flush=True)
+    elif cfg_a and cfg_a.get("activo") is not False:
+        t0 = time.time(); print("→ aemet…", flush=True)
+        try:
+            procesar_aemet(cfg_a)
+        except Exception as e:
+            avisos.append(f"❌ aemet: {e}")
         print(f"   {time.time() - t0:.0f} s", flush=True)
 
     # --- Cruces ---
