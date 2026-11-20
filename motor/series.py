@@ -129,6 +129,21 @@ class Almacen:
             json.dump(meta, f, ensure_ascii=False, indent=1)
         return {"nuevos": nuevos, "revisados": revisados}
 
+    def borrar_desde(self, sid: str, periodo: str) -> int:
+        """Quita del histórico los periodos iguales o posteriores a 'periodo' (datos parciales guardados por error).
+        Devuelve cuántos ha quitado."""
+        datos = self.leer(sid)
+        quitar = [p for p in datos if p >= periodo]
+        if not quitar:
+            return 0
+        with open(self._ruta(sid, "csv"), "w", newline="", encoding="utf-8") as f:
+            w = csv.writer(f)
+            w.writerow(["periodo", "valor"])
+            for p in sorted(datos):
+                if p < periodo:
+                    w.writerow([p, datos[p]])
+        return len(quitar)
+
     def serie_completa(self, serie: Serie) -> Serie:
         datos = self.leer(serie.id)
         datos.update(dict(zip(serie.periodos, serie.valores)))
