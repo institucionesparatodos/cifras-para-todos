@@ -1,6 +1,6 @@
 {
  "id": "ree.generacion.ciclo_combinado",
- "nombre": "Electricidad generada con Ciclo combinado en un día",
+ "nombre": "Electricidad de ciclo combinado generada en un día",
  "unidad": "MWh",
  "frecuencia": "D",
  "origen": {
@@ -9,11 +9,11 @@
   "indicador": "Ciclo combinado",
   "url": "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date=2026-09-21T00%3A00&end_date=2026-11-20T23%3A59&time_trunc=day",
   "codigo": "",
-  "descargado": "2026-11-20T14:32:59+00:00",
+  "descargado": "2026-11-20T15:54:52+00:00",
   "licencia": "Datos de Red Eléctrica (REData), uso con cita de la fuente"
  },
  "decimales": 0,
  "polaridad": 0,
  "territorio": "España",
- "actualizado": "2026-11-20T14:32:59+00:00"
+ "actualizado": "2026-11-20T15:54:52+00:00"
 }

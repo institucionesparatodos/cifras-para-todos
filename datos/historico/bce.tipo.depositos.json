@@ -9,11 +9,11 @@
   "indicador": "Tipo de interés de la facilidad de depósito del BCE",
   "url": "https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.DFR.LEV?format=csvdata&detail=dataonly&startPeriod=2024-09",
   "codigo": "FM.B.U2.EUR.4F.KR.DFR.LEV",
-  "descargado": "2026-11-20T14:44:25+00:00",
+  "descargado": "2026-11-20T15:55:03+00:00",
   "licencia": "Reutilización con cita de la fuente (BCE)"
  },
  "decimales": 2,
  "polaridad": 0,
  "territorio": "España",
- "actualizado": "2026-11-20T14:44:25+00:00"
+ "actualizado": "2026-11-20T15:55:03+00:00"
 }

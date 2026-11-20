@@ -8,7 +8,7 @@
     "formato": "COMPARACIÓN TEMPORAL",
     "intensidad": 1.0,
     "fuente_id": "ree.generacion.mes.solar_fotovoltaica",
-    "titular_base": "Peso de Solar fotovoltaica en la electricidad generada: octubre de 2016 frente a octubre de 2026.",
+    "titular_base": "Peso de la solar fotovoltaica en la electricidad generada: octubre de 2016 frente a octubre de 2026.",
     "afirmaciones": [
      {
       "id": "a1",
@@ -16,16 +16,16 @@
       "texto_valor": "21,0 %",
       "valor": 20.9721,
       "unidad": "%",
-      "descripcion": "Peso de Solar fotovoltaica en la electricidad generada (España)",
+      "descripcion": "Peso de la solar fotovoltaica en la electricidad generada (España)",
       "periodo": "octubre de 2026",
       "origenes": [
        {
         "fuente": "REE (REData)",
         "dataset": "generacion/estructura-generacion",
         "indicador": "Solar fotovoltaica (% del total)",
-        "url": "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date=2026-10-01T00%3A00&end_date=2026-11-20T23%3A59&time_trunc=month",
+        "url": "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date=2026-09-01T00%3A00&end_date=2026-11-20T23%3A59&time_trunc=month",
         "codigo": "",
-        "descargado": "2026-11-20T14:40:07+00:00",
+        "descargado": "2026-11-20T15:54:58+00:00",
         "licencia": "Datos de Red Eléctrica (REData), uso con cita de la fuente",
         "valor_original": 20.9721,
         "periodo_original": "2026-10-01",
@@ -41,16 +41,16 @@
       "texto_valor": "2,7 %",
       "valor": 2.7065,
       "unidad": "%",
-      "descripcion": "Peso de Solar fotovoltaica en la electricidad generada (España)",
+      "descripcion": "Peso de la solar fotovoltaica en la electricidad generada (España)",
       "periodo": "octubre de 2016",
       "origenes": [
        {
         "fuente": "REE (REData)",
         "dataset": "generacion/estructura-generacion",
         "indicador": "Solar fotovoltaica (% del total)",
-        "url": "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date=2026-10-01T00%3A00&end_date=2026-11-20T23%3A59&time_trunc=month",
+        "url": "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date=2026-09-01T00%3A00&end_date=2026-11-20T23%3A59&time_trunc=month",
         "codigo": "",
-        "descargado": "2026-11-20T14:40:07+00:00",
+        "descargado": "2026-11-20T15:54:58+00:00",
         "licencia": "Datos de Red Eléctrica (REData), uso con cita de la fuente",
         "valor_original": 2.7065,
         "periodo_original": "2016-10-01",
@@ -73,9 +73,9 @@
         "fuente": "REE (REData)",
         "dataset": "generacion/estructura-generacion",
         "indicador": "Solar fotovoltaica (% del total)",
-        "url": "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date=2026-10-01T00%3A00&end_date=2026-11-20T23%3A59&time_trunc=month",
+        "url": "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date=2026-09-01T00%3A00&end_date=2026-11-20T23%3A59&time_trunc=month",
         "codigo": "",
-        "descargado": "2026-11-20T14:40:07+00:00",
+        "descargado": "2026-11-20T15:54:58+00:00",
         "licencia": "Datos de Red Eléctrica (REData), uso con cita de la fuente",
         "valor_original": 20.9721,
         "periodo_original": "2026-10-01",
@@ -85,9 +85,9 @@
         "fuente": "REE (REData)",
         "dataset": "generacion/estructura-generacion",
         "indicador": "Solar fotovoltaica (% del total)",
-        "url": "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date=2026-10-01T00%3A00&end_date=2026-11-20T23%3A59&time_trunc=month",
+        "url": "https://apidatos.ree.es/es/datos/generacion/estructura-generacion?start_date=2026-09-01T00%3A00&end_date=2026-11-20T23%3A59&time_trunc=month",
         "codigo": "",
-        "descargado": "2026-11-20T14:40:07+00:00",
+        "descargado": "2026-11-20T15:54:58+00:00",
         "licencia": "Datos de Red Eléctrica (REData), uso con cita de la fuente",
         "valor_original": 2.7065,
         "periodo_original": "2016-10-01",
@@ -120,18 +120,7 @@
    "puntuacion": 0.3
   }
  ],
- "descartados": [
-  {
-   "id": "ree.generacion.mes.nuclear.interanual.2026-10-01",
-   "puntuacion": 0.253,
-   "titular_base": "Peso de Nuclear en la electricidad generada sube 5,0 puntos (en un año)."
-  },
-  {
-   "id": "ree.generacion.mes.hidráulica.giro.2026-10-01",
-   "puntuacion": 0.227,
-   "titular_base": "Peso de Hidráulica en la electricidad generada vuelve a subir tras 6 periodos bajando."
-  }
- ],
+ "descartados": [],
  "fecha": "2026-11-20",
  "avisos": []
 }

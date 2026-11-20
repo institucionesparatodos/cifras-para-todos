@@ -7,13 +7,13 @@
   "fuente": "BCE",
   "dataset": "ECB Data Portal · HICP",
   "indicador": "Inflación de la zona euro (IAPC)",
-  "url": "https://data-api.ecb.europa.eu/service/data/HICP/M.U2.N.000000.4D0.ANR?format=csvdata&detail=dataonly&startPeriod=1999-01",
+  "url": "https://data-api.ecb.europa.eu/service/data/HICP/M.U2.N.000000.4D0.ANR?format=csvdata&detail=dataonly&startPeriod=2024-10",
   "codigo": "HICP.M.U2.N.000000.4D0.ANR",
-  "descargado": "2026-11-20T14:45:07+00:00",
+  "descargado": "2026-11-20T15:55:32+00:00",
   "licencia": "Reutilización con cita de la fuente (BCE)"
  },
  "decimales": 1,
  "polaridad": 0,
  "territorio": "España",
- "actualizado": "2026-11-20T14:45:07+00:00"
+ "actualizado": "2026-11-20T15:55:32+00:00"
 }

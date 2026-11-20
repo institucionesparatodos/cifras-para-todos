@@ -9,11 +9,11 @@
   "indicador": "Renovable (% del total)",
   "url": "https://apidatos.ree.es/es/datos/generacion/evolucion-renovable-no-renovable?start_date=2026-09-01T00%3A00&end_date=2026-11-20T23%3A59&time_trunc=month",
   "codigo": "",
-  "descargado": "2026-11-20T14:44:21+00:00",
+  "descargado": "2026-11-20T15:54:58+00:00",
   "licencia": "Datos de Red Eléctrica (REData), uso con cita de la fuente"
  },
  "decimales": 1,
  "polaridad": 0,
  "territorio": "España",
- "actualizado": "2026-11-20T14:44:21+00:00"
+ "actualizado": "2026-11-20T15:54:58+00:00"
 }
