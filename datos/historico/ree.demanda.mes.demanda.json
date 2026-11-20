@@ -1,0 +1,19 @@
+{
+ "id": "ree.demanda.mes.demanda",
+ "nombre": "Demanda eléctrica del mes",
+ "unidad": "MWh",
+ "frecuencia": "M",
+ "origen": {
+  "fuente": "REE (REData)",
+  "dataset": "demanda/evolucion",
+  "indicador": "Demanda",
+  "url": "https://apidatos.ree.es/es/datos/demanda/evolucion?start_date=2026-09-01T00%3A00&end_date=2026-11-20T23%3A59&time_trunc=month",
+  "codigo": "",
+  "descargado": "2026-11-20T14:37:42+00:00",
+  "licencia": "Datos de Red Eléctrica (REData), uso con cita de la fuente"
+ },
+ "decimales": 0,
+ "polaridad": 0,
+ "territorio": "España",
+ "actualizado": "2026-11-20T14:37:42+00:00"
+}

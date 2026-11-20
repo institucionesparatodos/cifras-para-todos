@@ -9,11 +9,11 @@
   "indicador": "Nacional. Vivienda, agua, electricidad, gas y otros combustibles. Variación anual",
   "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/79181?nult=36",
   "codigo": "IPC290762",
-  "descargado": "2026-11-20T10:43:23+00:00",
+  "descargado": "2026-11-20T14:31:51+00:00",
   "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)"
  },
  "decimales": 1,
  "polaridad": 0,
  "territorio": "España",
- "actualizado": "2026-11-20T10:43:23+00:00"
+ "actualizado": "2026-11-20T14:31:51+00:00"
 }

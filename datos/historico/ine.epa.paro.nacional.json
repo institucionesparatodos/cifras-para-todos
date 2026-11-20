@@ -9,11 +9,11 @@
   "indicador": "Tasa de paro de la población. Ambos sexos. Total Nacional. Total",
   "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/75803?nult=36",
   "codigo": "EPA452434",
-  "descargado": "2026-11-20T10:43:21+00:00",
+  "descargado": "2026-11-20T14:31:49+00:00",
   "licencia": "Licencia de uso del INE (cita obligatoria de la fuente)"
  },
  "decimales": 2,
  "polaridad": 0,
  "territorio": "España",
- "actualizado": "2026-11-20T10:43:21+00:00"
+ "actualizado": "2026-11-20T14:31:49+00:00"
 }
