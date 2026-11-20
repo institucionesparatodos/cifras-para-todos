@@ -9,11 +9,11 @@
   "indicador": "Euríbor a 12 meses (media mensual)",
   "url": "https://data-api.ecb.europa.eu/service/data/FM/M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA?format=csvdata&detail=dataonly&startPeriod=2024-10",
   "codigo": "FM.M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA",
-  "descargado": "2026-11-17T11:21:42+00:00",
+  "descargado": "2026-11-20T10:44:37+00:00",
   "licencia": "Reutilización con cita de la fuente (BCE)"
  },
  "decimales": 2,
  "polaridad": 0,
  "territorio": "España",
- "actualizado": "2026-11-17T11:21:42+00:00"
+ "actualizado": "2026-11-20T10:44:37+00:00"
 }
