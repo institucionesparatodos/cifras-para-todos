@@ -31,7 +31,14 @@
  ],
  "cruces": [
   {"a": "bce.euribor12m", "b": "bce.hipotecas.es", "texto": "Euríbor y tipo de las nuevas hipotecas"},
-  {"a": "ree.demanda.demanda", "b": "aemet.temperatura.media", "texto": "Temperatura y demanda eléctrica (fase 2)"},
+  {"a": "ree.demanda.demanda", "b": "aemet.temperatura.media", "texto": "Temperatura y demanda eléctrica"},
   {"a": "bce.tipo.depositos", "b": "ine.ipc.general", "texto": "Tipos del BCE e inflación en España"}
- ]
+ ],
+ "esios": [
+  {"id": "esios.pvpc", "indicador": 1001, "geo_id": 8741, "trunc": "day", "desde": "2021-06-01", "nombre": "Precio de la luz con tarifa regulada (PVPC), media del día", "nombre_fuente": "PVPC 2.0TD · término de energía activa (Península)", "unidad": "€/MWh", "decimales": 2, "interes": 3, "tema": "luz", "detectores_extra": ["hoy_vs_media"], "omitir_detectores": ["cambio_periodo_anterior", "cambio_interanual", "tendencia_sostenida", "cambio_tendencia"]},
+  {"id": "esios.spot", "indicador": 600, "geo_id": 3, "trunc": "day", "desde": "2015-01-01", "nombre": "Precio de la electricidad en el mercado mayorista, media del día", "nombre_fuente": "Precio mercado spot diario (España)", "unidad": "€/MWh", "decimales": 2, "interes": 2, "tema": "luz", "detectores_extra": ["hoy_vs_media"], "omitir_detectores": ["cambio_periodo_anterior", "cambio_interanual", "tendencia_sostenida", "cambio_tendencia"]},
+  {"id": "esios.pvpc.mes", "indicador": 1001, "geo_id": 8741, "trunc": "month", "desde": "2021-06-01", "nombre": "Precio de la luz con tarifa regulada (PVPC), media del mes", "nombre_fuente": "PVPC 2.0TD · término de energía activa (Península)", "unidad": "€/MWh", "decimales": 2, "interes": 3, "tema": "luz"},
+  {"id": "esios.spot.mes", "indicador": 600, "geo_id": 3, "trunc": "month", "desde": "2015-01-01", "nombre": "Precio de la electricidad en el mercado mayorista, media del mes", "nombre_fuente": "Precio mercado spot diario (España)", "unidad": "€/MWh", "decimales": 2, "interes": 2, "tema": "luz"}
+ ],
+ "aemet": {"id": "aemet", "_nota": "Una estación por provincia (la de la capital), elegida automáticamente y guardada en datos/historico/aemet.estaciones.json. 'estaciones_fijas' fuerza una: {\"Madrid\": \"3195\"}. El histórico mensual se carga desde 'desde_mensual' poco a poco ('presupuesto_s' segundos por ejecución).", "desde_mensual": 1991, "presupuesto_s": 540, "estaciones_fijas": {}, "interes": 3, "tema": "tiempo"}
 }
