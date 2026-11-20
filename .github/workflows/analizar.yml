@@ -21,6 +21,7 @@ jobs:
         env:
           RESUME_URL: ${{ inputs.resume_url }}
           AEMET_API_KEY: ${{ secrets.AEMET_API_KEY }}
+          ESIOS_TOKEN: ${{ secrets.ESIOS_TOKEN }}
       - name: Guardar histórico y plan
         run: |
           git config user.name "cifras-bot"; git config user.email "institucionesparatodos@gmail.com"
